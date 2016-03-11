@@ -6,7 +6,7 @@ permalink: w7-machining.html
 
 ## [Assignment](http://academy.cba.mit.edu/classes/computer_machining/index.html)
 
-> make something big   
+> make something big!!   
 
 &nbsp;
 
