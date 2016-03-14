@@ -92,7 +92,7 @@ Admiring my creation :-)
 
 **Original Files**
 
-* [Rhino project](files/geodesic.3dm)
+* [Rhino project](files/geodesic.3dm.zip)
 
 &nbsp;
 
@@ -137,8 +137,8 @@ multiple passes on some lines which were duplicates that got created during copy
 
 **Original Files**
 
-* [Rhino project](files/box.3dm)
-* [Exported AutoCAD file](files/box.dxf)
+* [Rhino project](files/box.3dm.zip)
+* [Exported AutoCAD file](files/box.dxf.zip)
 
 
 
