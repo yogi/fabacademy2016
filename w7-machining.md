@@ -38,7 +38,7 @@ Here are the wireframes:
 
 ### Original Files:
 
-* Rhino model: [table.3dm](files/table.3dm) 
+* Rhino model: [table.3dm.zip](files/table.3dm.zip) 
 
 
 ## Scaled down model
