@@ -9,7 +9,7 @@ permalink: notes.html
 * Video  
 * Audio
 * Explore Processing 
-
+* Site design hints from here: http://fab.cba.mit.edu/classes/863.13/people/nitsky/. Home page is well spaced, with a short note and a single image.
 
 ## Notes
 * Using layers of plywood and acrylic for a device thats similar to HiTime: http://fabacademy.org/archives/2015/sa/students/sierra.luis/final-proyect.html
@@ -25,3 +25,18 @@ One more example: http://fabacademy.org/archives/2015/as/students/okazaki.asako/
 * Interlocking parts
 * Davinci machine
 * Gyroscope?
+
+## Final project ideas
+
+* AxiDraw http://shop.evilmadscientist.com/productsmenu/846
+
+
+What are the key learnings and the hardest things to do for each week? Focus on those:
+For CNC: cutting, engraving, dual side cuts - like the propeller, angular cuts
+    - joinery
+    - rest is largely design complexity - so master Rhino + Grasshopper
+    
+    
+Computational, algorithmic design and art is cool and inspiring. 
+
+George Hart's work in particular.
