@@ -43,8 +43,19 @@ Here are the wireframes:
 
 ## Scaled down model
 
-Next step is to laser cut a scaled down model using craft plywood (3mm). The original design was done with wood thickness
-assumed to be 6mm. So I needed to use Rhino's Scale function to scale it proportionately down by 50%.
+Next step is to laser cut a scaled down model using craft plywood (3mm). 
+
+The original design was done with wood thickness assumed to be 6mm. So I needed to use Rhino's Scale function to scale 
+it proportionately down by 50%.
+
+Here is the table right after it was laser cut: 
+
+<img src="images/w7-table-laser-cut.jpg"/>
+
+Here is the assembled table:
+
+<img src="images/w7-table-scaled-down.jpg"/>
+
 
 
 ## Test Machining Cut
