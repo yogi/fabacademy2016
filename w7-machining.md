@@ -36,11 +36,6 @@ Here are the wireframes:
 
 <img src="images/w7-table-rhino-wireframe.jpg"/>
 
-### Original Files:
-
-* Rhino model: [table.3dm.zip](files/table.3dm.zip) 
-
-
 ## Scaled down model
 
 Next step is to laser cut a scaled down model using craft plywood (3mm). 
@@ -57,8 +52,70 @@ Here is the assembled table:
 <img src="images/w7-table-scaled-down.jpg"/>
 
 
-
 ## Test Machining Cut
+
+Next step was to do a test cut on the router. For this I created a small design using bits of the main design in order to test
+the tolerances for the notches and joints.
+
+<img src="images/w7-table-test-design.jpg"/>
+
+The green pattern above is a Voronoi tessalation generated using Grasshopper 
+(from the [Grasshopper Primer](http://www.grasshopper3d.com/profiles/blogs/third-edition-of-the-grasshopper-primer-foundations-released)), 
+which I wanted to engrave on the table top:
+
+<img src="images/w7-table-tessalation.jpg"/>
+
+Test cut in progress:
+
+<img src="images/w7-table-test-in-progress.jpg"/>
+
+Here are the cut test pieces:
+
+<img src="images/w7-table-test-output.jpg"/>
+
+The cut finish wasn't very good. I think this was because I did not screw down the board, and it was moving around during cutting.
+
+Also the engraving doesn't look good, I'll experiment with the V-bit. 
+
+The pieces did not fit correctly, the female portion was smaller than required. In the VCarve Pro settings, I had given a 
+0.1mm allowance offset for the interior toolpath but that didn't seem to have the right effect. 
+ 
+I realized that it requires a negative offset, I tried one more cut with a -0.2 offset, which provided a much better fit. 
 
 
 ## Final Print
+
+In VCarve Pro: 
+
+* First, I did a print to drill holes to put in screws. 
+* Then I did a combined second print for the entire table - with separate toolpaths for interior cuts and exterior cuts.
+* I used 0.25mm allowance offset for interior cuts.
+* I used tabs 10mm x 5mm.
+* The cut depth was set at 12.2mm, given the stock was 12mm thick.
+
+Here's the final print in progress: 
+
+<img src="images/w7-table-final-print.jpg"/>
+
+After the print was over I had to remove the stock to saw out the tabs. Here is the assembly in progress:
+
+<img src="images/w7-table-assembly.jpg"/>
+
+I used a dremel to smoothen the edges and flatten the tabs. Here is the assembled table:
+
+<img src="images/w7-table-assembled.jpg"/>
+
+## Learnings:
+
+* Use sufficient screws to hold the stock down in place.
+* Use a sufficient cut-depth - at least 0.5 mm more than the stock depth. 
+* Use tabs.
+
+## Original Files:
+
+* [w7-table.zip](files/w7-table.zip), contains:
+    * Rhino model: table.3dm
+    * Grasshopper file: table.gh
+    * DXF file for test cut printing: table-test.dxf
+    * DXF file for final printing: table.dxf
+

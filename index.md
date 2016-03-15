@@ -103,6 +103,7 @@ layout: default
 	</td>
 	<td> 
       <a href="w7-machining.html">
+		<img src="images/w7-table.jpg" height="125"/>
 	  </a> 
     </td> 
 </tr> 
