@@ -109,11 +109,13 @@ layout: default
 </tr> 
 <tr>
    <td style="text-align:right">
-		Embedded programming <br/>
+	<a href="w8-embedded.html">Embedded programming</a> <br/> 
 		<span style="font-size:60%;font-style:italic;color:gray">Week 8 (Mar 16)</span>
 	</td>
-	    <td> 
-	   </td> 
+	<td> 
+		<a href="w8-embedded.html">
+		</a> 
+   </td> 
 </tr> 
 <tr>
    <td style="text-align:right">
