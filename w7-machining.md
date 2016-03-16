@@ -107,8 +107,13 @@ I used a dremel to smoothen the edges and flatten the tabs. Here is the assemble
 
 ## Learnings:
 
-* Use sufficient screws to hold the stock down in place.
-* Use a sufficient cut-depth - at least 0.5 mm more than the stock depth. 
+* Use enough screws to hold the stock down in place. Do a separate print first to drill the holes. Make sure the holes are 
+    away from the cutting toolpath - the bit could get damaged if it hit the screw head. 
+* Use a sufficient cut-depth - at least 0.5 mm more than the stock depth.
+* Allowance offset is very useful. It lets you retain original dimensions in your drawing and use allowance offset to adjust 
+    cutting width. Note: It can be positive or negative. For interior cuts it should be negative if you want the interior to be larger.
+    You can experiment with large positive and negative numbers and confirm how the toolpath is changing in the toolpath preview, before
+    adjusting the offset back to the width you need.
 * Use tabs.
 
 ## Original Files:
