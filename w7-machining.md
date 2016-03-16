@@ -16,7 +16,7 @@ Here are some great designs I came across:
  
 * [Atfab](http://atfab.co/cnc-furniture/)
 * [Opendesk](https://www.opendesk.cc/designs)
-* [Italic shelf](www.ronen-kadushin.com/index.php/open-design/italic-shelf/)
+* [Italic shelf](http://www.ronen-kadushin.com/index.php/open-design/italic-shelf/)
 * [Curved shelves](http://www.pedroterralab.com/open-source-furniture/)
 * [Match table](http://supershape.org/Produktside_8.html)
 * [Minimal waste table](http://design-milk.com/plus-table-by-fraaiheid/?utm_source=feedburner&utm_campaign=Feed:+design-milk+(Design+Milk))

@@ -113,7 +113,7 @@ It supports similar commands and arguments as ImageMagick, e.g.
 &nbsp;
 
 
-#### [Gimp](gimp.org)
+#### [Gimp](http://gimp.org)
 
 I read through some [excellent](http://gimp-tutorials.net/Parrot_Photo_Manipulation_in_Gimp/) 
 [tutorials](http://puteraaladin.blogspot.de/2008/11/cool-typhography-design-in-gimp.html) [on](http://www.gimp.org/tutorials/)
@@ -163,7 +163,7 @@ Skipping for now because I'd need to install wine to get it running on Ubuntu.
 &nbsp;
 
 
-#### [MyPaint](mypaint.org)
+#### [MyPaint](http://mypaint.org)
 
 Is for free-hand drawing with a tablet. Installing on Linux was easy using apt-get. 
 
@@ -241,7 +241,7 @@ Original files: [logo svg](images/hi-time-logo.svg).
 &nbsp;
 
    
-#### [SketchUp](www.sketchup.com)
+#### [SketchUp](http://www.sketchup.com)
 
 Requires Windows, skipping for now. 
 
@@ -252,7 +252,7 @@ Requires Windows, skipping for now.
 &nbsp;
 
 
-#### [TinkerCad](tinkercad.com)
+#### [TinkerCad](http://tinkercad.com)
 
 Online tool, easy to create simple shapes, but a bit too simplistic. It doesn't seem to have basic snapping, constraining 
 features, at least I couldn't figure out how to snap & align objects easily. Didn't spend too much time on this. 
@@ -267,7 +267,7 @@ features, at least I couldn't figure out how to snap & align objects easily. Did
 &nbsp;
 
 
-#### [Shapesmith](shapesmith.net)
+#### [Shapesmith](http://shapesmith.net)
 
 Online parametric tool. Did not seem to have too many features and I was struggling to align objects and merge them easily.
  
@@ -296,7 +296,7 @@ nodes to creat the shape thats needed.
 &nbsp;
 
 
-#### [Rhino](rhino3d.com)
+#### [Rhino](http://rhino3d.com)
 
 It requires Windows. I tried installing it using Wine, but it failed to startup correctly. Skipping for now.
 

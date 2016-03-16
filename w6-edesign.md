@@ -56,7 +56,7 @@ Add components from the library (look for components directly under the Fab fold
 
 <img src="images/w6-add-components.jpg"/>
 
-* ATtiny44-SSU: [datasheet](www.atmel.com/images/doc8006.pdf)
+* ATtiny44-SSU: [datasheet](http://www.atmel.com/images/doc8006.pdf)
 * 20mhz resonator: ATtiny has an inbuilt 8mhz clock, but this one is faster and more accurate 
 * 6mm Switch Omrom
 * AVR ISP SMD header: for programming the board 
@@ -91,7 +91,7 @@ To check if the 100 Ohm resistor would support this, find its part number from t
 [FabLab Inventory](https://docs.google.com/spreadsheets/d/1U-jcBWOJEjBT5A0N84IUubtcHKMEMtndQPLCkZCkVsU/pub?single=true&gid=0&output=html)
 and look it up at the vendor's site. 
 
-In this case, the [100 Ohm resistor]((http://www.digikey.com/product-detail/en/RC1206FR-07100RL/311-100FRCT-ND/731438)) 
+In this case, the [100 Ohm resistor](http://www.digikey.com/product-detail/en/RC1206FR-07100RL/311-100FRCT-ND/731438) 
 has a power rating of 0.25W, which is well above 0.087W that it is expected to dissipate.
 
 Here is the final schematic. 
@@ -191,7 +191,7 @@ Last step was to stuff the board. Here is the completed board:
 
 __ATtiny44-SSU microcontroller__
 
-* [Datasheet](www.atmel.com/images/doc8006.pdf)  
+* [Datasheet](http://www.atmel.com/images/doc8006.pdf)  
 * 8-bit microcontroller
 * Modified Harvard architecture   
    * Harvard architecture uses separate address space for data and instructions unlike Von Neumann architectures. This allows
