@@ -46,7 +46,7 @@ Here it is:
 
 ### Original Files
 
-* Blink sketch: [blink.ino](files/blink.ino) 
+* Blink sketch: [blink.ino](files/blink/blink.ino) 
 
 
 ## ATTiny Datasheet
