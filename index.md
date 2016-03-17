@@ -114,6 +114,7 @@ layout: default
 	</td>
 	<td> 
 		<a href="w8-embedded.html">
+			<img src="images/w8-hello-led-blinking.jpg" height="125"/>
 		</a> 
    </td> 
 </tr> 
