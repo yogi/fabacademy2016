@@ -36,9 +36,17 @@ And it worked just fine!
 
 <img src="images/w8-hello-led-blinking.gif"/>
 
+Next I tested it with my FabISP, and that worked fine too! :-)
+
+<img src="images/w8-hello-led-my-fabisp.jpg"/>
+
 Here it is:
 
 <img src="images/w8-hello-led-blinking.jpg"/>
+
+### Original Files
+
+* Blink sketch: [blink.ino](files/blink.ino) 
 
 
 ## ATTiny Datasheet
