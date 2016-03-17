@@ -14,26 +14,38 @@ permalink: w4-eprod.html
 
 &nbsp;
 
+The goal is to mill this board and stuff it with all the components:
+ 
+<img src="images/w4-hello-isp.png" height="600"/>
+
 
 ### Milling the Board
 
-My first attempt did not work out well. I used the 1/32nd end-mill for cutting the traces instead of the 1/64th one.
- 
+I followed this [excellent tutorial](https://www.youtube.com/watch?v=jkLJI8L7TUs&feature=youtu.be) by Adam Harris to get familiar with PCB milling.
+
+My first attempt did not work out well. 
+
 <img src="images/eprod-wrong-milling-process.jpg"/>
 
-Here is the board right after the job finished:
+I used the 1/32nd end-mill for cutting the traces instead of the 1/64th one and the traces were either too narrow or 
+completely missing in some cases. 
+
+Also, the board wasn't stuck tightly enough to the sacrifical layer and was moving around a little during cutting. 
+
+Here is the board:
 
 <img src="images/eprod-wrong-milling-result.jpg"/>
 
-Here is a photo of different end-mills from 1/64th, 1/32nd, 1/16th and 1/8th, so that I don't mistake one for the other :-).
+Here are the different end-mills from 1/64th, 1/32nd, 1/16th and 1/8th, so that I don't make this mistake again!
 
 <img src="images/eprod-end-mills.jpg"/>
 
-Here's the 2nd attempt. 
+Here's the 2nd attempt. This time I used the correct end-mill and used double-sided tape to stick the board tightly to the substrate.
+This time the traces were much wider. 
 
 <img src="images/eprod-2nd-attempt.jpg"/>
 
-And this is final result after washing it with soap:
+Here it is after cleaning it with soap (to get fingerprints off):
 
 <img src="images/eprod-2nd-result.jpg"/>
 
@@ -50,7 +62,7 @@ Here's the inital inventory:
 
 <img src="images/eprod-inventory.jpg"/>
 
-This is after the first 2 components were soldered:
+This is after the first 2 components were soldered. I'm using double-sided tape to hold down the board. 
 
 <img src="images/eprod-stuffing.jpg"/>
 
