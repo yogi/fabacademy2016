@@ -11,7 +11,7 @@ permalink: w8-embedded.html
 
 &nbsp;
 
-## Test Hello LED Board
+## Program the board
 
 First step was to check if the hello board from week 6 was working fine. 
 
