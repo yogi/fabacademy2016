@@ -62,13 +62,22 @@ Here's the inital inventory:
 
 <img src="images/eprod-inventory.jpg"/>
 
-This is after the first 2 components were soldered. I'm using double-sided tape to hold down the board. 
+I watched this [Collin's Lab tutorial](http://makezine.com/2016/02/19/learn-simple-surface-mount-soldering-in-collins-lab/) 
+on surface mount soldering, which helped a lot. But it did take a while to get a hang of the soldering process and figure 
+out the correct way to get the solder to flow.  
+
+This is after the first 2 components were soldered. 
+
+I'm using double-sided tape to hold down the board. 
 
 <img src="images/eprod-stuffing.jpg"/>
 
 Here is the board strapped up: 
 
 <img src="images/eprod-magnifying.jpg"/>
+
+While soldering I noticed that one of the traces (the right most one coming out of the Mini USB pads) had got cut during milling. 
+I bridged this trace with some solder. 
 
 Here it is hooked up to another FabISP to be programmed: 
 

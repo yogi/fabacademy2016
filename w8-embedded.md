@@ -11,20 +11,28 @@ permalink: w8-embedded.html
 
 &nbsp;
 
-## Blink LED using Arduino IDE
+## Test Hello LED Board
 
-First step was to check if the hello board was working fine. I used a colleagues FabISP, which was tried and tested.
+First step was to check if the hello board from week 6 was working fine. 
+
+I used a colleague's FabISP for this, since it was tried and tested.
 
 I downloaded [Arduino IDE](https://www.arduino.cc/en/Main/Software), and followed the instructions 
 [here](http://highlowtech.org/?p=1695) to setup [David Mellis']((https://github.com/damellis/attiny)) 
 [Board Manager for the ATtiny](https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json).
  
 Then I opened up the Examples -> Blink sketch and changed the pin number for the LED from 13 to 6. I had connected the LED to 
- PA7 which was on pin 6. When I uploaded the sketch, the LED on the FabISP started blinking instead of the one on the hello board:
+ PA7 which was on pin 6. 
+ 
+ When I uploaded the sketch, the LED on the FabISP started blinking instead of the one on the hello board:
   
 <img src="images/w8-isp-led-blinking.gif"/>
 
-I then changed the pin number to 7 and it worked just fine! 
+I then changed the pin number to 7:
+ 
+<img src="images/w8-blink-sketch.jpg"/>
+
+And it worked just fine! 
 
 <img src="images/w8-hello-led-blinking.gif"/>
 
