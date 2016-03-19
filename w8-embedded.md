@@ -42,6 +42,8 @@ I then changed the pin number to 7:
 
 And it worked just fine! 
 
+Note the size of the binary in the above image shows 836 bytes. Will compare that to a C and assembly program later. 
+
 <img src="images/w8-hello-led-blinking.gif"/>
 
 Next I tested it with my FabISP, and that worked fine too! :-)
@@ -51,6 +53,8 @@ Next I tested it with my FabISP, and that worked fine too! :-)
 Here it is:
 
 <img src="images/w8-hello-led-blinking.jpg"/>
+
+&nbsp;
 
 ### Button + LED
 
@@ -95,24 +99,66 @@ void loop() {
 }
 </pre>
 
-## Todo
- 
-* Button example - enable pull up resistor
-* Assembly
-* C
-* Javascript
-* Python
-* Understand avrdude
-* Serial comm
-* Datasheet
-* Interrupt to respond to switch, while waiting in low power mode
+&nbsp;
 
-* Compare size of C, assembly, arduino binary size 
+### C LED program
+
+Next I want to write the LED blink program in C. 
+
+I have started reading [Make: AVR Programming](http://www.amazon.com/AVR-Programming-Learning-Software-Hardware/dp/1449355781) by
+   Elliot Williams, and I really like this book compared to the couple of others on AVR programming I've tried to read. 
+    
+I used the Makefile generated from avr-project, which is a Crosspack AVR tool available on the Mac. 
+ 
+Next I tried to compile some sample code from his [github book repo](https://github.com/hexagon5un/AVR-Programming).
+
+ 
+<pre>
+#include <avr/io.h>
+#include <util/delay.h>
+
+int main(void) {
+    DDRB |= (1 << PB0);
+    
+    while(1) {
+        PORTB = 0b00000001;
+        _delay_ms(1000);
+        
+        PORTB = 0b0000000;
+        _delay_ms(1000);
+    }
+
+    return 0;
+}
+</pre>
+ 
+This output the following: 
+ 
+<pre>
+avr-gcc -Wall -Os -DF_CPU=20000000 -mmcu=attiny44 -c blink.c -o blink.o
+avr-gcc -Wall -Os -DF_CPU=20000000 -mmcu=attiny44 -o blink.elf blink.o
+rm -f blink.hex
+avr-objcopy -j .text -j .data -O ihex blink.elf blink.hex
+avr-size --format=avr --mcu=attiny44 blink.elf
+AVR Memory Usage
+----------------
+Device: attiny44
+
+Program:     102 bytes (2.5% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+</pre>
+
+It shows that the program size is 102 bytes, which is much smaller than the one generated through the Arduino Sketch (836 bytes).  
+
 
 ### Original Files
 
-* blink sketch: [blink.ino](files/blink/blink.ino) 
-* button sketch: [button.ino](files/button/button.ino) 
+* blink sketch: [blink.ino](files/w8/blink/blink.ino) 
+* button sketch: [button.ino](files/w8/button/button.ino) 
 
 
 ## ATTiny44 Datasheet
@@ -160,3 +206,18 @@ The [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 
 * CMOS
 * Timer with PWM channels?
 * "selected clock source for the chip"
+* Fuse?
+
+## Todo
+ 
+* Assembly
+* C
+* Javascript
+* Python
+* Understand avrdude
+* Serial comm
+* Datasheet
+* Interrupt to respond to switch, while waiting in low power mode
+
+* Compare size of C, assembly, arduino binary size 
+

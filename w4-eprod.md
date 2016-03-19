@@ -79,6 +79,8 @@ Here is the board strapped up:
 While soldering I noticed that one of the traces (the right most one coming out of the Mini USB pads) had got cut during milling. 
 I bridged this trace with some solder. 
 
+I then followed [this tutorial](http://archive.fabacademy.org/archives/2016/doc/programming_FabISP.html) to program the ISP.
+
 Here it is hooked up to another FabISP to be programmed: 
 
 <img src="images/eprod-programming.jpg"/>
