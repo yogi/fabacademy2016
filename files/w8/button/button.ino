@@ -40,16 +40,21 @@ void setup() {
 }
 
 void loop() {
-  // read the state of the pushbutton value:
-  buttonState = digitalRead(buttonPin);
+  digitalWrite(ledPin, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(100);              // wait for a second
+  digitalWrite(ledPin, LOW);    // turn the LED off by making the voltage LOW
+  delay(100);              // wait for a second
 
-  // check if the pushbutton is pressed.
-  // if it is, the buttonState is HIGH:
-  if (buttonState == HIGH) {
-    // turn LED on:
-    digitalWrite(ledPin, HIGH);
-  } else {
-    // turn LED off:
-    digitalWrite(ledPin, LOW);
-  }
+//  // read the state of the pushbutton value:
+//  buttonState = digitalRead(buttonPin);
+//
+//  // check if the pushbutton is pressed.
+//  // if it is, the buttonState is HIGH:
+//  if (buttonState == HIGH) {
+//    // turn LED on:
+//    digitalWrite(ledPin, HIGH);
+//  } else {
+//    // turn LED off:
+//    digitalWrite(ledPin, LOW);
+//  }
 }

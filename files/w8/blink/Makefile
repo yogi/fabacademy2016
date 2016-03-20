@@ -13,8 +13,8 @@
 # FUSES ........ Parameters for avrdude to flash the fuses appropriately.
 
 DEVICE     = attiny44
-CLOCK      = 20000000
-PROGRAMMER = usbtiny #-c stk500v2 -P avrdoper
+CLOCK      = 1000000
+PROGRAMMER = -c usbtiny #-c stk500v2 -P avrdoper
 OBJECTS    = blink.o
 FUSES      = -U hfuse:w:0xd9:m -U lfuse:w:0x24:m
 

@@ -15,7 +15,7 @@
 
 
 int led = 7;
-int interval = 1000;
+int interval = 100;
 
 // the setup function runs once when you press reset or power the board
 void setup() {

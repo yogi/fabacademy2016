@@ -26,7 +26,7 @@ I downloaded [Arduino IDE](https://www.arduino.cc/en/Main/Software), and followe
 Then I opened up the Examples -> Blink sketch and changed the pin number for the LED from 13 to 6. I had connected the LED to 
  PA7 which was on pin 6. 
  
-Here are the schematics and layout for the board from week 6 for reference:
+For reference, here are the schematics and layout for the board from week 6 to figure out which pin the LED is connected to:
    
 <img src="images/w6-schematic.jpg" height="400"/>
  
@@ -110,31 +110,34 @@ I have started reading [Make: AVR Programming](http://www.amazon.com/AVR-Program
     
 I used the Makefile generated from avr-project, which is a Crosspack AVR tool available on the Mac. 
  
-Next I tried to compile some sample code from his [github book repo](https://github.com/hexagon5un/AVR-Programming).
-
+Next I tried the following code to blink the LED in C.
  
 <pre>
 #include <avr/io.h>
 #include <util/delay.h>
 
+#define LED_PIN PA7
+const int delay = 1000;
+
 int main(void) {
-    DDRB |= (1 << PB0);
+    DDRA |= (1 << LED_PIN); // sets the data direction of pin 7 in port A to output
     
     while(1) {
-        PORTB = 0b00000001;
-        _delay_ms(1000);
+        PORTA |= (1 << LED_PIN);  // writes a high value to pin 7
+        _delay_ms(delay);
         
-        PORTB = 0b0000000;
-        _delay_ms(1000);
+        PORTA &= ~(1 << LED_PIN); // write a low value to pin 7
+        _delay_ms(delay);
     }
 
     return 0;
 }
 </pre>
  
-This output the following: 
+The output was: 
  
 <pre>
+$ make flash
 avr-gcc -Wall -Os -DF_CPU=20000000 -mmcu=attiny44 -c blink.c -o blink.o
 avr-gcc -Wall -Os -DF_CPU=20000000 -mmcu=attiny44 -o blink.elf blink.o
 rm -f blink.hex
@@ -144,20 +147,62 @@ AVR Memory Usage
 ----------------
 Device: attiny44
 
-Program:     102 bytes (2.5% Full)
+Program:     100 bytes (2.4% Full)
 (.text + .data + .bootloader)
 
 Data:          0 bytes (0.0% Full)
 (.data + .bss + .noinit)
 
+
+avrdude -c usbtiny  -p attiny44 -U flash:w:blink.hex:i
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e9207
+avrdude: NOTE: "flash" memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "blink.hex"
+avrdude: writing flash (100 bytes):
+
+Writing | ################################################## | 100% 0.13s
+
+avrdude: 100 bytes of flash written
+avrdude: verifying flash memory against blink.hex:
+avrdude: load data flash data from input file blink.hex:
+avrdude: input file blink.hex contains 100 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.15s
+
+avrdude: verifying ...
+avrdude: 100 bytes of flash verified
+
+avrdude: safemode: Fuses OK (H:FF, E:DF, L:62)
+
+avrdude done.  Thank you.
 </pre>
 
-It shows that the program size is 102 bytes, which is much smaller than the one generated through the Arduino Sketch (836 bytes).  
+It shows that the program size is 100 bytes, which is much smaller than the one generated through the Arduino Sketch (836 bytes).
+  
+The LED did start blinking, but it isn't blinking as fast as it should - the delay seems more like 2 sec than 100ms. 
+
+The makefile had a variable defined called CLOCK, which was set to 20000000. I changed it to 1000000 (got this hint from 
+    the Arduino status bar which reported "ATtiny44, 1Mhz internal"). With this change it started working correctly.
+    
+The datasheet says this in Section 6.2.6 (page 30) about the "Default Clock Source":
+
+> The default clock source setting is therefore the Internal Oscillator running at 8.0 MHz with longest start-up time 
+> and an initial system clock prescaling of 8, resulting in 1.0 MHz system clock. 
 
 
 ### Original Files
 
 * blink sketch: [blink.ino](files/w8/blink/blink.ino) 
+* blink c program: [blink.c](files/w8/blink/blink.c) 
+* Makefile: [Makefile](files/w8/blink/Makefile) 
 * button sketch: [button.ino](files/w8/button/button.ino) 
 
 
