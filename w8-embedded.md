@@ -208,6 +208,16 @@ The datasheet says this in Section 6.2.6 (page 30) about the "Default Clock Sour
 > The default clock source setting is therefore the Internal Oscillator running at 8.0 MHz with longest start-up time 
 > and an initial system clock prescaling of 8, resulting in 1.0 MHz system clock. 
 
+
+#### Original Files
+
+* blink sketch: [blink.ino](files/w8/blink/blink.ino) 
+* blink c program: [blink.c](files/w8/blink/blink.c) 
+* Makefile: [Makefile](files/w8/blink/Makefile) 
+* button sketch: [button.ino](files/w8/button/button.ino) 
+
+
+
 &nbsp;
 
 ---
@@ -277,6 +287,14 @@ avrdude done.  Thank you.
 
 This worked - the LED appeared to be on continuously since there was no delay in the code.
 
+#### Original Files
+
+* blink asm program: [blink.asm](files/w8/blink-asm/blink.asm) 
+* Makefile: [Makefile](files/w8/blink-asm/Makefile) 
+* directives file: [tn44def.inc](files/w8/blink-asm/tn44def.inc) 
+
+
+
 &nbsp;
 
 ---
@@ -284,21 +302,6 @@ This worked - the LED appeared to be on continuously since there was no delay in
 &nbsp;
 
 ### Interrupt-based Blink LED program
-
-
-&nbsp;
-
----
-
-&nbsp;
-
-### Original Files
-
-* blink sketch: [blink.ino](files/w8/blink/blink.ino) 
-* blink c program: [blink.c](files/w8/blink/blink.c) 
-* Makefile: [Makefile](files/w8/blink/Makefile) 
-* button sketch: [button.ino](files/w8/button/button.ino) 
-
 
 &nbsp;
 
