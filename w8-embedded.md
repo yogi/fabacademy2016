@@ -218,6 +218,64 @@ The datasheet says this in Section 6.2.6 (page 30) about the "Default Clock Sour
 
 Next step is to program in assembly language.  
 
+I'm reading through tutorials on [AVR Beginners](http://www.avrbeginners.net/).
+
+#### Toolchain
+
+I've installed [avra](http://sourceforge.net/projects/avra/) assembler using homebrew, since [gavrasm](http://www.avr-asm-tutorial.net/gavrasm/index_en.html) 
+    is available only for Windows and Linux.
+
+I used Francisco's [code](http://beachlab.org/fab2016/assembly.html) to check if avra was working as expected. 
+
+I had to add the following line to include the declarations file for the attiny44 from [here](https://github.com/DarkSector/AVR/blob/master/asm/include/tn44def.inc)
+
+```
+.include tn44def.inc
+```
+
+I ran: 
+
+```
+avra blink.asm
+```
+
+and it output:
+
+<pre>
+$ make flash
+avrdude -c usbtiny -p attiny44 -U flash:w:blink.hex:i
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: Device signature = 0x1e9207
+avrdude: NOTE: "flash" memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "blink.hex"
+avrdude: writing flash (8 bytes):
+
+Writing | ################################################## | 100% 0.05s
+
+avrdude: 8 bytes of flash written
+avrdude: verifying flash memory against blink.hex:
+avrdude: load data flash data from input file blink.hex:
+avrdude: input file blink.hex contains 8 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.07s
+
+avrdude: verifying ...
+avrdude: 8 bytes of flash verified
+
+avrdude: safemode: Fuses OK (H:FF, E:DF, L:62)
+
+avrdude done.  Thank you.
+
+</pre>
+
+This worked - the LED appeared to be on continuously since there was no delay in the code.
 
 &nbsp;
 

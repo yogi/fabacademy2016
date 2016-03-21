@@ -4,3 +4,6 @@ _site
 .jekyll-metadata
 .idea
 *.out
+*.cof
+*.obj
+*.hex
