@@ -11,9 +11,13 @@ permalink: w8-embedded.html
 
 &nbsp;
 
+---
+
+&nbsp;
+
 ## Program the board
 
-### Hello LED!
+### Blink LED
 
 First step was to check if the hello board from week 6 was working fine. 
 
@@ -23,8 +27,7 @@ I downloaded [Arduino IDE](https://www.arduino.cc/en/Main/Software), and followe
 [here](http://highlowtech.org/?p=1695) to setup [David Mellis']((https://github.com/damellis/attiny)) 
 [Board Manager for the ATtiny](https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json).
  
-Then I opened up the Examples -> Blink sketch and changed the pin number for the LED from 13 to 6. I had connected the LED to 
- PA7 which was on pin 6. 
+I had connected the LED to PA7 which was on pin 6. I opened up the Examples -> Blink sketch and changed the pin number for the LED from 13 to 6. 
  
 For reference, here are the schematics and layout for the board from week 6 to figure out which pin the LED is connected to:
    
@@ -32,11 +35,11 @@ For reference, here are the schematics and layout for the board from week 6 to f
  
 <img src="images/w6-board-layout.jpg" height="400"/>
 
- When I uploaded the sketch, the LED on the FabISP started blinking instead of the one on the hello board:
+ When I uploaded the sketch, the LED on the FabISP started blinking instead of the one on the hello board, so it clearly the LED wasn't on pin 6:
   
 <img src="images/w8-isp-led-blinking.gif"/>
 
-I then changed the pin number to 7:
+I then changed the pin number to 7 to match "PA7":
  
 <img src="images/w8-blink-sketch.jpg"/>
 
@@ -53,6 +56,10 @@ Next I tested it with my FabISP, and that worked fine too! :-)
 Here it is:
 
 <img src="images/w8-hello-led-blinking.jpg"/>
+
+&nbsp;
+
+---
 
 &nbsp;
 
@@ -101,7 +108,11 @@ void loop() {
 
 &nbsp;
 
-### C LED program
+---
+
+&nbsp;
+
+### C Blink LED program
 
 Next I want to write the LED blink program in C. 
 
@@ -197,6 +208,31 @@ The datasheet says this in Section 6.2.6 (page 30) about the "Default Clock Sour
 > The default clock source setting is therefore the Internal Oscillator running at 8.0 MHz with longest start-up time 
 > and an initial system clock prescaling of 8, resulting in 1.0 MHz system clock. 
 
+&nbsp;
+
+---
+
+&nbsp;
+
+### Assembly Blink LED program
+
+Next step is to program in assembly language.  
+
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### Interrupt-based Blink LED program
+
+
+&nbsp;
+
+---
+
+&nbsp;
 
 ### Original Files
 
@@ -206,21 +242,118 @@ The datasheet says this in Section 6.2.6 (page 30) about the "Default Clock Sour
 * button sketch: [button.ino](files/w8/button/button.ino) 
 
 
+&nbsp;
+
+---
+
+&nbsp;
+
 ## ATTiny44 Datasheet
 
 The [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 84. We're using the ATTiny44. 
 
-* RISC - mostly single clock cycle execution instructions
-* Speed - upto 20mhz at 4.5 - 5.5 V (upto 10mhz at 2.7 - 4.5 V)
-* Low power mode
-* 32 8bit registers
-* 4K ISP flash
-* 256b SRAM
+* Key features
+    * RISC - mostly single clock cycle execution instructions
+    * Speed - upto 20mhz at 4.5 - 5.5 V (upto 10mhz at 2.7 - 4.5 V)
+    * Low power mode
+    * 32 8bit registers
+    * 4K ISP flash
+    * 256b SRAM
 
+* Memory
+    * Separate data and program memory, also EEPROM for data
+    * 4k program memory for tiny44 - 2k x 16b locations (1 instructions takes 16 / 32b)
+    * SRAM
+        first 32b for register file
+        next 64b for IO registers
+        next 256b for data
+        access time is 2 clock cycles: 1 to compute address, 1 to access 
+    * EEPROM
+        256b
+    * Fuse bytes
+        * 3b of non-volatile memory 
+        * bits to control important settings like clock source, debugWire enable, etc
+
+* Status Register
+    * updated after every instruction
+    * bit 7 - Global Interrupt Enable bit
+    * is cleared by hardware when an interrupt occurs, is set by RETI instruction to enable subsequent interrupts
+        
+* Register File
+    * 32 general purpose registers
+    * Also have an address as the first 32 locations of user data space
+    
+* Stack pointer
+    * separate stacks for subroutines and interrupts
+    
+* Instruction execution timing
+    * Within 1 clock cycle: fetch 2 register operands, execute ALU operation, store result into register
+      
+* Reset & Interrupt handling      
+    * interrupt vector stored in program space
+    * interrupts have priorities - RESET has highest, next is INT0 - External Interrupt Request 0
+    * takes 4 clock cycles to start executing interrupt routine code, and 4 to return from it
+
+* Clock 
+    * multiple clock sources possible
+        * external
+        * internal 8mhz
+            * default source with prescaling to 1mhz
+        * internal 128khz
+        * internal 32khz
+    * multiplexer selects one based on fuse set
+    * this is passed through a prescaler, which divides the clock source to reduce power consumption
+    * this "system" clock feeds into AVR Clock Control Unit, which provides different clock domains - CPU, IO, ADC, Flash
+    * system clock output can be sent to the CKOUT pin by setting a fuse
+    * clock timing checks and calibration?
+      
+* Power Management and Sleep Modes
+    * 4 sleep modes: idle, ADC noise reduction, power-down, stand by
+    
+* Brown Out Detection disable?
+
+* Reset
+    * 4 sources: 
+        * Power On Reset: 
+        * External reset: low value on the RESET pin
+        * BOD reset: triggered when voltage drops below a threshold
+        * Watchdog timer: triggered when timer fires
+    
+* Watchdog Timer
+    * generates a reset pulse when a given delay is exceeded, and a WDR (Watchdog Reset) instruction has not been executed
+    
+* IO
+    * pins can be marked as input or output using DDRxn bit, input is 0, output is 1
+    * pull-up resistor can be enabled on input pins by setting PORTxn to 1
+    
+* 8bit / 16bit Timer/Counter with PWM
+    * can be used to time program execution, waveform generation
+
+* Universal Serial Interface?
+
+* Analog Comparator
+    * Can monitor voltages on AIN0 (postive) and AIN1(negative) and trigger an interrupt or output a value when the 
+        positive voltage is higher than the negative one
+    
+* ADC?
+
+* DebugWire
+    * bi-directional interface to control program flow, execute instructions and program non-volatile memories
+    * uses RESET port pin 
+
+* Self Programming Mechanism for Flash
+    * allows MCU to download and upload code using any data interface and write to program flash memory
+    
 * Bootloader
     * Flash divided into BootLoaderSection and ApplicationCodeSection. 
     * Code in BLS can  
 
+
+&nbsp;
+
+---
+
+&nbsp;
 
 ### Notes
 
@@ -237,32 +370,35 @@ The [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 
     1 flip-flop per bit, clock signal, control signal
     on clock signal, check control and load in parallel from input or hold value
 
-* Pull-up resistor
 
-* Global Interrupt Enable bit is automatically set to one after the Return from Interrupt instruction is executed. 
+&nbsp;
+
+---
+
+&nbsp;
 
 ### Questions
 
-* "High performance" - is it? Comparisons? 
-* Power consumption? Ampere-hours?
 * "Fully static operation"?
 * Pulse length
-* 4-bit / 8-bit bi-directional IO port
-* CMOS
 * Timer with PWM channels?
-* "selected clock source for the chip"
-* Fuse?
+
+&nbsp;
+
+---
+
+&nbsp;
 
 ## Todo
  
 * Assembly
+* Interrupt to respond to switch, while waiting in low power mode
+* Datasheet
 * C
 * Javascript
 * Python
 * Understand avrdude
 * Serial comm
-* Datasheet
-* Interrupt to respond to switch, while waiting in low power mode
 
 * Compare size of C, assembly, arduino binary size 
 
