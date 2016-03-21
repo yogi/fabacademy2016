@@ -250,7 +250,7 @@ Next step is to program in assembly language.
 
 ## ATTiny44 Datasheet
 
-The [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 84. We're using the ATTiny44. 
+The [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 84. We're using the ATtiny44. 
 
 * Key features
     * RISC - mostly single clock cycle execution instructions
@@ -344,9 +344,7 @@ The [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 
 * Self Programming Mechanism for Flash
     * allows MCU to download and upload code using any data interface and write to program flash memory
     
-* Bootloader
-    * Flash divided into BootLoaderSection and ApplicationCodeSection. 
-    * Code in BLS can  
+* Bootloader?  
 
 
 &nbsp;
