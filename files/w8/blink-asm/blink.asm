@@ -1,38 +1,28 @@
 ; blink.asm
 ;
-; Code from Fab Academy
-; February 2016
-; by Francisco Sanchez
-; MIT License
-;
-;
-; This program blinks the LED of a helloworld board
+; Blink LED 
 
 .include "tn44def.inc"
 
 .org 0              ; sets the programs origin
 
-sbi DDRA, 7
-; sbi(reg,bit): Sets a bit of a register.  
-; DDRA is the data direction register A
-; Setting DDRA bit 7 makes pin PA7 a (digital) output
-; A digital output can be switched ON/OFF for 5V or 0V
+sbi DDRA, 7         ; set bit in Data Direction Register to mark the pin as output
 
 loop:       
-; label for main loop
-; labels must start with a letter and end with a colon
+sbi PORTA, 7        ; turn on the LED
 
-sbi PORTA,7 
-; Sets bit 7 of register PORTA
-; Turns pin PA7 to 5V
+clr r24             ; clear register to use as part of word             
+clr r25             ; clear register to use as part of word             
+delay_loop1:                                                            
+adiw r24, 1         ; add 1 to the word starting at r24                 
+brne delay_loop1    ; loop until overflow                               
 
-; Here it would come delay code
+cbi PORTA, 7        ; turn off the LED
 
-cbi PORTA,7
-; Clears bit 7 of register PORTA
-; Turns pin PA7 to 0V
-
-; Here it would come delay code
+clr r24             ; clear register to use as part of word
+clr r25             ; clear register to use as part of word
+delay_loop2:                                               
+adiw r24, 1         ; add 1 to the word starting at r24    
+brne delay_loop2    ; loop until overflow                  
 
 rjmp loop
-; relative jump to label called loop

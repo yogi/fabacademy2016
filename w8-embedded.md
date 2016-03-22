@@ -9,15 +9,27 @@ permalink: w8-embedded.html
 >* read a microcontroller data sheet   
 >* program your board to do something, with as many different programming languages and programming environments as possible   
 
+
+### Index
+
+- [Program the board](#program-the-board)
+    - [Arduino Blink Sketch](#arduino-blink-sketch)
+    - [Arduino Button Sketch](#arduino-button-sketch)
+    - [C Blink Program](#c-blink-program)
+    - [Assembly Blink Program](#assembly-blink-program)
+- [ATTiny44 Datasheet Review](#attiny44-datasheet-review)
+    
+
 &nbsp;
 
 ---
 
 &nbsp;
 
+
 ## Program the board
 
-### Blink LED
+### Arduino Blink Sketch
 
 First step was to check if the hello board from week 6 was working fine. 
 
@@ -63,7 +75,7 @@ Here it is:
 
 &nbsp;
 
-### Button + LED
+### Arduino Button Sketch
 
 Next I tried the Button sketch. After programming, it was behaving unusually. The LED would turn on and off if I brought my finger close to 
   the LED. 
@@ -112,7 +124,7 @@ void loop() {
 
 &nbsp;
 
-### C Blink LED program
+### C Blink Program
 
 Next I want to write the LED blink program in C. 
 
@@ -224,7 +236,7 @@ The datasheet says this in Section 6.2.6 (page 30) about the "Default Clock Sour
 
 &nbsp;
 
-### Assembly Blink LED program
+### Assembly Blink program
 
 Next step is to program in assembly language.  
 
@@ -287,9 +299,71 @@ avrdude done.  Thank you.
 
 This worked, but the LED appeared to be on continuously since there was no delay in the code.
 
-Next step is to add in some delay.
+Next step is to add in some delay. This could be done by using interrupts or by keeping the processor busy for the expected time-period. 
+
+The following code uses 2 registers as a single 16 bit value and increments it till there is an overflow. This introduces 
+ a small delay which makes the LED blinking visible. 
+
+<pre>
+clr r24                 ; clear register to use as part of word
+clr r25                 ; clear register to use as part of word
+delay_loop1:        
+adiw r24, 1             ; add 1 to the word starting at r24
+brne delay_loop1        ; loop until overflow
+</pre>
+
+The total time taken is calculated as follows (refer to the [AVR Instruction Set Manual](www.atmel.com/images/atmel-0856-avr-instruction-set-manual.pdf)
+ for the clock-cycles for a specific instruction. The ATtiny datasheet also provides this information at the end:
+
+* clr: 1 cycle
+* adiw: 2 cycles
+* brne: 2 cycles when no overflow, 1 on overflow
+
+<pre>
+Delay cycles =    
+    2 * clr(1 cycle)    
+    + 65536 * looping(4 cycles)      
+    + 1 * overflow(3 cycles)    
+    = 2 + 262144 + 3   
+    = 262149
+</pre>
 
 
+Given that the clock is running prescaled at 1mhz == 1µs per clock cycle, the delay is 262149µs or ~ 262ms.
+
+Here is the full code with delays:
+
+<pre>
+; blink.asm
+;
+; Blink LED 
+
+.include "tn44def.inc"
+
+.org 0              ; sets the programs origin
+
+sbi DDRA, 7         ; set bit in Data Direction Register to mark the pin as output
+
+loop:       
+sbi PORTA, 7        ; turn on the LED
+
+clr r24             ; clear register to use as part of word             
+clr r25             ; clear register to use as part of word             
+delay_loop1:                                                            
+adiw r24, 1         ; add 1 to the word starting at r24                 
+brne delay_loop1    ; loop until overflow                               
+
+cbi PORTA, 7        ; turn off the LED
+
+clr r24             ; clear register to use as part of word
+clr r25             ; clear register to use as part of word
+delay_loop2:                                               
+adiw r24, 1         ; add 1 to the word starting at r24    
+brne delay_loop2    ; loop until overflow                  
+
+rjmp loop
+
+</pre>
 
 #### Original Files
 
@@ -313,7 +387,7 @@ Next step is to add in some delay.
 
 &nbsp;
 
-## ATTiny44 Datasheet
+## ATTiny44 Datasheet Review
 
 The [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 84. We're using the ATtiny44. 
 
