@@ -143,7 +143,7 @@ void loop() {
 
 ### C Blink Program
 
-Next I want to write the LED blink program in C. 
+Next step is to write the LED blink program in C. 
 
 I have started reading [Make: AVR Programming](http://www.amazon.com/AVR-Programming-Learning-Software-Hardware/dp/1449355781) by
    Elliot Williams, and I really like this book compared to the couple of others on AVR programming I've tried to read. 
@@ -652,18 +652,3 @@ This [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 /
 * "Fully static operation"?
 * Pulse length
 * Timer with PWM channels?
-
-&nbsp;
-
----
-
-&nbsp;
-
-## Todo
- 
-* Javascript
-* Python
-* Understand avrdude
-
-* Compare size of C, assembly, arduino binary size 
-
