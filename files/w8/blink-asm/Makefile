@@ -19,3 +19,6 @@ clean:
 blink.hex: 
 	avra blink.asm
 	
+disasm:	blink.hex
+	avr-objdump -j .sec1 -d -m avr blink.hex
+

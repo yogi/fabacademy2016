@@ -14,10 +14,15 @@ permalink: w8-embedded.html
 
 - [Program the board](#program-the-board)
     - [Arduino Blink Sketch](#arduino-blink-sketch)
+        - [Original Files](#original-files)
     - [Arduino Button Sketch](#arduino-button-sketch)
+        - [Original Files](#original-files-1)
     - [C Blink Program](#c-blink-program)
+        - [Original Files](#original-files-2)
     - [Assembly Blink Program](#assembly-blink-program)
-- [ATTiny44 Datasheet Review](#attiny44-datasheet-review)
+        - [Original Files](#original-files-3)
+    - [Program Size Comparisons](#program-size-comparisons)
+- [ATtiny44 Datasheet Review](#attiny44-datasheet-review)
     
 
 &nbsp;
@@ -47,7 +52,7 @@ For reference, here are the schematics and layout for the board from week 6 to f
  
 <img src="images/w6-board-layout.jpg" height="400"/>
 
- When I uploaded the sketch, the LED on the FabISP started blinking instead of the one on the hello board, so it clearly the LED wasn't on pin 6:
+ When I uploaded the sketch, the LED on the FabISP started blinking instead of the one on the hello board, so clearly the LED wasn't on pin 6 but on pin 7:
   
 <img src="images/w8-isp-led-blinking.gif"/>
 
@@ -55,7 +60,7 @@ I then changed the pin number to 7 to match "PA7":
  
 <img src="images/w8-blink-sketch.jpg"/>
 
-And it worked just fine! 
+And it worked just fine. 
 
 Note the size of the binary in the above image shows 836 bytes. Will compare that to a C and assembly program later. 
 
@@ -68,6 +73,11 @@ Next I tested it with my FabISP, and that worked fine too! :-)
 Here it is:
 
 <img src="images/w8-hello-led-blinking.jpg"/>
+
+#### Original Files
+
+* blink sketch: [blink.ino](files/w8/blink-sketch/blink.ino)
+
 
 &nbsp;
 
@@ -117,6 +127,11 @@ void loop() {
   }
 }
 </pre>
+
+#### Original Files
+
+* button sketch: [button.ino](files/w8/button-sketch/button.ino)
+
 
 &nbsp;
 
@@ -223,10 +238,8 @@ The datasheet says this in Section 6.2.6 (page 30) about the "Default Clock Sour
 
 #### Original Files
 
-* blink sketch: [blink.ino](files/w8/blink/blink.ino) 
-* blink c program: [blink.c](files/w8/blink/blink.c) 
-* Makefile: [Makefile](files/w8/blink/Makefile) 
-* button sketch: [button.ino](files/w8/button/button.ino) 
+* blink c program: [blink.c](files/w8/blink-c/blink.c) 
+* Makefile: [Makefile](files/w8/blink-c/Makefile) 
 
 
 
@@ -240,7 +253,7 @@ The datasheet says this in Section 6.2.6 (page 30) about the "Default Clock Sour
 
 Next step is to program in assembly language.  
 
-I'm reading through tutorials on [AVR Beginners](http://www.avrbeginners.net/).
+I'm going through tutorials on [AVR Beginners](http://www.avrbeginners.net/) for this.
 
 #### Toolchain setup
 
@@ -367,9 +380,9 @@ rjmp loop
 
 #### Original Files
 
-* blink asm program: [blink.asm](files/w8/blink-asm/blink.asm) 
+* Blink asm program: [blink.asm](files/w8/blink-asm/blink.asm) 
 * Makefile: [Makefile](files/w8/blink-asm/Makefile) 
-* directives file: [tn44def.inc](files/w8/blink-asm/tn44def.inc) 
+* Directives file: [tn44def.inc](files/w8/blink-asm/tn44def.inc) 
 
 
 
@@ -387,9 +400,59 @@ rjmp loop
 
 &nbsp;
 
-## ATTiny44 Datasheet Review
+### Program Size Comparisons
 
-The [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 84. We're using the ATtiny44. 
+The output of avrdude shows the program size for the blink LED programs: 
+
+* Arduino sketch: 836 bytes
+
+* C program: 100 bytes
+
+* Assembly program: 8 bytes
+
+<pre>
+$ avr-objdump -j .sec1 -d -m avr blink.hex 
+
+blink.hex:     file format ihex
+
+
+Disassembly of section .sec1:
+
+00000000 <.sec1>:
+   0:	d7 9a       	sbi	0x1a, 7	; 26
+   2:	df 9a       	sbi	0x1b, 7	; 27
+   4:	88 27       	eor	r24, r24
+   6:	99 27       	eor	r25, r25
+   8:	01 96       	adiw	r24, 0x01	; 1
+   a:	f1 f7       	brne	.-4      	;  0x8
+   c:	df 98       	cbi	0x1b, 7	; 27
+   e:	88 27       	eor	r24, r24
+  10:	99 27       	eor	r25, r25
+  12:	01 96       	adiw	r24, 0x01	; 1
+  14:	f1 f7       	brne	.-4      	;  0x12
+  16:	f5 cf       	rjmp	.-22     	;  0x2
+
+</pre>
+
+It was interesting that the clr instruction was replaced by an eor (Exclusive OR) of the register with itself.
+
+The size seems more than 8 bytes. Also avr-size shows the size as 24 bytes... not sure why avrdude mentions "8 bytes of flash verified".
+
+<pre>
+$ avr-size blink.hex 
+   text	   data	    bss	    dec	    hex	filename
+      0	     24	      0	     24	     18	blink.hex
+</pre>
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## ATtiny44 Datasheet Review
+
+This [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 84. We're using the ATtiny44. 
 
 * Key features
     * RISC - mostly single clock cycle execution instructions
@@ -528,14 +591,9 @@ The [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 / 
 
 ## Todo
  
-* Assembly
-* Interrupt to respond to switch, while waiting in low power mode
-* Datasheet
-* C
 * Javascript
 * Python
 * Understand avrdude
-* Serial comm
 
 * Compare size of C, assembly, arduino binary size 
 
