@@ -230,14 +230,14 @@ Next step is to program in assembly language.
 
 I'm reading through tutorials on [AVR Beginners](http://www.avrbeginners.net/).
 
-#### Toolchain
+#### Toolchain setup
 
 I've installed [avra](http://sourceforge.net/projects/avra/) assembler using homebrew, since [gavrasm](http://www.avr-asm-tutorial.net/gavrasm/index_en.html) 
     is available only for Windows and Linux.
 
 I used Francisco's [code](http://beachlab.org/fab2016/assembly.html) to check if avra was working as expected. 
 
-I had to add the following line to include the declarations file for the attiny44 from [here](https://github.com/DarkSector/AVR/blob/master/asm/include/tn44def.inc)
+I had to add the following line to include the declarations file for the attiny44 from [here](https://github.com/DarkSector/AVR/blob/master/asm/include/tn44def.inc).
 
 ```
 .include tn44def.inc
@@ -285,7 +285,11 @@ avrdude done.  Thank you.
 
 </pre>
 
-This worked - the LED appeared to be on continuously since there was no delay in the code.
+This worked, but the LED appeared to be on continuously since there was no delay in the code.
+
+Next step is to add in some delay.
+
+
 
 #### Original Files
 

@@ -120,7 +120,7 @@ layout: default
 </tr> 
 <tr>
    <td style="text-align:right">
-		Mechanical design, machine design <br/>
+		Break <br/>
 		<span style="font-size:60%;font-style:italic;color:gray">Week 9 (Mar 23)</span>
 	</td>
 	    <td> 
@@ -128,7 +128,7 @@ layout: default
 </tr> 
 <tr>
    <td style="text-align:right">
-		Break <br/>
+		Mechanical design, machine design <br/>
 		<span style="font-size:60%;font-style:italic;color:gray">Week 10 (Mar 30)</span>
 	</td>
 	    <td> 
@@ -228,3 +228,13 @@ layout: default
 [SolidConTalk]: https://www.youtube.com/watch?v=L0RDrSKenGo
 [EdgeInterview]: https://edge.org/conversation/neil_gershenfeld-digital-reality
 [FabBook]: https://books.google.co.in/books?id=Zw0j50HDwYUC&lpg=PP1&pg=PP9#v=onepage&q&f=false
+
+[ProfNeil]: http://ng.cba.mit.edu/
+[CBA]: http://cba.mit.edu/
+[FabAcademy2016]: http://archive.fabacademy.org/archives/2016/master/
+[Schedule]: http://archive.fabacademy.org/archives/2016/master/schedule.html
+[2015Projects]: http://fabacademy.org/archives/2015/students/index.html
+[SolidConTalk]: https://www.youtube.com/watch?v=L0RDrSKenGo
+[EdgeInterview]: https://edge.org/conversation/neil_gershenfeld-digital-reality
+[FabBook]: https://books.google.co.in/books?id=Zw0j50HDwYUC&lpg=PP1&pg=PP9#v=onepage&q&f=false
+[FabLabTvm]: https://www.fablabs.io/fablabtrivandrum

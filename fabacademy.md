@@ -22,7 +22,9 @@ cutting, 3D printing, electronics & embedded systems, mechanical & machine
 design, molding & casting.
 
 At the end of the course you have to build a project which brings together many, if not all, the 
-skills that you've learnt. Here is a list of the incredible [projects made by last year's students][2015Projects].
+skills that you've learnt. 
+
+Here is a list of the incredible [projects made by last year's students][2015Projects].
 
 [FabAcademy]: http://fabacademy.org
 [FabLabs]: http://archive.fabacademy.org/archives/2016/master/labs.html
