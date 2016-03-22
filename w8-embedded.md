@@ -22,6 +22,8 @@ permalink: w8-embedded.html
     - [Assembly Blink Program](#assembly-blink-program)
         - [Original Files](#original-files-3)
     - [Program Size Comparisons](#program-size-comparisons)
+    - [Interrupt-based Program](#interrupt-based-program)
+        - [Original Files](#original-files-4)
 - [ATtiny44 Datasheet Review](#attiny44-datasheet-review)
     
 
@@ -392,14 +394,6 @@ rjmp loop
 
 &nbsp;
 
-### Interrupt-based Blink LED program
-
-&nbsp;
-
----
-
-&nbsp;
-
 ### Program Size Comparisons
 
 The output of avrdude shows the program size for the blink LED programs: 
@@ -444,11 +438,87 @@ $ avr-size blink.hex
       0	     24	      0	     24	     18	blink.hex
 </pre>
 
+
 &nbsp;
 
 ---
 
 &nbsp;
+
+
+### Interrupt-based program
+
+Here is a program, which continuously blinks the LED every 100ms. On pressing the button (and holding it down), the LED is turned
+ off for 1 sec before resuming blinking. On releasing the button, the LED is turned on for 1 sec before resuming blinking.
+ 
+This is implemented using interrupts, see the commented code below.
+ 
+Notes:
+
+* The INT0 interrupt allows triggering changes on pin low, pin change, pin high edge, pin low edge. 
+    * INT0 on the attiny44 is available on pin PB2.
+* It supports 2 pin change interrupts PCINT0 and PCINT1. 
+    * PCINT0 handles pin changes on pins 0:7, PCINT1 handles pins 8:11
+    * Bits in PCMSK0 and PCMSK1 need to be set to indicate which specific pin the program is interested in.
+
+<pre>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+
+#define LED_DDR     DDRA
+#define LED         PA7
+#define LED_PORT    PORTA
+
+#define BUTTON_PORT PORTA
+#define BUTTON      PA3
+#define BUTTON_PIN  PINA
+
+const int delay = 100;
+
+ISR(PCINT0_vect) {
+    // by default the bit will have a high value because of the pull-up resistor
+    if(bit_is_set(BUTTON_PIN, BUTTON)) {    // this is true when a pressed button is released
+        LED_PORT |= (1 << LED);             // turn LED on
+        _delay_ms(1000);                    // so we can see the change
+    } else {                                // this will happen when the button is pressed
+        LED_PORT &= ~(1 << LED);            // turn LED off
+        _delay_ms(1000);
+    }    
+}
+
+void initPinChangeInterrupt(void) {
+    GIMSK |= (1 << PCIE0);              // enable pin change interrupt 0
+    PCMSK0 |= (1 << BUTTON);            // enable pin change only for button
+    sei();                              // enable interrupts globally
+}
+
+int main(void) {
+    LED_DDR |= (1 << LED);              // mark LED as output 
+    BUTTON_PORT |= (1 << BUTTON);       // mark button as input and enable pull-up resistor
+    
+    initPinChangeInterrupt();
+
+    while(1) {
+        _delay_ms(delay);
+        LED_PORT ^= (1 << LED);         // toggle the LED
+    }
+    return 0;
+}
+</pre>
+
+
+#### Original Files
+
+* C source: [button-int.c](files/w8/button-interrupts-c/button-int.c) 
+* Makefile: [Makefile](files/w8/button-interrupts-c//Makefile) 
+
+&nbsp;
+
+---
+
+&nbsp;
+
 
 ## ATtiny44 Datasheet Review
 
