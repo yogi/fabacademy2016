@@ -489,7 +489,7 @@ ISR(PCINT0_vect) {
 
 void initPinChangeInterrupt(void) {
     GIMSK |= (1 << PCIE0);              // enable pin change interrupt 0
-    PCMSK0 |= (1 << BUTTON);            // enable pin change only for button
+    PCMSK0 |= (1 << BUTTON);            // ... only for the button
     sei();                              // enable interrupts globally
 }
 
