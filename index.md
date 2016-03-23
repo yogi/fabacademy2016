@@ -6,7 +6,7 @@ layout: default
 
 <div style="text-align:center">
    This is my journey through <a href="http://archive.fabacademy.org/archives/2016/master/">Fab Academy 2016</a> at
-   <a href="https://www.fablabs.io/fablabtrivandrum">FabLab Trivandrum, India</a>.
+   <a href="https://www.fablabs.io/fablabtrivandrum">Fab Lab Trivandrum, India</a>.
 </div>
 
 <br/>
@@ -14,7 +14,10 @@ layout: default
 <h2 style="text-align:center">What is Fab Academy?</h2>
 
 <div style="text-align:center">
-   Fab Academy is an intensive 20-week course in digital fabrication... <a href="fabacademy.html"><span style="font-style:italic">read more</span></a>.
+   Fab Academy is an 20-week course in digital fabrication. It has its roots in MIT’s course on 
+   <a href="http://fab.cba.mit.edu/classes/863.14/">How to make (almost) anything</a>, which was started by 
+   Prof. Neil Gershenfeld at MIT’s Center for Bits and Atoms... 
+   <a href="fabacademy.html"><span style="font-style:italic">read more</span></a>.
 </div>
 
 <br/>
