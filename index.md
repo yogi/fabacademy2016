@@ -128,11 +128,14 @@ layout: default
 </tr> 
 <tr>
    <td style="text-align:right">
-		Mechanical design, machine design <br/>
+	<a href="w10-mechanical.html">Mechanical design</a> <br/> 
 		<span style="font-size:60%;font-style:italic;color:gray">Week 10 (Mar 30)</span>
 	</td>
-	    <td> 
-	   </td> 
+	<td>
+	 	<a href="w10-mechanical.html">
+	 	
+	 	</a> 
+   	</td> 
 </tr> 
 <tr>
    <td style="text-align:right">
