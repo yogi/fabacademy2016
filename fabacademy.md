@@ -11,15 +11,24 @@ was started by [Prof. Neil Gershenfeld][ProfNeil] at MIT's [Center for Bits and
 Atoms][CBA].
 
 To know more about the idea and vision for digital fabrication, here's a great 
-[talk given by Neil at SolidCon][SolidConTalk], an [Edge.org interview][EdgeInterview], and a
-book - ["Fab: The Coming Revolution on Your Desktop"][FabBook].
+talk about "The Third Digital Revolution" given by Neil at SolidCon.
 
-This year more than 300 students are attending Fab Academy, which is happening simultaneously
-in [70 FabLabs][FabLabs] all over the world, including 3 locations in India (Trivandrum, Kochi & Pune).
+<iframe width="560" height="315" src="https://www.youtube.com/embed/L0RDrSKenGo" frameborder="0" allowfullscreen></iframe>
 
-The course covers [topics][Schedule] from 2D & 3D Design, computer-controlled
+&nbsp;
+   
+Here is an [Edge.org interview][EdgeInterview], which goes into details about the background and motivation for personal fabrication.
+
+And a book that he wrote - ["Fab: The Coming Revolution on Your Desktop"][FabBook].
+
+<a href="https://books.google.co.in/books?id=Zw0j50HDwYUC&lpg=PP1&pg=PP9#v=onepage&q&f=false"><img src="images/fab-book.jpg"/></a>
+
+This year more than 300 students are attending Fab Academy in [70 Fab Labs][FabLabs] all over the world, including 3 
+locations in India (Trivandrum, Kochi & Pune).
+
+The course covers [topics][Schedule] from CAD, computer-controlled
 cutting, 3D printing, electronics & embedded systems, mechanical & machine
-design, molding & casting.
+design, molding & casting, etc.
 
 At the end of the course you have to build a project which brings together many, if not all, the 
 skills that you've learnt. 
