@@ -535,8 +535,6 @@ This program implements the blink logic as a timer event rather than a delay loo
 #define LED         PA7
 #define LED_PORT    PORTA
 
-const int delay = 100;
-
 ISR(TIM0_OVF_vect) {
   // interrupt occurs every:
   //    1000000 / 1024 * 256 
