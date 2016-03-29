@@ -142,7 +142,7 @@ layout: default
 </tr> 
 <tr>
    <td style="text-align:right">
-		Machine presentations <br/>
+		Machine design <br/>
 		<span style="font-size:60%;font-style:italic;color:gray">Week 11 (Apr 6)</span>
 	</td>
 	    <td> 

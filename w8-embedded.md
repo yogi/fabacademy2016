@@ -24,6 +24,8 @@ permalink: w8-embedded.html
     - [Program Size Comparisons](#program-size-comparisons)
     - [Interrupt-based Program](#interrupt-based-program)
         - [Original Files](#original-files-4)
+    - [Timer Blink](#timer-blink)
+        - [Original Files](#original-files-5)
 - [ATtiny44 Datasheet Review](#attiny44-datasheet-review)
     
 
@@ -512,6 +514,79 @@ int main(void) {
 
 * C source: [button-int.c](files/w8/button-interrupts-c/button-int.c) 
 * Makefile: [Makefile](files/w8/button-interrupts-c//Makefile) 
+
+&nbsp;
+
+---
+
+&nbsp;
+
+
+## Timer Blink
+
+This program implements the blink logic as a timer event rather than a delay loop. Here is the commented code: 
+
+<pre>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+
+#define LED_DDR     DDRA
+#define LED         PA7
+#define LED_PORT    PORTA
+
+const int delay = 100;
+
+ISR(TIM0_OVF_vect) {
+  // interrupt occurs every:
+  //    1000000 / 1024 * 256 
+  //    = ~ 250000 clocks 
+  //    = ~250 ms (since clock is 1mhz and 1 clock cycle = 1µs)
+  // Note: 1024 is the clock prescaler
+  //        256 is the overflow limit for the 8 bit counter
+  
+  LED_PORT ^= (1 << LED);   //toggle led pin 
+} 
+ 
+void initTimerInterrupt(void) {
+  TCCR0B |= (1<<CS02) | (1<<CS00);          //clock select: prescale timer clk/1024
+  TIMSK0 |= (1<<TOIE0);                     //enable timer overflow interrupt      
+  sei();                                    // globally enable interrupts
+}
+
+void main(void) {
+    LED_DDR |= (1 << LED);              // mark LED as output 
+    initTimerInterrupt();
+    while(1);                           // loop forever
+}
+
+</pre>
+
+#### Original Files
+
+* C source: [main.c](files/w8/timer/main.c) 
+* Makefile: [Makefile](files/w8/timer/Makefile) 
+
+
+&nbsp;
+
+---
+
+&nbsp;
+
+
+## Software UART Implementation
+
+It would be useful for debugging puproses to be able to output some data through a serial interface and display it on the host terminal.
+ 
+However, the ATtiny44 does not have a UART implementation in hardware, instead it supports SPI. 
+ 
+The goal of this mini-project is to implement a software UART interface that allows debugging output to be written out.
+ 
+
+
+
+
 
 &nbsp;
 
