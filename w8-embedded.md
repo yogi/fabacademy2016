@@ -825,5 +825,3 @@ This [datasheet](http://www.atmel.com/images/doc8006.pdf) covers ATtiny24 / 44 /
 ### Questions
 
 * "Fully static operation"?
-* Pulse length
-* Timer with PWM channels?
