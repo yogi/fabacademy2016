@@ -7,3 +7,5 @@ _site
 *.cof
 *.obj
 *.hex
+*.elf
+*.o
