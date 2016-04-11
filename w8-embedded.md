@@ -26,6 +26,8 @@ permalink: w8-embedded.html
         - [Original Files](#original-files-4)
     - [Timer Blink](#timer-blink)
         - [Original Files](#original-files-5)
+    - [Software UART Implementation](#software-uart-implementation)
+        - [Original Files](#original-files-6)
 - [ATtiny44 Datasheet Review](#attiny44-datasheet-review)
     
 
@@ -679,6 +681,11 @@ I did test that the setup was working fine by connecting the RX & TX pins on the
  whatever I typed into the terminal.
  
 Need to debug this further.
+
+#### Original Files
+
+* C source: [main.c](files/w8/uart/main.c) 
+* Makefile: [Makefile](files/w8/uart/Makefile) 
 
 
 &nbsp;
