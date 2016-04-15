@@ -131,26 +131,14 @@ layout: default
 </tr> 
 <tr>
    <td style="text-align:right">
-	<a href="w10-mechanical.html">Mechanical design</a> <br/> 
-		<span style="font-size:60%;font-style:italic;color:gray">Week 10 (Mar 30)</span>
+	<a href="w10-machine.html">Mechanical & machine design</a> <br/> 
+		<span style="font-size:60%;font-style:italic;color:gray">Week 10 & 11 (Mar 30)</span>
 	</td>
 	<td>
-	 	<a href="w10-mechanical.html">
-	 	
+	 	<a href="w10-machine.html">
+			<img src="images/w10-machine-hero-shot.jpg" height="125"/>
 	 	</a> 
    	</td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-	<a href="w11-machine.html">Machine design</a> <br/> 
-		<span style="font-size:60%;font-style:italic;color:gray">Week 10 (Mar 30)</span>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 11 (Apr 6)</span>
-	</td>
-    <td> 
-		<a href="w11-machine.html"> 
-			<img src="images/w11-plotter.jpg" height="125"/>
-		</a>
-    </td> 
 </tr> 
 <tr>
    <td style="text-align:right">
