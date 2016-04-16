@@ -142,11 +142,14 @@ layout: default
 </tr> 
 <tr>
    <td style="text-align:right">
-		Input devices <br/>
+    	<a href="w12-input.html">Input devices </a> <br/> 
 		<span style="font-size:60%;font-style:italic;color:gray">Week 12 (Apr 13)</span>
 	</td>
-	    <td> 
-	   </td> 
+	<td>
+	 	<a href="w12-input.html">
+			<img src="" height="125"/>
+	 	</a> 
+   	</td> 
 </tr> 
 <tr>
    <td style="text-align:right">
