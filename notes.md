@@ -28,7 +28,9 @@ One more example: http://fabacademy.org/archives/2015/as/students/okazaki.asako/
 
 ## Final project ideas
 
-* AxiDraw http://shop.evilmadscientist.com/productsmenu/846
+Capsense Piano: http://fab.cba.mit.edu/classes/863.13/people/nitsky/week11.html
+Something with PID control
+Some electronic device with retro look - fab boombox, clock
 
 
 What are the key learnings and the hardest things to do for each week? Focus on those:
@@ -37,6 +39,5 @@ For CNC: cutting, engraving, dual side cuts - like the propeller, angular cuts
     - rest is largely design complexity - so master Rhino + Grasshopper
     
     
-Computational, algorithmic design and art is cool and inspiring. 
+Computational, algorithmic design and art is amazing! George Hart's work in particular.
 
-George Hart's work in particular.
