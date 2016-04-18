@@ -65,7 +65,7 @@ Here are the original files:
 * Schematic: [w12-reflect.sch](files/w12-reflect.sch)
 * Board: [w12-reflect.brd](files/w12-reflect.brd)
  
-### Cutting it in the Modella
+### Board Production
 
 Next I exported the traces and outline PNGs. Then I edited these in GIMP to add some text and borders:
 
@@ -77,7 +77,21 @@ Outline:
 
 <img src="files/w12-reflect-outline.png"/>
 
+Stuffed board:
 
-### Stuffing the board
+<img src="images/w12-reflect-stuffed.jpg"/>
 
-### Programming it
+### Programming
+
+When I tried to program the board, it gave an error "not initialized, check connections". 
+
+I looked at the board carefully and realized I had missed soldering the MISO pin. I soldered it and the board got programmed 
+ fine.
+ 
+I tested the board using Neil's code and the python app showed the readings for ambient and reflected light. Here's a demo:
+ 
+<video controls>
+  <source src="images/w12-reflect-demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
