@@ -147,7 +147,7 @@ layout: default
 	</td>
 	<td>
 	 	<a href="w12-input.html">
-			<img src="" height="125"/>
+			<img src="images/w12-inputs-hero.jpg" height="125"/>
 	 	</a> 
    	</td> 
 </tr> 
