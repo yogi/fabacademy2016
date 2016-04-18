@@ -67,6 +67,17 @@ Here are the original files:
  
 ### Cutting it in the Modella
 
+Next I exported the traces and outline PNGs. Then I edited these in GIMP to add some text and borders:
+
+Traces:
+
+<img src="files/w12-reflect-traces.png"/>
+
+Outline:
+
+<img src="files/w12-reflect-outline.png"/>
+
+
 ### Stuffing the board
 
 ### Programming it

@@ -39,6 +39,7 @@ First step - go through some Eagle tutorials:
 * [MIT Electronics Design 101](http://fab.cba.mit.edu/classes/863.15/doc/tutorials/electronics_design/ElectronicsDesign101.html): 
  also get the [PPT](http://fab.cba.mit.edu/classes/863.15/doc/tutorials/electronics_design/Electronics_101_v2.pptx).
 * [Fab Academy tutorial](http://archive.fabacademy.org/archives/2016/doc/electronics_design_eagle.html).
+* SparkFun [schematic](https://learn.sparkfun.com/tutorials/using-eagle-schematic) and [board](https://learn.sparkfun.com/tutorials/using-eagle-board-layout) tutorials.
 
 Install Eagle, then download [fab.lbr](files/fab.lbr) (library of components) and place it into the lbr folder in your Eagle installation.
  
