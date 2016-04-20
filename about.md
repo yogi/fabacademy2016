@@ -4,19 +4,30 @@ title: About Me
 permalink: about.html
 ---
 
-Hi, my name is Yogi Kulkarni. I am 41 years old... I have 2 little girls
- and an amazing wife who is graciously supporting me in my Fab Academy adventure, which requires me
- to be away from home through the week.
+My name is Yogi Kulkarni. 
+
+I am 41 years old, I have 2 little girls
+ and an amazing wife who is graciously supporting me in my Fab Academy adventure (which requires me
+ to be away from home through the week).
 
 I am a software engineer and have been building software for [a long time][LinkedIn Profile]. Most
 recently I helped build the supply-chain system and the internal cloud platform for 
 [India's largest e-commerce site][Flipkart].
 
-><sub>_People who are really serious about software should make their own hardware_   
-\- Alan Kay</sub>
+<br/>
 
-Fab Academy to me is about exploring the intersection of hardware, software and art. I love the idea 
-of moving from being a passive consumer of mass-produced goods to being a producer of personal products 
+<blockquote>
+<p class="text-muted">
+People who are really serious about software should make their own hardware<br/>   
+-Alan Kay
+</p>
+</blockquote>
+
+<br/>
+
+Fab Academy to me is about mashing-up hardware, software and art. 
+
+I also love the idea of moving from being a passive consumer of mass-produced goods to being a creator of personal products 
 matched closely to my needs and the needs of those around me. 
 
 <div style="text-align:center">
@@ -31,7 +42,10 @@ favorites from these lines:
   there's... there's somethin' inside that they can't get to; that they can't
   touch. It's yours."
 
-* "You'll never [walk][LFC] alone."
+* When you [walk](LFC) through a storm, hold your head up high   
+   And don't be afraid of the dark   
+   At the end of the storm, there's a golden sky   
+   And the sweet, silver song of a lark
 
 * "It really stemmed from when I was in college and trying to think: what would
   affect the future most likely in [a][ElonMusk] positive way"

@@ -19,8 +19,7 @@ layout: default
 <div style="text-align:center">
 	<p>
    Fab Academy is a 20-week course in digital fabrication. It has its roots in MIT’s course on 
-   <a href="http://fab.cba.mit.edu/classes/863.14/">How to make (almost) anything</a>, which was started by 
-   Prof. Neil Gershenfeld at MIT’s Center for Bits and Atoms... 
+   <a href="http://fab.cba.mit.edu/classes/863.14/">How to make (almost) anything</a>... 
    <a href="fabacademy.html"><span style="font-style:italic">read more</span></a>.
    </p>
 </div>
