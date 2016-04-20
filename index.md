@@ -5,7 +5,7 @@ layout: default
 <!-- [<img src="images/fabacademy.jpg"/>][FabAcademy] -->
 
 
-<div class="col-md-12">
+<div>
 	<h1>Fab Academy 2016<h1/>
 	<h2 class="text-muted">Yogi Kulkarni<h2/>
 </div>

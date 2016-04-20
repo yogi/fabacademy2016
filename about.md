@@ -34,7 +34,7 @@ matched closely to my needs and the needs of those around me.
   <img src="images/lfc.png" height="80"/>
 </div>
  
-In terms of interests, I'm likely to jump into any conversation related to
+As far as interests go, I'm likely to jump into any conversation related to
 football, books, movies or TV shows. You  might be able to guess some of my
 favorites from these lines:
 
