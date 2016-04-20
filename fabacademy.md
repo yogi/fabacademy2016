@@ -30,8 +30,8 @@ The course covers [topics][Schedule] from CAD, computer-controlled
 cutting, 3D printing, electronics & embedded systems, mechanical & machine
 design, molding & casting, etc.
 
-At the end of the course you have to build a project which brings together many, if not all, the 
-skills that you've learnt. 
+At the end of the course students have to build a project which brings together many, if not all, the 
+skills they've learnt. 
 
 Here is a list of the incredible [projects made by last year's students][2015Projects].
 

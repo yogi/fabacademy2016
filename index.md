@@ -5,29 +5,32 @@ layout: default
 <!-- [<img src="images/fabacademy.jpg"/>][FabAcademy] -->
 
 
-<div style="text-align:center">
-	<p>
-   This is my journey through <a href="http://archive.fabacademy.org/archives/2016/master/">Fab Academy 2016</a> at
-   <a href="https://www.fablabs.io/fablabtrivandrum">Fab Lab Trivandrum, India</a>.
-   </p>
+<div class="col-md-12">
+	<h1>Fab Academy 2016<h1/>
+	<h2 class="text-muted">Yogi Kulkarni<h2/>
 </div>
 
-<br/>
+<hr/>
 
-<h2 style="text-align:center">What is Fab Academy?</h2>
-
-<div style="text-align:center">
+<div>
 	<p>
-   Fab Academy is a 20-week course in digital fabrication. It has its roots in MIT’s course on 
-   <a href="http://fab.cba.mit.edu/classes/863.14/">How to make (almost) anything</a>... 
-   <a href="fabacademy.html"><span style="font-style:italic">read more</span></a>.
-   </p>
+		This is my journey through <a href="http://archive.fabacademy.org/archives/2016/master/">Fab Academy 2016</a> 
+		at <a href="https://www.fablabs.io/fablabtrivandrum">Fab Lab Trivandrum</a>, India.		
+	</p>
+	<p>
+	Fab Academy is a 20-week course in digital fabrication. It has its roots in MIT’s course on 
+	   <a href="http://fab.cba.mit.edu/classes/863.14/">How to make (almost) anything</a>, which was started by Prof. Neil 
+	   Gershenfeld... <a href="fabacademy.html"><span style="font-style:italic">read more</span></a>
+	</p>
 </div>
 
-<br/>
-<br/>
-<br/>
+<hr/>
 
+<div class="row lead">
+	<div class="col-md-12">
+		<h1>Weekly Assignments<h1/>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-md-7 col-md-push-5">
@@ -306,7 +309,7 @@ layout: default
 </div>
 
 
-
+<!--
 [FabAcademy]: http://fabacademy.org
 [FabLabs]: http://archive.fabacademy.org/archives/2016/master/labs.html
 [HTMAA]: http://fab.cba.mit.edu/classes/863.14/
@@ -328,3 +331,4 @@ layout: default
 [EdgeInterview]: https://edge.org/conversation/neil_gershenfeld-digital-reality
 [FabBook]: https://books.google.co.in/books?id=Zw0j50HDwYUC&lpg=PP1&pg=PP9#v=onepage&q&f=false
 [FabLabTvm]: https://www.fablabs.io/fablabtrivandrum
+-->
