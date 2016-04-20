@@ -1,12 +1,15 @@
 ---
 layout: default
 ---
-[<img src="images/fabacademy.jpg"/>][FabAcademy]
+
+<!-- [<img src="images/fabacademy.jpg"/>][FabAcademy] -->
 
 
 <div style="text-align:center">
+	<p>
    This is my journey through <a href="http://archive.fabacademy.org/archives/2016/master/">Fab Academy 2016</a> at
    <a href="https://www.fablabs.io/fablabtrivandrum">Fab Lab Trivandrum, India</a>.
+   </p>
 </div>
 
 <br/>
@@ -14,208 +17,295 @@ layout: default
 <h2 style="text-align:center">What is Fab Academy?</h2>
 
 <div style="text-align:center">
-   Fab Academy is an 20-week course in digital fabrication. It has its roots in MIT’s course on 
+	<p>
+   Fab Academy is a 20-week course in digital fabrication. It has its roots in MIT’s course on 
    <a href="http://fab.cba.mit.edu/classes/863.14/">How to make (almost) anything</a>, which was started by 
    Prof. Neil Gershenfeld at MIT’s Center for Bits and Atoms... 
    <a href="fabacademy.html"><span style="font-style:italic">read more</span></a>.
+   </p>
 </div>
 
 <br/>
+<br/>
+<br/>
 
 
-<h2 style="text-align:center">Assignments</h2>
+<div class="row">
+	<div class="col-md-7 col-md-push-5">
+		<a href="w1-principles.html"><h1>Principles & Practices</h1></a>
+		<h2 class="text-muted">Final Project Sketch</h2>
+		<p>
+			This week I sketched out a possible final project, called Hi! Time - a gesture recognizing clock. 
+		</p>
+	</div>
+	<div class="col-md-5 col-md-pull-7">
+		<a href="w1-principles.html"><img class="img-responsive" src="images/clock.jpg" alt=""></a>
+	</div>
+</div>
 
-<table cellspacing="10" cellpadding="10">
-<tr>
-   <td style="text-align:right" width="30%">
-      <a href="w1-principles.html">Principles & Practices</a> <br/>
-      <span style="font-size:60%;font-style:italic;color:gray">Week 1 (Jan 27th)</span>
-   </td>
-   <td>
-      <a href="w1-principles.html">
-         <img src="images/clock.jpg" height="125"/>
-      </a>
-   </td>
-</tr>
-<tr>
-   <td style="text-align:right">
-      <a href="w2-cad.html">Computer-Aided Design</a> <br/>
-      <span style="font-size:60%;font-style:italic;color:gray">Week 2 (Feb 3)</span>
-   </td>
-   <td>
+<hr/>
+
+<div class="row">
+	<div class="col-md-7">
+		<a href="w2-cad.html"><h1>Computer-Aided Design</h1></a>
+		<p>
+			This week we explored a variety of 2D, 3D, image and video processing tools. I designed a logo for 
+			Hi! Time in Inkscape and created a 3D model of its back panel in Antimony. 
+		</p>
+	</div>
+	<div class="col-md-5">
       <a href="w2-cad.html">
-         <img src="images/hi-time-logo.svg" height="125"/>&nbsp;
-         <img src="images/antimony-hitime.jpg" height="125"/>
-         <img src="images/beach-vader.jpg" height="125"/>&nbsp;
+         <img src="images/cad.jpg" class="img-responsive" />&nbsp;
       </a>
-   </td>
-</tr>
-<tr>
-   <td style="text-align:right">
-      <a href="w3-cutting.html">Computer-Controlled Cutting</a> <br/>
-      <span style="font-size:60%;font-style:italic;color:gray">Week 3 (Feb 10)</span>
-   </td>
-   <td>
-      <a href="w3-cutting.html">
-         <img src="images/geodesic-top.jpg" height="125"/>&nbsp;
-         <img src="images/box-side.jpg" height="125"/>&nbsp;
-         <img src="images/deathstar-decal.jpg" height="125"/>
+	</div>
+</div>
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7 col-md-push-5">
+		<a href="w3-cutting.html"><h1>Computer-Controlled Cutting</h1></a>
+		<p>
+			This week we worked on the laser-cutter and the vinyl-cutter. I created a press-fit geodesic hemisphere out 
+			of cardboard and a craft-plywood box with flexured hinges.  
+		</p>
+	</div>
+	<div class="col-md-5 col-md-pull-7">
+		<a href="w3-cutting.html"><img class="img-responsive" src="images/w3-cutting.jpg" alt=""></a>
+	</div>
+</div>
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7">
+		<a href="w4-eprod.html.html"><h1>Electronics Production</h1></a>
+		<h2 class="text-muted">FabISP</h2>
+		<p>
+			This week we created an in-circuit programmer using an ATtiny45 microcontroller, milled it on the Modella and soldered all the components.
+		</p>
+	</div>
+	<div class="col-md-5">
+      <a href="w3-eprod.html">
+         <img src="images/fabisp.jpg" class="img-responsive" />&nbsp;
       </a>
-   </td>
-</tr>
-<tr>
-   <td style="text-align:right">
-         <a href="w4-eprod.html">Electronics Production</a> <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 4 (Feb 17)</span>
-	</td>
-	<td> 
-	    <a href="w4-eprod.html">
-			<img src="images/fabisp.jpg" height="125"/>&nbsp;
-			<img src="images/eprod-2nd-result.jpg" height="125"/>&nbsp;
-		</a> 
-   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-         <a href="w5-3d.html">3D Printing & Scanning</a> <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 5 (Feb 24)</span>
-	</td>
-	<td> 
-         <a href="w5-3d.html">
-			<img src="images/w5-sphere.jpg" height="125"/>
-		</a> 
-	</td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-         <a href="w6-edesign.html">Electronics design</a> <br/> 
-		<span style="font-size:60%;font-style:italic;color:gray">Week 6 (Mar 2)</span>
-   </td>	
-   <td> 
+	</div>
+</div>
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7 col-md-push-5">
+		<a href="w5-3d.html"><h1>3D Printing & Scanning</h1></a>
+		<p>
+			The goal was to create something that would be difficult, if not impossible, to create with a subtractive process.
+			I designed nested spheres in OpenSCAD and 3D printed it on the Ultimaker. I also 3D scanned some objects using an Xbox Kinect and Skanect.      
+		</p>
+	</div>
+	<div class="col-md-5 col-md-pull-7">
+		<a href="w5-3d.html"><img class="img-responsive" src="images/w5.jpg" alt=""></a>
+	</div>
+</div>
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7">
+		<a href="w6-edesign,html"><h1>Electronics Design</h1></a>
+		<h2 class="text-muted">Board with LED + Button</h2>
+		<p>
+			This week I designed a board's schematic and layout in Eagle, milled it and soldered the components.   
+		</p>
+	</div>
+	<div class="col-md-5">
       <a href="w6-edesign.html">
-		<img src="images/w6-final-board.jpg" height="125"/>&nbsp;
-		<img src="images/w6-board-layout.jpg" height="125"/>&nbsp;
-		<img src="images/w6-schematic.jpg" height="125"/>
-	  </a> 
-   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-         <a href="w7-machining.html">Computer-controlled machining </a> <br/> 
-		<span style="font-size:60%;font-style:italic;color:gray">Week 7 (Mar 9)</span>
-	</td>
-	<td> 
-      <a href="w7-machining.html">
-		<img src="images/w7-table.jpg" height="125"/>
-	  </a> 
-    </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-	<a href="w8-embedded.html">Embedded programming</a> <br/> 
-		<span style="font-size:60%;font-style:italic;color:gray">Week 8 (Mar 16)</span>
-	</td>
-	<td> 
-		<a href="w8-embedded.html">
-			<img src="images/w8-hello-led-blinking.jpg" height="125"/>
-		</a> 
-   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-		Break <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 9 (Mar 23)</span>
-	</td>
-	    <td> 
-	   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-	<a href="w10-machine.html">Mechanical & machine design</a> <br/> 
-		<span style="font-size:60%;font-style:italic;color:gray">Week 10 & 11 (Mar 30)</span>
-	</td>
-	<td>
-	 	<a href="w10-machine.html">
-			<img src="images/w10-machine-hero-shot.jpg" height="125"/>
-	 	</a> 
-   	</td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-    	<a href="w12-input.html">Input devices </a> <br/> 
-		<span style="font-size:60%;font-style:italic;color:gray">Week 12 (Apr 13)</span>
-	</td>
-	<td>
-	 	<a href="w12-input.html">
-			<img src="images/w12-inputs-hero.jpg" height="125"/>
-	 	</a> 
-   	</td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-		Molding and casting <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 13 (Apr 20)</span>
-	</td>
-	    <td> 
-	   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-		Output devices <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 14 (Apr 27)</span>
-	</td>
-	    <td> 
-	   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-		Composites <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 15 (May 4)</span>
-	</td>
-	    <td> 
-	   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-		Networking and communications <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 16 (May 11)</span>
-	</td>
-	    <td> 
-	   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-		Interface and application programming <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 17 (May 18)</span>
-	</td>
-	    <td> 
-	   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-		Applications and implications <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 18 (May 25)</span>
-	</td>
-	    <td> 
-	   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-		Invention, intellectual property, and income <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 19 (Jun 1)</span>
-	</td>
-	    <td> 
-	   </td> 
-</tr> 
-<tr>
-   <td style="text-align:right">
-		Project development <br/>
-		<span style="font-size:60%;font-style:italic;color:gray">Week 20 (Jun 8)</span>
-	</td>
-	    <td> 
-	   </td> 
-</tr> 
-</table>
+         <img src="images/w6-final-board.jpg" class="img-responsive" />&nbsp;
+      </a>
+	</div>
+</div>
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7 col-md-push-5">
+		<a href="w7-machining.html"><h1>Computer-Controlled Machining </h1></a>
+		<p>
+			This week we had to make something big on the Shopbot CNC router. I designed and made a table out of 18mm plywood.  
+		</p>
+	</div>
+	<div class="col-md-5 col-md-pull-7">
+		<a href="w7-machining.html"><img class="img-responsive" src="images/w7-table.jpg" alt=""></a>
+	</div>
+</div>
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7">
+		<a href="w8-embedded.html"><h1>Embedded Programming</h1></a>
+		<p>
+			This week I programmed the LED + Button board using Arduino, C, and AVR Assembly language. 
+		</p>
+	</div>
+	<div class="col-md-5">
+      <a href="w8-embedded.html">
+         <img src="images/w8-hello-led-blinking.jpg" class="img-responsive" />&nbsp;
+      </a>
+	</div>
+</div>
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7 col-md-push-5">
+		<a href="w10-machine.html"><h1>Mechanical & Machine Design</h1></a>
+		<p>
+			Over 2 weeks we built a 2-axis plotter in a group.   
+		</p>
+	</div>
+	<div class="col-md-5 col-md-pull-7">
+		<a href="w10-machine.html"><img class="img-responsive" src="images/w10-machine-hero-shot.jpg" alt=""></a>
+	</div>
+</div>
+
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7">
+		<a href="w12-input.html"><h1>Input Devices</h1></a>
+		<h2 class="text-muted">Ambient Light Sensor</h2>
+		<p>
+			I created a board with a phototransistor + LED to detect ambient and reflected light.  
+		</p>
+	</div>
+	<div class="col-md-5">
+      <a href="w12-input.html">
+         <img src="images/w12-inputs-hero.jpg" class="img-responsive" />&nbsp;
+      </a>
+	</div>
+</div>
+
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7 col-md-push-5">
+		<a href=""><h1>Molding & Casting</h1></a>
+		<p>
+		</p>
+	</div>
+	<div class="col-md-5 col-md-pull-7">
+	</div>
+</div>
+
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7">
+		<a href=""><h1>Output Devices</h1></a>
+		<p>
+		</p>
+	</div>
+	<div class="col-md-5">
+      <a href="">
+      </a>
+	</div>
+</div>
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7 col-md-push-5">
+		<a href=""><h1>Composites</h1></a>
+		<p>
+		</p>
+	</div>
+	<div class="col-md-5 col-md-pull-7">
+	</div>
+</div>
+
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7">
+		<a href=""><h1>Networking & Communications</h1></a>
+		<p>
+		</p>
+	</div>
+	<div class="col-md-5">
+      <a href="">
+      </a>
+	</div>
+</div>
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7 col-md-push-5">
+		<a href=""><h1>Interface & Application Programming</h1></a>
+		<p>
+		</p>
+	</div>
+	<div class="col-md-5 col-md-pull-7">
+	</div>
+</div>
+
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7">
+		<a href=""><h1>Applications & Implications</h1></a>
+		<p>
+		</p>
+	</div>
+	<div class="col-md-5">
+      <a href="">
+      </a>
+	</div>
+</div>
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7 col-md-push-5">
+		<a href=""><h1>Invention, Intellectual Property and Income</h1></a>
+		<p>
+		</p>
+	</div>
+	<div class="col-md-5 col-md-pull-7">
+	</div>
+</div>
+
+
+
+<hr/>
+
+<div class="row">
+	<div class="col-md-7">
+		<a href=""><h1>Final Project Development</h1></a>
+		<p>
+		</p>
+	</div>
+	<div class="col-md-5">
+      <a href="">
+      </a>
+	</div>
+</div>
+
 
 
 [FabAcademy]: http://fabacademy.org
