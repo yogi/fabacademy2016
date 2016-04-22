@@ -42,7 +42,7 @@ favorites from these lines:
   there's... there's somethin' inside that they can't get to; that they can't
   touch. It's yours."
 
-* When you [walk](LFC) through a storm, hold your head up high   
+* When you [walk][LFC] through a storm, hold your head up high   
    And don't be afraid of the dark   
    At the end of the storm, there's a golden sky   
    And the sweet, silver song of a lark
