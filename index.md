@@ -2,33 +2,32 @@
 layout: default
 ---
 
-<!-- [<img src="images/fabacademy.jpg"/>][FabAcademy] -->
 
-
-<div>
-	<h1>Fab Academy 2016<h1/>
-	<h2 class="text-muted">Yogi Kulkarni<h2/>
+<div class="row">
+	<div class="col-md-9">
+		<h1>Fab Academy 2016</h1>
+		<h2 class="text-muted">Yogi Kulkarni</h2>
+		&nbsp;
+		<p>
+			This is my journey through <a href="http://archive.fabacademy.org/archives/2016/master/">Fab Academy 2016</a> 
+			at <a href="https://www.fablabs.io/fablabtrivandrum">Fab Lab Trivandrum</a>, India.		
+		</p>
+		<p>
+			Fab Academy is a 20-week course in digital fabrication. It has its roots in MIT’s course on 
+		   <a href="http://fab.cba.mit.edu/classes/863.14/">How to make (almost) anything</a>, which was started by Prof. Neil 
+		   Gershenfeld... <a href="fabacademy.html"><span style="font-style:italic">read more</span></a>
+		</p>
+	</div>
+	<div class="col-md-3">
+		<img src="images/yogi.jpg" height="240" class="pull-right"/>	
+	</div>
 </div>
 
 <hr/>
 
-<div>
-	<p>
-		This is my journey through <a href="http://archive.fabacademy.org/archives/2016/master/">Fab Academy 2016</a> 
-		at <a href="https://www.fablabs.io/fablabtrivandrum">Fab Lab Trivandrum</a>, India.		
-	</p>
-	<p>
-	Fab Academy is a 20-week course in digital fabrication. It has its roots in MIT’s course on 
-	   <a href="http://fab.cba.mit.edu/classes/863.14/">How to make (almost) anything</a>, which was started by Prof. Neil 
-	   Gershenfeld... <a href="fabacademy.html"><span style="font-style:italic">read more</span></a>
-	</p>
-</div>
-
-<hr/>
-
-<div class="row lead">
+<div class="row">
 	<div class="col-md-12">
-		<h1>Weekly Assignments<h1/>
+		<h1>Weekly Assignments</h1>
 	</div>
 </div>
 
