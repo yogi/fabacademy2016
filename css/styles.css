@@ -29,9 +29,15 @@ hr {
     border: none;
 }
 
-.navbar-default .navbar-nav > li > a {
-    color: #428bca;
+.navbar-nav > li > a {
+    color: black;
 }
+
+/*
+a {
+    color: black;
+}
+*/
 
 .navbar-brand {
     font-weight: 200;
