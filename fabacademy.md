@@ -21,7 +21,7 @@ Here is an [Edge.org interview][EdgeInterview], which goes into details about th
 
 And a book that he wrote - ["Fab: The Coming Revolution on Your Desktop"][FabBook].
 
-<a href="https://books.google.co.in/books?id=Zw0j50HDwYUC&lpg=PP1&pg=PP9#v=onepage&q&f=false"><img src="images/fab-book.jpg"/></a>
+<a href="https://books.google.co.in/books?id=Zw0j50HDwYUC&lpg=PP1&pg=PP9#v=onepage&q&f=false"><img class="img-responsive center-block" src="images/fab-book.jpg"/></a>
 
 This year more than 300 students are attending Fab Academy in [70 Fab Labs][FabLabs] all over the world, including 3 
 locations in India (Trivandrum, Kochi & Pune).

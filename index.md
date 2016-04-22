@@ -26,7 +26,7 @@ layout: default
 <hr/>
 
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12 bottom-buffer">
 		<h1>Weekly Assignments</h1>
 	</div>
 </div>

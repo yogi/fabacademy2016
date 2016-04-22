@@ -103,3 +103,7 @@ ul {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.bottom-buffer {
+    margin-bottom: 20px;
+}
