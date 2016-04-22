@@ -28,14 +28,14 @@ This uses a phototransistor, specifically this [one](http://www.digikey.com/prod
 
 Here is Neil's board layout:
 
-<img src="images/w12-neil-light-board.png"/>
+<img src="images/w12-neil-light-board.png" width="800"/>
 
 Neil also demonstrates a technique called synchronous detection, which allows you to differentiate a reflected light (which 
   you control) from ambient light. I could use this for simple gesture recognition in the clock. 
    
 Here is the light reflect board, it adds an LED and a resistor to the previous board. 
 
-<img src="images/w12-neil-light-reflect-board.png"/>
+<img src="images/w12-neil-light-reflect-board.png" width="800"/>
 
 I'm going to make the reflect board, because it could possibly allow me to use a simple LED instead of Infrared emitter / sensor to detect
     hand movements.

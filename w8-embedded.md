@@ -9,6 +9,7 @@ permalink: w8-embedded.html
 >* read a microcontroller data sheet   
 >* program your board to do something, with as many different programming languages and programming environments as possible   
 
+&nbsp;
 
 ### Index
 

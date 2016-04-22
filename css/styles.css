@@ -8,7 +8,12 @@ p {
     margin-bottom:15px;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+p, ul, li {
     font-weight: 200;
     margin-top: 0px;
 }
@@ -35,7 +40,7 @@ hr {
 
 .navbar-accent {
     height: 3px;
-    background-color: #2980b9;
+    background-color: black;
     width: 100%;
 }
 
@@ -58,15 +63,10 @@ iframe {
     margin-bottom: 10px;
 }
 
-.navbar-accent {
-    height: 3px;
-    background-color: #2980b9;
-    width: 100%;
-}
-
 pre {
-    background-color: white;
-    font-size: 18px;
+    background-color: #cccccc;
+    font-size: 16px;
+    font-family: monospace, courier;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -85,4 +85,9 @@ pre {
 
 .carousel {
     background-color: black;
+}
+
+ul {
+    font-size: 18px;
+    font-weight: normal;
 }

@@ -10,10 +10,6 @@ permalink: w3-cutting.html
 
 &nbsp;
 
----
-
-&nbsp;
-
 
 ### Laser Cutter 
 
@@ -101,7 +97,7 @@ Admiring my creation :-)
 &nbsp;
 
 
-#### Box with flexure hinges
+### Box with flexure hinges
 
 Inspired by [this](https://www.snijlab.nl/en/p/288/folding-wood-booklet) I decided to make a craft plywood box with
 hinges.

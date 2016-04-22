@@ -10,15 +10,11 @@ permalink: w1-principles.html
 
 > Plan and sketch a potential final project
 
-I had shortlisted a few ideas like a micro-drone and a rolling robot (like Sphero).
+I had shortlisted a few ideas like a micro-drone and a rolling robot (like Sphero). However, our instructor's ([Francisco][Francisco]) 
+advice was to make something personal, "something that wouldn't be made if you didn't make it". This echoed Prof. Gershenfeld's 
+[insight][MarketOf1Quote] that "the killer app for personal fabrication is the ability to make products for a market of 1".
 
-However, [Francisco's][Francisco] (our instructor) advice was to make something personal, "something that wouldn't be
-made if you didn't make it". 
-
-This made sense because as Prof. Gershenfeld [says][MarketOf1Quote] "the killer app for personal fabrication is the
-ability to make products for a market of 1".
-
-So, with that in mind I was thinking of creating...
+So, with that in mind I'd like to create...
 
 #### Hi! Time
 

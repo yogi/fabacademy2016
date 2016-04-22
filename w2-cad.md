@@ -10,7 +10,6 @@ permalink: w2-cad.html
 
 &nbsp;
 
-
 ### Summary of tool evaluations
 
 Here are my key takeaways from all the tool evaluations. 

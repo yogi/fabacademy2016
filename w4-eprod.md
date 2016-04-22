@@ -10,10 +10,6 @@ permalink: w4-eprod.html
 
 &nbsp;
 
----
-
-&nbsp;
-
 The goal is to mill this board and stuff it with all the components:
  
 <img src="images/w4-hello-isp.png" height="600"/>

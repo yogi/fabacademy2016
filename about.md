@@ -12,7 +12,7 @@ I am 41 years old, I have 2 little girls
 
 I am a software engineer and have been building software for [a long time][LinkedIn Profile]. Most
 recently I helped build the supply-chain system and the internal cloud platform for 
-[India's largest e-commerce site][Flipkart].
+[India's largest e-commerce company][Flipkart].
 
 <br/>
 
