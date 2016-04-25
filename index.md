@@ -198,11 +198,14 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7 col-md-push-5">
-		<a href=""><h1>Molding & Casting</h1></a>
+		<a href="w13-molding.html"><h1>Molding & Casting</h1></a>
 		<p>
 		</p>
 	</div>
 	<div class="col-md-5 col-md-pull-7">
+      <a href="w13-molding.html">
+         <img src="" class="img-responsive" />&nbsp;
+      </a>
 	</div>
 </div>
 

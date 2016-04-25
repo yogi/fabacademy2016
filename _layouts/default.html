@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body>
-    
-      {% include header.html %}
-      
-      <div class="container">
-          
-        {{ content }}
-      
-      </div>
+<body>
 
-  </body>
 
-  {% include footer.html %}
+<div class="container">
+    {% include header.html %}
+    {{ content }}
+</div>
+{% include footer.html %}
 
-  <script src="javascript/jquery.min.js"></script>
-  <script src="javascript/bootstrap.min.js"></script>
-  <script src="javascript/scripts.js"></script>
+</body>
+
+
+<script src="javascript/jquery.min.js"></script>
+<script src="javascript/bootstrap.min.js"></script>
+<script src="javascript/scripts.js"></script>
 </html>
