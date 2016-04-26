@@ -41,3 +41,10 @@ Then I designed the wax mold for the silicone mold, by subtracting the above fro
     positive -> negative -> positive thinking definitely takes some time to get used to!
 
 <img src="images/w13-wax-mold-rhino.jpg"/>
+
+
+---
+
+I wanted to do a test run, so I created a mold only for the gear:
+
+<img src="images/w13-gear-wax-mold-rhino.jpg"/>
