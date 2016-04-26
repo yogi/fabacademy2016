@@ -28,3 +28,16 @@ I'm making a [spirograph](http://www.thingiverse.com/thing:905849), which can be
 I used Rhino to create a 3D model ([original file](files/w13-spirograph.3dm)):
 
 <img src="images/w13-spirograph-rhino.jpg"/>
+
+---
+
+Next, I designed the silicone mold for it by subtracting the above design from a cuboid.  
+
+<img src="images/w13-silicone-mold-rhino.jpg"/>
+
+---
+
+Then I designed the wax mold for the silicone mold, by subtracting the above from a bigger cuboid. This 
+    positive -> negative -> positive thinking definitely takes some time to get used to!
+
+<img src="images/w13-wax-mold-rhino.jpg"/>
