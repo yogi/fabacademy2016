@@ -76,4 +76,4 @@ Here is the mold after the finishing cut with the holes cut out too:
 
 Original Files:
 
-*  Rhino file - ADD ZIP FILE LINK!!!!!!!!!!!!!!!!: [w13-spirograph.3dm](files/w13-spirograph.3dm))
+*  Rhino 3DM file and STL file: [spirograph.zip](files/spirograph.zip))
