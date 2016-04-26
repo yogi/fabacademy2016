@@ -25,7 +25,7 @@ I've decided to do a simple object first in order to get familiar with the workf
 
 I'm making a [spirograph](http://www.thingiverse.com/thing:905849), which can be used to create interesting designs.
 
-I used Rhino to create a 3D model ([original file](files/w13-spirograph.3dm)):
+I used Rhino to create a 3D model:
 
 <img src="images/w13-spirograph-rhino.jpg"/>
 
@@ -48,3 +48,32 @@ Then I designed the wax mold for the silicone mold, by subtracting the above fro
 I wanted to do a test run, so I created a mold only for the gear:
 
 <img src="images/w13-gear-wax-mold-rhino.jpg"/>
+
+---
+
+These are the settings in fabmodules for the rough-cut with a 1/8th inch flat-nose end-mill:
+
+<img src="images/w13-rough-cut-settings.jpg"/>
+
+---
+
+These are the settings for the finishing-cut with a 1/16th inch end-mill:
+
+<img src="images/w13-finishing-cut-settings.jpg"/>
+
+---
+
+Here is the mold after the rough cut, notice that the holes weren't cut:
+
+<img src="images/w13-mold-rough-cut.jpg"/>
+
+---
+
+Here is the mold after the finishing cut with the holes cut out too:
+
+<img src="images/w13-mold.jpg"/>
+
+
+Original Files:
+
+*  Rhino file - ADD ZIP FILE LINK!!!!!!!!!!!!!!!!: [w13-spirograph.3dm](files/w13-spirograph.3dm))
