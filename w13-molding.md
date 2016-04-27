@@ -51,6 +51,11 @@ I wanted to do a test run, so I created a mold only for the gear:
 
 ---
 
+Original Files:
+
+*  Rhino 3DM file and STL file: [spirograph.zip](files/spirograph.zip))
+
+---
 These are the settings in fabmodules for the rough-cut with a 1/8th inch flat-nose end-mill:
 
 <img src="images/w13-rough-cut-settings.jpg"/>
@@ -84,6 +89,7 @@ Next step was to cast the silicone mold.
 * Then I mixed part A into Part B and mixed it for 3-4 minutes 
 * I then poured a little of the mixture into the mold and pressed it into the holes.
 * I then poured the rest and shook the mold to let it settle.
+* I used about 100g of silicone mixture (part A + B). 
 
 Part A & B ready to be mixed:
 
@@ -97,9 +103,26 @@ Filled mold ready for curing:
 
 <img src="images/w13-wax-mold-filled.jpg"/>
 
-The curing process takes 4 hours.
+The curing process takes 4 hours. Here is the mold right after it was removed:
 
+<img src="images/w13-silicone-mold.jpg"/>
 
-Original Files:
+<img src="images/w13-silicone-mold-2.jpg"/>
 
-*  Rhino 3DM file and STL file: [spirograph.zip](files/spirograph.zip))
+---
+
+Next, I cast the actual piece using [Smooth Cast 305 Resin](https://www.smooth-on.com/product-line/smooth-cast/), which sets in 30 min.
+ 
+Here is the filled up mold:
+
+<img src="images/w13-silicone-mold-filled.jpg"/>
+
+And this is right after removal:
+
+<img src="images/w13-all-3.jpg"/>
+
+The top surface is not as flat as I expected it to be, probably because I filled it a little too much. It also has many tiny air bubbles.
+
+<img src="images/w13-spirograph-top.jpg"/>
+
+<img src="images/w13-spirograph-bottom.jpg"/>
