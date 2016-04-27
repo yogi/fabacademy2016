@@ -73,6 +73,32 @@ Here is the mold after the finishing cut with the holes cut out too:
 
 <img src="images/w13-mold.jpg"/>
 
+---
+
+Next step was to cast the silicone mold. 
+
+* I used [Sorta-Clear 37 Silicone Rubber](https://www.smooth-on.com/product-line/sorta-clear/), which is made by mixing 2 parts (Part A & B) in 1:1 ratio.
+* First I measured the volume required by pouting water into the wax mold and emptying the water into a cup.
+* Next I took equal volumes of Part B and Part A in separate glasses and mixed these individually.
+* Then I added a little red dye to Part B, just to try some colour.
+* Then I mixed part A into Part B and mixed it for 3-4 minutes 
+* I then poured a little of the mixture into the mold and pressed it into the holes.
+* I then poured the rest and shook the mold to let it settle.
+
+Part A & B ready to be mixed:
+
+<img src="images/w13-part-a-b.jpg"/>
+
+Mixing in progress: 
+
+<img src="images/w13-mixing.jpg"/>
+
+Filled mold ready for curing:
+
+<img src="images/w13-wax-mold-filled.jpg"/>
+
+The curing process takes 4 hours.
+
 
 Original Files:
 
