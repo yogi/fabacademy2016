@@ -217,12 +217,12 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7">
-		<a href=""><h1>Output Devices</h1></a>
+		<a href="w14-output.html"><h1>Output Devices</h1></a>
 		<p>
 		</p>
 	</div>
 	<div class="col-md-5">
-      <a href="">
+      <a href="w14-output.html">
       </a>
 	</div>
 </div>
