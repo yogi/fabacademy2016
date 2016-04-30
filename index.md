@@ -80,7 +80,7 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7">
-		<a href="w4-eprod.html.html"><h1>Electronics Production</h1></a>
+		<a href="w4-eprod.html"><h1>Electronics Production</h1></a>
 		<h2 class="text-muted">FabISP</h2>
 		<p>
 			This week we created an in-circuit programmer using an ATtiny45 microcontroller, milled it on the Modella and soldered all the components.
@@ -113,7 +113,7 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7">
-		<a href="w6-edesign,html"><h1>Electronics Design</h1></a>
+		<a href="w6-edesign.html"><h1>Electronics Design</h1></a>
 		<h2 class="text-muted">Board with LED + Button</h2>
 		<p>
 			This week I designed a board's schematic and layout in Eagle, milled it and soldered the components.   
