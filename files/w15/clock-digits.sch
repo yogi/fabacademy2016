@@ -820,7 +820,7 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <variantdefs>
 </variantdefs>
 <classes>
-<class number="0" name="default" width="0.4826" drill="0">
+<class number="0" name="default" width="0.4572" drill="0">
 <clearance class="0" value="1.6256"/>
 </class>
 </classes>
@@ -920,12 +920,16 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <label x="50.8" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
+<pinref part="C2" gate="&gt;NAME" pin="1"/>
+<wire x1="160.02" y1="71.12" x2="157.48" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="71.12" x2="157.48" y2="78.74" width="0.1524" layer="91"/>
+<label x="157.48" y="76.2" size="1.778" layer="95"/>
+</segment>
+<segment>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="152.4" y1="71.12" x2="154.94" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="157.48" y1="71.12" x2="162.56" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="157.48" y1="71.12" x2="154.94" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="154.94" y1="71.12" x2="154.94" y2="81.28" width="0.1524" layer="91"/>
-<label x="154.94" y="78.74" size="1.778" layer="95"/>
+<wire x1="154.94" y1="71.12" x2="154.94" y2="78.74" width="0.1524" layer="91"/>
+<label x="149.86" y="76.2" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
