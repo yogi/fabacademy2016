@@ -56,7 +56,7 @@ layout: default
 	</div>
 	<div class="col-md-5">
       <a href="w2-cad.html">
-         <img src="images/cad.jpg" class="img-responsive" />&nbsp;
+         <img src="images/cad.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>
@@ -88,7 +88,7 @@ layout: default
 	</div>
 	<div class="col-md-5">
       <a href="w3-eprod.html">
-         <img src="images/fabisp.jpg" class="img-responsive" />&nbsp;
+         <img src="images/fabisp.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>
@@ -121,7 +121,7 @@ layout: default
 	</div>
 	<div class="col-md-5">
       <a href="w6-edesign.html">
-         <img src="images/w6-final-board.jpg" class="img-responsive" />&nbsp;
+         <img src="images/w6-final-board.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>
@@ -153,7 +153,7 @@ layout: default
 	</div>
 	<div class="col-md-5">
       <a href="w8-embedded.html">
-         <img src="images/w8-hello-led-blinking.jpg" class="img-responsive" />&nbsp;
+         <img src="images/w8-hello-led-blinking.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>
@@ -187,7 +187,7 @@ layout: default
 	</div>
 	<div class="col-md-5">
       <a href="w12-input.html">
-         <img src="images/w12-inputs-hero.jpg" class="img-responsive" />&nbsp;
+         <img src="images/w12-inputs-hero.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>
@@ -206,7 +206,7 @@ layout: default
 	</div>
 	<div class="col-md-5 col-md-pull-7">
       <a href="w13-molding.html">
-         <img src="images/w13-all-3.jpg" class="img-responsive" />&nbsp;
+         <img src="images/w13-all-3.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>
