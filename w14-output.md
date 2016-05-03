@@ -71,3 +71,18 @@ With this in mind I'm now going to create a single 7-segment digit LED module.
 
 ### 7-Segment LED Board
 
+Here's the new schematic. 
+
+I have also added an FTDI header for serial communication, to receive commands to display digits.
+
+<img src="images/w14-7segment-schematic.jpg"/>
+
+I have arranged the LEDs into 3 groups using 4 pins - 3 for LEDs and 1 for common-anode line. The last group has only 1 because
+    only 7 are needed totally. This arrangement with 4 pins can drive upto 12 LEDs. 
+
+In each group 1 of the pins controls the common-anode line which is connected to all the LEDs in that group. 
+
+The resistors and LEDs are named according to the segments each drives.
+ 
+<img src="images/w14-7segment.png" height="200"/>
+
