@@ -52,6 +52,11 @@ However, once the digits were done, it was near impossible to route the remainin
    
 <img src="images/w14-2digit-board.jpg"/>
 
+Here are the original files:
+
+* [Schematic](files/w14/clock-digits.brd) 
+* [Board](files/w14/clock-digits.sch) 
+
 I was not keen to make a multi-layer layer board because the approach seemed wrong. 
 
 A better approach might be to create separate board for each digit, with its own microcontroller and serial interface which allows
