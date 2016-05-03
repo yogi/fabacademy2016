@@ -192,6 +192,25 @@
 <rectangle x1="2.286" y1="1.016" x2="2.794" y2="1.524" layer="51"/>
 <rectangle x1="2.286" y1="-1.524" x2="2.794" y2="-1.016" layer="51"/>
 </package>
+<package name="SOT23">
+<description>&lt;b&gt;SOT 23&lt;/b&gt;</description>
+<wire x1="1.4224" y1="0.6604" x2="1.4224" y2="-0.6604" width="0.1524" layer="51"/>
+<wire x1="1.4224" y1="-0.6604" x2="-1.4224" y2="-0.6604" width="0.1524" layer="51"/>
+<wire x1="-1.4224" y1="-0.6604" x2="-1.4224" y2="0.6604" width="0.1524" layer="51"/>
+<wire x1="-1.4224" y1="0.6604" x2="1.4224" y2="0.6604" width="0.1524" layer="51"/>
+<wire x1="-1.4224" y1="-0.1524" x2="-1.4224" y2="0.6604" width="0.1524" layer="21"/>
+<wire x1="-1.4224" y1="0.6604" x2="-0.8636" y2="0.6604" width="0.1524" layer="21"/>
+<wire x1="1.4224" y1="0.6604" x2="1.4224" y2="-0.1524" width="0.1524" layer="21"/>
+<wire x1="0.8636" y1="0.6604" x2="1.4224" y2="0.6604" width="0.1524" layer="21"/>
+<smd name="3" x="0" y="1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="2" x="0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<smd name="1" x="-0.95" y="-1.1" dx="1" dy="1.4" layer="1"/>
+<text x="-1.905" y="1.905" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.905" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.2286" y1="0.7112" x2="0.2286" y2="1.2954" layer="51"/>
+<rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
+<rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
+</package>
 <package name="R1206">
 <description>&lt;b&gt;RESISTOR&lt;/b&gt;</description>
 <wire x1="0.9525" y1="-0.8128" x2="-0.9652" y2="-0.8128" width="0.1524" layer="51"/>
@@ -260,6 +279,15 @@ wave soldering</description>
 <smd name="2" x="1.651" y="0" dx="1.27" dy="1.905" layer="1"/>
 <text x="-1.778" y="1.27" size="1.016" layer="25" ratio="15">&gt;NAME</text>
 <text x="-1.778" y="-2.286" size="1.016" layer="27" ratio="15">&gt;VALUE</text>
+</package>
+<package name="2X02SMD">
+<smd name="1" x="-2.54" y="1.27" dx="2.54" dy="1.27" layer="1"/>
+<smd name="3" x="-2.54" y="-1.27" dx="2.54" dy="1.27" layer="1"/>
+<smd name="2" x="2.92" y="1.27" dx="2.54" dy="1.27" layer="1"/>
+<smd name="4" x="2.92" y="-1.27" dx="2.54" dy="1.27" layer="1"/>
+<text x="-5.08" y="1.27" size="1.27" layer="27">1</text>
+<text x="-3.81" y="2.54" size="1.27" layer="21">&gt;NAME</text>
+<text x="-3.81" y="-3.81" size="1.27" layer="21">&gt;VALUE</text>
 </package>
 <package name="SOIC8">
 <description>&lt;B&gt;Wide Plastic Gull Wing Small Outline Package&lt;/B&gt;</description>
@@ -374,6 +402,23 @@ wave soldering</description>
 <pin name="RST" x="-2.54" y="-2.54" visible="off" length="short" direction="pas" function="dot"/>
 <pin name="GND" x="5.08" y="-2.54" visible="off" length="short" direction="pas" function="dot" rot="R180"/>
 </symbol>
+<symbol name="REGULATOR">
+<wire x1="-6.35" y1="5.08" x2="-6.35" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="-6.35" y1="2.54" x2="-6.35" y2="-1.27" width="0.4064" layer="94"/>
+<wire x1="-6.35" y1="-1.27" x2="0" y2="-1.27" width="0.4064" layer="94"/>
+<wire x1="0" y1="-1.27" x2="6.35" y2="-1.27" width="0.4064" layer="94"/>
+<wire x1="6.35" y1="-1.27" x2="6.35" y2="2.54" width="0.4064" layer="94"/>
+<wire x1="6.35" y1="2.54" x2="6.35" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="6.35" y1="5.08" x2="-6.35" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="-7.62" y1="2.54" x2="-6.35" y2="2.54" width="0.254" layer="94"/>
+<wire x1="0" y1="-1.27" x2="0" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="6.35" y1="2.54" x2="7.62" y2="2.54" width="0.254" layer="94"/>
+<text x="-6.35" y="-3.81" size="1.27" layer="95">&gt;NAME</text>
+<text x="1.27" y="-3.81" size="1.27" layer="96">&gt;VALUE</text>
+<pin name="IN" x="-7.62" y="2.54" length="point"/>
+<pin name="GND" x="0" y="-2.54" length="point" rot="R90"/>
+<pin name="OUT" x="7.62" y="2.54" length="point" rot="R180"/>
+</symbol>
 <symbol name="R-US">
 <wire x1="-2.54" y1="0" x2="-2.159" y2="1.016" width="0.2032" layer="94"/>
 <wire x1="-2.159" y1="1.016" x2="-1.524" y2="-1.016" width="0.2032" layer="94"/>
@@ -401,6 +446,18 @@ wave soldering</description>
 <text x="-3.81" y="-3.81" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="1" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
 <pin name="2" x="2.54" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
+</symbol>
+<symbol name="PINH2X2">
+<wire x1="-8.89" y1="-2.54" x2="6.35" y2="-2.54" width="0.4064" layer="94"/>
+<wire x1="6.35" y1="-2.54" x2="6.35" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="6.35" y1="5.08" x2="-8.89" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="-8.89" y1="5.08" x2="-8.89" y2="-2.54" width="0.4064" layer="94"/>
+<text x="-8.89" y="5.715" size="1.778" layer="95">&gt;NAME</text>
+<text x="-8.89" y="-5.08" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="1" x="-5.08" y="2.54" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="2" x="2.54" y="2.54" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
+<pin name="3" x="-5.08" y="0" visible="pad" length="short" direction="pas" function="dot"/>
+<pin name="4" x="2.54" y="0" visible="pad" length="short" direction="pas" function="dot" rot="R180"/>
 </symbol>
 <symbol name="ATTINY45">
 <wire x1="-52.07" y1="7.493" x2="-52.07" y2="5.08" width="0.4064" layer="94"/>
@@ -510,6 +567,23 @@ wave soldering</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="REGULATOR" prefix="IC" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="REGULATOR" x="0" y="0"/>
+</gates>
+<devices>
+<device name="SOT23" package="SOT23">
+<connects>
+<connect gate="G$1" pin="GND" pad="3"/>
+<connect gate="G$1" pin="IN" pad="2"/>
+<connect gate="G$1" pin="OUT" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 <deviceset name="RES-US" prefix="R" uservalue="yes">
 <description>&lt;b&gt;Resistor (US Symbol)&lt;/b&gt;
 &lt;p&gt;
@@ -565,6 +639,24 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <connects>
 <connect gate="&gt;NAME" pin="1" pad="1"/>
 <connect gate="&gt;NAME" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PINHD-2X2-SMD">
+<gates>
+<gate name="G$1" symbol="PINH2X2" x="2.54" y="0"/>
+</gates>
+<devices>
+<device name="" package="2X02SMD">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -663,6 +755,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </classes>
 <parts>
 <part name="U$1" library="fab" deviceset="AVRISP" device="SMD"/>
+<part name="IC2" library="fab" deviceset="REGULATOR" device="SOT23" value="5V"/>
+<part name="U$2" library="fab" deviceset="PINHD-2X2-SMD" device=""/>
 <part name="U$17" library="fab" deviceset="ATTINY45" device="SI"/>
 <part name="R16" library="fab" deviceset="RES-US" device="1206FAB"/>
 <part name="C1" library="fab" deviceset="CAP-UNPOLARIZED" device="FAB"/>
@@ -688,6 +782,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="-5.08" y="55.88"/>
+<instance part="IC2" gate="G$1" x="60.96" y="106.68"/>
+<instance part="U$2" gate="G$1" x="15.24" y="109.22"/>
 <instance part="U$17" gate="G$1" x="81.28" y="81.28"/>
 <instance part="R16" gate="G$1" x="5.08" y="86.36"/>
 <instance part="C1" gate="&gt;NAME" x="-12.7" y="86.36"/>
@@ -717,6 +813,11 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <label x="7.62" y="58.42" size="1.778" layer="95"/>
 </segment>
 <segment>
+<pinref part="IC2" gate="G$1" pin="OUT"/>
+<wire x1="68.58" y1="109.22" x2="78.74" y2="109.22" width="0.1524" layer="91"/>
+<label x="73.66" y="109.22" size="1.778" layer="95"/>
+</segment>
+<segment>
 <pinref part="U$17" gate="G$1" pin="VCC"/>
 <wire x1="116.84" y1="86.36" x2="132.08" y2="86.36" width="0.1524" layer="91"/>
 <label x="127" y="86.36" size="1.778" layer="95"/>
@@ -727,17 +828,22 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <label x="-7.62" y="86.36" size="1.778" layer="95"/>
 <pinref part="C1" gate="&gt;NAME" pin="2"/>
 </segment>
-<segment>
-<pinref part="U$3" gate="G$1" pin="VCC"/>
-<wire x1="93.98" y1="106.68" x2="86.36" y2="106.68" width="0.1524" layer="91"/>
-<label x="86.36" y="106.68" size="1.778" layer="95"/>
-</segment>
 </net>
 <net name="GND" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="GND"/>
 <wire x1="0" y1="53.34" x2="12.7" y2="53.34" width="0.1524" layer="91"/>
 <label x="7.62" y="53.34" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="IC2" gate="G$1" pin="GND"/>
+<wire x1="60.96" y1="104.14" x2="60.96" y2="96.52" width="0.1524" layer="91"/>
+<label x="60.96" y="96.52" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="4"/>
+<wire x1="17.78" y1="109.22" x2="33.02" y2="109.22" width="0.1524" layer="91"/>
+<label x="27.94" y="109.22" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U$17" gate="G$1" pin="GND"/>
@@ -749,10 +855,17 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <wire x1="-17.78" y1="86.36" x2="-25.4" y2="86.36" width="0.1524" layer="91"/>
 <label x="-25.4" y="86.36" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="VIN" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="GND"/>
-<wire x1="93.98" y1="111.76" x2="86.36" y2="111.76" width="0.1524" layer="91"/>
-<label x="86.36" y="111.76" size="1.778" layer="95"/>
+<pinref part="U$2" gate="G$1" pin="2"/>
+<wire x1="17.78" y1="111.76" x2="33.02" y2="111.76" width="0.1524" layer="91"/>
+<label x="27.94" y="111.76" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="IC2" gate="G$1" pin="IN"/>
+<wire x1="53.34" y1="109.22" x2="43.18" y2="109.22" width="0.1524" layer="91"/>
+<label x="43.18" y="109.22" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RST" class="0">
