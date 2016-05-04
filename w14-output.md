@@ -82,7 +82,22 @@ I have arranged the LEDs into 3 groups using 4 pins - 3 for LEDs and 1 for commo
 
 In each group 1 of the pins controls the common-anode line which is connected to all the LEDs in that group. 
 
+<img src="images/w14-7segment.png" height="200"/>
+
 The resistors and LEDs are named according to the segments each drives.
  
-<img src="images/w14-7segment.png" height="200"/>
+I removed the ISP headers instead I'm piggybacking the ISP lines on the FTDI header.
+ 
+I also removed the voltage regulator, since this board will be networked with a master-controller board which will provide regulated
+    power.
+
+Next I worked on the board layout. This took a few hours to get right because of all the criss-crossing wires and the common-anode traces.
+
+<img src="images/w14-7segment-layout.jpg" />
+
+Here is the board after milling and stuffing:
+
+<img src="images/w14-7segment-board.jpg"/>
+
+Next step is to program the board. 
 

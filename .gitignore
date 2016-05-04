@@ -9,3 +9,9 @@ _site
 *.hex
 *.elf
 *.o
+*.b#*
+*.s#*
+*.brd.lck
+*.sch.lck
+*.pro
+

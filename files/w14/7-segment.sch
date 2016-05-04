@@ -509,13 +509,14 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <part name="RG" library="fab" deviceset="RES-US" device="1206FAB"/>
 <part name="LG" library="fab" deviceset="LED" device="FAB1206"/>
 <part name="U$3" library="fab" deviceset="FTDI-SMD-HEADER" device=""/>
+<part name="R1" library="fab" deviceset="RES-US" device="1206FAB" value="0"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 </plain>
 <instances>
-<instance part="U$17" gate="G$1" x="81.28" y="81.28"/>
+<instance part="U$17" gate="G$1" x="68.58" y="86.36" rot="R180"/>
 <instance part="RA" gate="G$1" x="27.94" y="124.46" rot="R270"/>
 <instance part="LA" gate="G$1" x="27.94" y="134.62"/>
 <instance part="RB" gate="G$1" x="38.1" y="124.46" rot="R270"/>
@@ -530,7 +531,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <instance part="LF" gate="G$1" x="91.44" y="134.62"/>
 <instance part="RG" gate="G$1" x="114.3" y="124.46" rot="R270"/>
 <instance part="LG" gate="G$1" x="114.3" y="134.62"/>
-<instance part="U$3" gate="G$1" x="83.82" y="55.88" rot="R90"/>
+<instance part="U$3" gate="G$1" x="71.12" y="58.42" rot="R270"/>
+<instance part="R1" gate="G$1" x="147.32" y="83.82"/>
 </instances>
 <busses>
 </busses>
@@ -538,56 +540,49 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <net name="VCC" class="0">
 <segment>
 <pinref part="U$17" gate="G$1" pin="VCC"/>
-<wire x1="116.84" y1="86.36" x2="132.08" y2="86.36" width="0.1524" layer="91"/>
-<label x="127" y="86.36" size="1.778" layer="95"/>
+<wire x1="33.02" y1="81.28" x2="17.78" y2="81.28" width="0.1524" layer="91"/>
+<label x="22.86" y="81.28" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="U$3" gate="G$1" pin="VCC"/>
-<wire x1="76.2" y1="55.88" x2="76.2" y2="48.26" width="0.1524" layer="91"/>
-<label x="76.2" y="48.26" size="1.778" layer="95" rot="R90"/>
+<wire x1="78.74" y1="58.42" x2="78.74" y2="66.04" width="0.1524" layer="91"/>
+<label x="78.74" y="66.04" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
 <pinref part="U$17" gate="G$1" pin="GND"/>
-<wire x1="27.94" y1="78.74" x2="15.24" y2="78.74" width="0.1524" layer="91"/>
-<label x="15.24" y="78.74" size="1.778" layer="95"/>
+<wire x1="121.92" y1="88.9" x2="134.62" y2="88.9" width="0.1524" layer="91"/>
+<label x="134.62" y="88.9" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="U$3" gate="G$1" pin="GND"/>
-<wire x1="71.12" y1="55.88" x2="71.12" y2="48.26" width="0.1524" layer="91"/>
-<label x="71.12" y="48.26" size="1.778" layer="95" rot="R90"/>
+<wire x1="83.82" y1="58.42" x2="83.82" y2="66.04" width="0.1524" layer="91"/>
+<label x="83.82" y="66.04" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="RST" class="0">
 <segment>
 <pinref part="U$17" gate="G$1" pin="PB5/PCINT5/-RESET/ADC0/DW"/>
-<wire x1="27.94" y1="86.36" x2="10.16" y2="86.36" width="0.1524" layer="91"/>
-<label x="15.24" y="86.36" size="1.778" layer="95"/>
+<wire x1="121.92" y1="81.28" x2="134.62" y2="81.28" width="0.1524" layer="91"/>
+<label x="134.62" y="81.28" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="U$3" gate="G$1" pin="CTS"/>
-<wire x1="73.66" y1="55.88" x2="73.66" y2="48.26" width="0.1524" layer="91"/>
-<label x="73.66" y="48.26" size="1.778" layer="95" rot="R90"/>
+<wire x1="81.28" y1="58.42" x2="81.28" y2="66.04" width="0.1524" layer="91"/>
+<label x="81.28" y="66.04" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="MOSI" class="0">
 <segment>
 <pinref part="U$17" gate="G$1" pin="MOSI/DI/SDA/AIN0/OC0A/-OC1A/AREF/PCINT0/PB0"/>
-<wire x1="116.84" y1="78.74" x2="132.08" y2="78.74" width="0.1524" layer="91"/>
-<label x="127" y="78.74" size="1.778" layer="95"/>
+<wire x1="33.02" y1="88.9" x2="17.78" y2="88.9" width="0.1524" layer="91"/>
+<label x="22.86" y="88.9" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="RXD"/>
-<wire x1="81.28" y1="55.88" x2="81.28" y2="48.26" width="0.1524" layer="91"/>
-<label x="81.28" y="48.26" size="1.778" layer="95" rot="R90"/>
-</segment>
-</net>
-<net name="MISO" class="0">
-<segment>
-<pinref part="U$17" gate="G$1" pin="MISO/DO/AIN1/OC0B/OC1A/PCINT1/PB1"/>
-<wire x1="116.84" y1="81.28" x2="132.08" y2="81.28" width="0.1524" layer="91"/>
-<label x="127" y="81.28" size="1.778" layer="95"/>
+<pinref part="U$3" gate="G$1" pin="RTS"/>
+<wire x1="71.12" y1="58.42" x2="71.12" y2="66.04" width="0.1524" layer="91"/>
+<label x="71.12" y="66.04" size="1.778" layer="95" rot="R270"/>
 </segment>
 <segment>
 <pinref part="LD" gate="G$1" pin="A"/>
@@ -611,17 +606,24 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <junction x="101.6" y="104.14"/>
 <label x="10.16" y="104.14" size="1.778" layer="95"/>
 </segment>
+</net>
+<net name="MISO" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="RTS"/>
-<wire x1="83.82" y1="55.88" x2="83.82" y2="48.26" width="0.1524" layer="91"/>
-<label x="83.82" y="48.26" size="1.778" layer="95" rot="R90"/>
+<pinref part="U$17" gate="G$1" pin="MISO/DO/AIN1/OC0B/OC1A/PCINT1/PB1"/>
+<wire x1="33.02" y1="86.36" x2="17.78" y2="86.36" width="0.1524" layer="91"/>
+<label x="22.86" y="86.36" size="1.778" layer="95" rot="R180"/>
+</segment>
+<segment>
+<pinref part="U$3" gate="G$1" pin="RXD"/>
+<wire x1="73.66" y1="58.42" x2="73.66" y2="66.04" width="0.1524" layer="91"/>
+<label x="73.66" y="66.04" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="SCK" class="0">
 <segment>
 <pinref part="U$17" gate="G$1" pin="SCK/USCK/SCL/ADC1/T0/INT0/PCINT2/PB2"/>
-<wire x1="116.84" y1="83.82" x2="132.08" y2="83.82" width="0.1524" layer="91"/>
-<label x="127" y="83.82" size="1.778" layer="95"/>
+<wire x1="33.02" y1="83.82" x2="17.78" y2="83.82" width="0.1524" layer="91"/>
+<label x="22.86" y="83.82" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <wire x1="10.16" y1="99.06" x2="58.42" y2="99.06" width="0.1524" layer="91"/>
@@ -647,8 +649,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </segment>
 <segment>
 <pinref part="U$3" gate="G$1" pin="TXD"/>
-<wire x1="78.74" y1="55.88" x2="78.74" y2="48.26" width="0.1524" layer="91"/>
-<label x="78.74" y="48.26" size="1.778" layer="95" rot="R90"/>
+<wire x1="76.2" y1="58.42" x2="76.2" y2="66.04" width="0.1524" layer="91"/>
+<label x="76.2" y="66.04" size="1.778" layer="95" rot="R270"/>
 </segment>
 </net>
 <net name="PB4" class="0">
@@ -670,8 +672,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </segment>
 <segment>
 <pinref part="U$17" gate="G$1" pin="PB4/PCINT4/XTAL2/CLKO/OC1B/ADC2"/>
-<wire x1="27.94" y1="81.28" x2="15.24" y2="81.28" width="0.1524" layer="91"/>
-<label x="15.24" y="81.28" size="1.778" layer="95"/>
+<wire x1="121.92" y1="86.36" x2="134.62" y2="86.36" width="0.1524" layer="91"/>
+<label x="134.62" y="86.36" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -726,8 +728,9 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <net name="PB3" class="0">
 <segment>
 <pinref part="U$17" gate="G$1" pin="PB3/PCINT3/XTAL1/CLKI/-OC1B/ADC3"/>
-<wire x1="27.94" y1="83.82" x2="15.24" y2="83.82" width="0.1524" layer="91"/>
-<label x="15.24" y="83.82" size="1.778" layer="95"/>
+<wire x1="121.92" y1="83.82" x2="142.24" y2="83.82" width="0.1524" layer="91"/>
+<label x="134.62" y="83.82" size="1.778" layer="95" rot="R180"/>
+<pinref part="R1" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="LG" gate="G$1" pin="A"/>
@@ -746,6 +749,11 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <wire x1="124.46" y1="147.32" x2="124.46" y2="109.22" width="0.1524" layer="91"/>
 <junction x="124.46" y="109.22"/>
 <label x="10.16" y="109.22" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R1" gate="G$1" pin="2"/>
+<wire x1="152.4" y1="83.82" x2="160.02" y2="83.82" width="0.1524" layer="91"/>
+<label x="154.94" y="83.82" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
