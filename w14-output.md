@@ -108,7 +108,6 @@ I wrote a simple program to blink the A (top) segment. Here is the output:
   Your browser does not support the video tag.
 </video>
 
-As you can tell segments B, C, D are also blinking, which should not happen! I think this is happening because the voltage is 5V, while the LED
-    expects 2.1V. I'm still debugging this.
+As you can tell segments B, C, D are also blinking, which should not happen! I'm still debugging this.
     
     
