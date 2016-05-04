@@ -218,11 +218,15 @@ layout: default
 <div class="row">
 	<div class="col-md-7">
 		<a href="w14-output.html"><h1>Output Devices</h1></a>
+		<h2 class="text-muted">7-Segment LED Board</h2>
 		<p>
+		    This week I created a 7-segment LED board which can display digits. It uses a technique called Charlieplexing to 
+		     minimize the number of pins needed to drive the LEDs.
 		</p>
 	</div>
 	<div class="col-md-5">
       <a href="w14-output.html">
+         <img src="images/w14-7segment-index-page.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>

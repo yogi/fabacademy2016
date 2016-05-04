@@ -24,7 +24,7 @@
 #define set(pin) (PORTB |= (1 << pin)) // set port pin
 #define clear(pin) (PORTB &= (~ (1 << pin))) // clear port pin
 
-const int DELAY = 1000;
+const int DELAY = 1;
 
 
 int anode_for(int led) {
@@ -77,10 +77,17 @@ int main(void) {
 
     while(1) {
         int i;
-        for (i = 0; i < 10; i++) {
-            display(i);
-            _delay_ms(100);
-        }
+//        for (i = 0; i < 10; i++) {
+            flash(A);
+            flash(B);
+            flash(C);
+            flash(D);
+            flash(E);
+            flash(F);
+            flash(G);
+//            display(i);
+//            _delay_ms(100);
+//        }
     }
     
     return 0;
