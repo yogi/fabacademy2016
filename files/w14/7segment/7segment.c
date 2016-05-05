@@ -24,8 +24,34 @@
 #define set(pin) (PORTB |= (1 << pin)) // set port pin
 #define clear(pin) (PORTB &= (~ (1 << pin))) // clear port pin
 
-const int DELAY = 300;
+const int FLICKER_DELAY_MS = 10;
+const int DIGIT_DELAY_MS = 5000;
 
+char DIGIT_SEGMENTS[10][7] = {
+     {'A', 'B', 'C', 'D', 'E', 'F'},            // 0
+     {'B', 'C'},                                // 1
+     {'A', 'B', 'D', 'E', 'G'},                 // 2
+     {'A', 'B', 'C', 'D', 'G'},                 // 3
+     {'B', 'C', 'F', 'G'},                      // 4
+     {'A', 'C', 'D', 'F', 'G'},                 // 5
+     {'A', 'C', 'D', 'E', 'F', 'G'},            // 6
+     {'A', 'B', 'C'},                           // 7
+     {'A', 'B', 'C', 'D', 'E', 'F', 'G',},      // 8
+     {'A', 'B', 'C', 'F', 'G',}                 // 9
+};
+
+int DIGIT_NUM_SEGMENTS[] = {
+    6, // 0
+    2, // 1
+    5, // 2
+    5, // 3
+    4, // 4
+    5, // 5
+    6, // 6
+    3, // 7
+    7, // 8
+    5  // 9
+};
 
 int anode_pin_for(char led) {
     if (led == 'A' || led == 'B' || led == 'C') 
@@ -47,22 +73,12 @@ int led_pin_for(char led) {
         return SCK_PIN;
 }
 
-void led_delay() {
-    _delay_ms(DELAY);
-}
-
 void high_impedance(pin) {
     input(pin);
     clear(pin);
 }
 
 void flash(char led) {
-    high_impedance(PB0);
-    high_impedance(PB1);
-    high_impedance(PB2);
-    high_impedance(PB3);
-    high_impedance(PB4);
-
     int anode_pin = anode_pin_for(led);
     int led_pin = led_pin_for(led);
     
@@ -72,26 +88,42 @@ void flash(char led) {
     set(anode_pin);
     clear(led_pin);
 
-    led_delay();
+    _delay_ms(FLICKER_DELAY_MS);
     
     high_impedance(anode_pin);    
     high_impedance(led_pin);
 }
 
-void display(int n) {
-    if (n == 0) {
-        flash(A);
+void flicker(char segments[]) {
+    int i;
+    int len = sizeof(segments) / sizeof(char);
+    for (i = 0; i < len; i++) {
+        flash(segments[i]);
+    }
+}
+
+void display(int digit) {
+    int i;
+    char *segments = DIGIT_SEGMENTS[digit];
+    int num_segments = DIGIT_NUM_SEGMENTS[digit];
+//    int cycles = DIGIT_DELAY_MS / (FLICKER_DELAY_MS * num_segments);
+    int cycles = DIGIT_DELAY_MS / (FLICKER_DELAY_MS * 2);
+    for (i = 0; i < cycles; i++) {
+        flicker(segments);
     }
 }
 
 int main(void) {
-    char leds[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+    high_impedance(PB0);
+    high_impedance(PB1);
+    high_impedance(PB2);
+    high_impedance(PB3);
+    high_impedance(PB4);
+
     int i = 0;
-    
     while(1) {
-        flash(leds[i++]);
-        _delay_ms(100);
-        if (i >= 7)
+        display(i); 
+        if (++i >= 10)
             i = 0;
     }
     
