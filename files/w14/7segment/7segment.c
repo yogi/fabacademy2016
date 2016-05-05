@@ -24,7 +24,7 @@
 #define set(pin) (PORTB |= (1 << pin)) // set port pin
 #define clear(pin) (PORTB &= (~ (1 << pin))) // clear port pin
 
-const int FLICKER_DELAY_MS = 10;
+const int FLICKER_DELAY_MS = 100;
 const int DIGIT_DELAY_MS = 5000;
 
 char DIGIT_SEGMENTS[10][7] = {
@@ -113,6 +113,7 @@ void display(int digit) {
     }
 }
 
+/*
 int main(void) {
     high_impedance(PB0);
     high_impedance(PB1);
@@ -124,6 +125,22 @@ int main(void) {
     while(1) {
         display(i); 
         if (++i >= 10)
+            i = 0;
+    }
+    
+    return 0;
+}
+*/
+
+
+int main(void) {
+    char leds[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+    int i = 0;
+    
+    while(1) {
+        flash(leds[i++]);
+        _delay_ms(100);
+        if (i >= 7)
             i = 0;
     }
     
