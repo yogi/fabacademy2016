@@ -24,16 +24,27 @@
 #define set(pin) (PORTB |= (1 << pin)) // set port pin
 #define clear(pin) (PORTB &= (~ (1 << pin))) // clear port pin
 
-const int DELAY = 1;
+const int DELAY = 300;
 
 
-int anode_for(int led) {
-    if (led == A || led == B || led == C) 
+int anode_pin_for(char led) {
+    if (led == 'A' || led == 'B' || led == 'C') 
         return ABC_ANODE;
-    else if (led == D || led == E || led == F) 
+    else if (led == 'D' || led == 'E' || led == 'F') 
         return DEF_ANODE;
     else  
         return G_ANODE;
+}
+
+int led_pin_for(char led) {
+    if (led == 'A' || led == 'D' || led == 'G')
+        return PB4;
+    else if (led == 'B' || led == 'E')
+        return PB3;
+    else if (led == 'C')
+        return MOSI_PIN;
+    else // 'F'
+        return SCK_PIN;
 }
 
 void led_delay() {
@@ -45,19 +56,26 @@ void high_impedance(pin) {
     clear(pin);
 }
 
-void flash(int led) {
-    int anode = anode_for(led);
+void flash(char led) {
+    high_impedance(PB0);
+    high_impedance(PB1);
+    high_impedance(PB2);
+    high_impedance(PB3);
+    high_impedance(PB4);
+
+    int anode_pin = anode_pin_for(led);
+    int led_pin = led_pin_for(led);
     
-    output(anode);    
-    output(led);
+    output(anode_pin);    
+    output(led_pin);
         
-    set(anode);
-    clear(led);
+    set(anode_pin);
+    clear(led_pin);
 
     led_delay();
     
-    high_impedance(anode);    
-    high_impedance(led);
+    high_impedance(anode_pin);    
+    high_impedance(led_pin);
 }
 
 void display(int n) {
@@ -67,50 +85,15 @@ void display(int n) {
 }
 
 int main(void) {
-    high_impedance(A);
-    high_impedance(B);
-    high_impedance(C);
-    high_impedance(D);
-    high_impedance(E);
-    high_impedance(F);
-    high_impedance(G);
-
+    char leds[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+    int i = 0;
+    
     while(1) {
-        int i;
-//        for (i = 0; i < 10; i++) {
-            flash(A);
-            flash(B);
-            flash(C);
-            flash(D);
-            flash(E);
-            flash(F);
-            flash(G);
-//            display(i);
-//            _delay_ms(100);
-//        }
+        flash(leds[i++]);
+        _delay_ms(100);
+        if (i >= 7)
+            i = 0;
     }
     
     return 0;
 }
-//        output(DIR_REG, ABC_ANODE);    
-//        output(DIR_REG, A);
-//            
-//        set(ABC_ANODE);
-//        clear(A);
-        
-//        _delay_ms(500);
-
-//        clear(DEF_ANODE);
-
-//        input(DIR_REG, DEF_ANODE);    
-//        input(DIR_REG, D);
-//    }
-    
-//    while(1) {
-//        DDRB |= (1 << SCK_PIN); // sets the data direction to output
-//        PORTB |= (1 << SCK_PIN);  // high value to common-anode for group 1
-//
-//        PORTB &= ~(1 << LEDA_PIN); // write a low value
-//         
-//        _delay_ms(delay);
-//    }
