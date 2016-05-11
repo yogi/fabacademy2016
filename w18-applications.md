@@ -65,10 +65,9 @@ Here are some similar products:
 
 The clock is made up of:
 
-* LED display: 7-segment, 4 digits. 
-
-* LED HourDigits and MinuteDigits separator - ":", which blinks every second.
-
+* Craft plywood case
+* 7-segment LED display, 4 digits 
+* LED HourDigits and MinuteDigits separator - ":", which blinks every second
 * 3 buttons:
     * TimeSet: 
         * On pressing it, the HourDigits start blinking indicating it can be changed using the TimeUp and TimeDown buttons 
@@ -78,22 +77,21 @@ The clock is made up of:
         Increments the hour or minute (whichever is blinking)
     * TimeDown:
         Decrements the hour or minute
-
 * Ambient light sensor
-
 * PIR motion detection sensor
-
 * Battery backup to retain time when disconnected from a wall-power outlet 
- 
-* Power cord with 3-pin plug for 5 amp sockets
-
+* Power cord with 3-pin 5amp plug
 * (Optional) Battery power indicator
 
 ### Use Cases
 
-* When powered on, should display the clock at 12:00 
-* When 
+* When powered on for the first time, it should display 12:00 and enter TimeChange mode (start blinking the HourDigits) 
+* Should allow the user to change the time using the TimeSet, TimeUp and TimeDown buttons
+    * In TimeChange mode, if the user input is not complete, should revert to the previous time after 10 seconds
+* Should maintain accurate time
+* When ambient light drops below a threshold, should turn the display off
+* When display is off and motion is detected, should turn the display off for 5 seconds 
+* When wall-power is turned off, should switch to battery power and continue operating normally
 
-
-## Materials Required
+## Material Required
 
