@@ -235,11 +235,13 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7 col-md-push-5">
-		<a href=""><h1>Composites</h1></a>
+		<a href="w15-composites.html"><h1>Composites</h1></a>
 		<p>
 		</p>
 	</div>
 	<div class="col-md-5 col-md-pull-7">
+      <a href="w15-composites.html">
+      </a>
 	</div>
 </div>
 
@@ -249,12 +251,12 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7">
-		<a href=""><h1>Networking & Communications</h1></a>
+		<a href="w16-networking.html"><h1>Networking & Communications</h1></a>
 		<p>
 		</p>
 	</div>
 	<div class="col-md-5">
-      <a href="">
+      <a href="w16-networking.html">
       </a>
 	</div>
 </div>
@@ -264,11 +266,13 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7 col-md-push-5">
-		<a href=""><h1>Interface & Application Programming</h1></a>
+		<a href="w17-interface.html"><h1>Interface & Application Programming</h1></a>
 		<p>
 		</p>
 	</div>
 	<div class="col-md-5 col-md-pull-7">
+      <a href="w17-interface.html">
+      </a>
 	</div>
 </div>
 
@@ -278,12 +282,12 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7">
-		<a href=""><h1>Applications & Implications</h1></a>
+		<a href="w18-applications.html"><h1>Applications & Implications</h1></a>
 		<p>
 		</p>
 	</div>
 	<div class="col-md-5">
-      <a href="">
+      <a href="w18-applications.html">
       </a>
 	</div>
 </div>
@@ -292,11 +296,13 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7 col-md-push-5">
-		<a href=""><h1>Invention, Intellectual Property and Income</h1></a>
+		<a href="w19-invention.html"><h1>Invention, Intellectual Property and Income</h1></a>
 		<p>
 		</p>
 	</div>
 	<div class="col-md-5 col-md-pull-7">
+      <a href="w19-invention.html">
+      </a>
 	</div>
 </div>
 
