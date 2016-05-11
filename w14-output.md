@@ -110,4 +110,28 @@ I wrote a simple program to blink the A (top) segment. Here is the output:
 
 As you can tell segments B, C, D are also blinking, which should not happen! I'm still debugging this.
     
+I hooked up the board to a DC power source to check if the voltage had anything to do with this. I recalled reading about 
+    the voltage range for LEDs being an important part of making charlieplexing work. 
     
+Sure enough it was the voltage. You can see in the video that at 3.3V only the B LED is visible, but C & E get gradually brighter 
+    as the voltage increases upto 5V. 
+
+<video controls>
+  <source src="images/w14-led-voltage-changes.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+    
+Here is a great explanation of what's happening: [Charlieplexing LEDs: The Theory](http://www.instructables.com/id/Charlieplexing-LEDs--The-theory/).
+
+This graph from that article explains the trick, which is to ensure that the voltage lies in the range for the LED that needs to be lit, 
+    and at the same time is in the "no-glowing region" for the other LEDs which might get some current. 
+     
+<img src="images/w14-led-range.jpg"/>
+
+The operating range for the LED I was using seemed to be between 2.1 V - 3.2 V.
+
+Here is the board displaying each digit from 0 - 9:
+
+<img src="images/w14-digits.jpg" width="1024"/>
+
+
