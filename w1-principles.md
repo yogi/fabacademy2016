@@ -22,7 +22,7 @@ So, with that in mind I'd like to create...
 
 Hi! Time is a digital clock that recognizes gestures like hand-waves.
 
-Its meant especially for the night when you wake up in the dark and have to know the time, but you don't want a clock
+It is meant especially for the night when you wake up in the dark and have to know the time, but you don't want a clock
  that annoyingly tick-tocks in the silence or one which has a display that is bright in the dark, which prevents you from 
  [falling into a deep sleep][DeepSleep].
 

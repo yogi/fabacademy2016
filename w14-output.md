@@ -20,14 +20,14 @@ For this assignment I decided to make a 7-segment display with at least 2 digits
 I spent some time going deeper into electronics, particularly understanding inductors, impedance, semi-conductors, and 
     power-supplies. This site - [Learn About Electronics](learnabout-electronics.org) had excellent explanations e.g. check out 
     the section on [Filter Circuits](http://www.learnabout-electronics.org/PSU/psu12.php), it explains the role of reservoir 
-    filters very well. I also referred to classics like [Art of Electronics](http://www.amazon.com/Art-Electronics-Paul-Horowitz/dp/0521809266) 
+    capacitors very well. I also referred to classics like [Art of Electronics](http://www.amazon.com/Art-Electronics-Paul-Horowitz/dp/0521809266) 
     and [Practical Electronics for Inventors](http://www.amazon.com/Practical-Electronics-Inventors-Third-Scherz/dp/0071771336). 
 
 ["Chalieplexing"](https://en.wikipedia.org/wiki/Charlieplexing) stands for 
     ["Charlie Allen's mulitplexing"](https://www.maximintegrated.com/en/app-notes/index.mvp/id/1880), which allows fewer 
     pins to be used to control many LEDs. 
 
-In Chalieplexing 2 LEDs are connected with to 2 pins - one forward biased and the other reverse biased, so that by setting 
+In Chalieplexing 2 LEDs are connected to 2 pins - one forward biased and the other reverse biased, so that by setting 
     a pin high and the other low, current flows only in 1 direction - lighting up 1 LED. 
     
 To create 7-segment digits however you need to use multiplexing also because multiple LEDs (for each segment in a digit) need 
