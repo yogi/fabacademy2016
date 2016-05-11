@@ -306,12 +306,14 @@ layout: default
 
 <div class="row">
 	<div class="col-md-7">
-		<a href=""><h1>Final Project Development</h1></a>
+		<a href="w20-final.html"><h1>Final Project Development</h1></a>
+		<h2 class="text-muted">Hi! Time - Gesture Sensing Clock</h2>
 		<p>
+		    This project brings together many of the skills I've learnt over the past few months. 
 		</p>
 	</div>
 	<div class="col-md-5">
-      <a href="">
+      <a href="w20-final.html">
       </a>
 	</div>
 </div>
