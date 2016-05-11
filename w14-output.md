@@ -132,6 +132,6 @@ The operating range for the LED I was using seemed to be between 2.1 V - 3.2 V.
 
 Here is the board displaying each digit from 0 - 9:
 
-<img src="images/w14-digits.jpg" width="1024"/>
+<img src="images/w14-cycle.gif" />
 
 
