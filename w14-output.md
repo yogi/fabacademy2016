@@ -134,4 +134,9 @@ Here is the board displaying each digit from 0 - 9:
 
 <img src="images/w14-cycle.gif" />
 
+Original files:
 
+* [7segment.c](files/w14/7segment/7segment.c)
+* [Makefile](files/w14/7segment/Makefile)
+* [Eagle Schematic 7-segment.sch](files/w14/7-segment.sch)
+* [Eagle Layout 7-segment.brd](files/w14/7-segment.brd)
