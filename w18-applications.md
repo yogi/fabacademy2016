@@ -61,14 +61,19 @@ Here are some similar products:
 * This is a [motion-detecting spy clock](http://www.amazon.com/TechTonic-Portable-Camera-Motion-Detection/dp/B00AY571XA) 
 * [Wave Alarm](https://itunes.apple.com/app/wave-alarm-motion-control/id504386929?ls=1&mt=8) is an iPhone app which supports gestures
 
-## Functional Specificatoin
+## Functional Specification
 
 The clock is made up of:
 
-* Craft plywood case
-* 7-segment LED display, 4 digits 
-* LED HourDigits and MinuteDigits separator - ":", which blinks every second
+* Case
+    * Craft plywood / acrylic
+
+* Digit display
+    * 7-segment LED display, 4 digits
+    * LED HourDigits and MinuteDigits separator - ":", which blinks every second
+
 * 3 buttons:
+    * Capacitive, push-button
     * TimeSet: 
         * On pressing it, the HourDigits start blinking indicating it can be changed using the TimeUp and TimeDown buttons 
         * Pressing it again causes the MinuteDigits to start blinking
@@ -77,10 +82,19 @@ The clock is made up of:
         Increments the hour or minute (whichever is blinking)
     * TimeDown:
         Decrements the hour or minute
+        
 * Ambient light sensor
-* PIR motion detection sensor
-* Battery backup to retain time when disconnected from a wall-power outlet 
-* Power cord with 3-pin 5amp plug
+    * Phototransistor
+
+* Motion detector
+    * Infra-red, ultrasound
+
+* RealTimeClock with battery backup 
+    * Software implementation
+    * RTC chip
+ 
+* (Optional) Power cord with 3-pin 5amp plug
+
 * (Optional) Battery power indicator
 
 ### Use Cases
@@ -93,5 +107,90 @@ The clock is made up of:
 * When display is off and motion is detected, should turn the display off for 5 seconds 
 * When wall-power is turned off, should switch to battery power and continue operating normally
 
+## System Design
+
+
 ## Material Required
+
+
+## Cost
+
+
+## Tasks
+
+     
+* Prototype motion detector
+    * Ultrasound (or PIR / Infrared emitter-receiver / Xband doppler for motion detection) 
+    * watch Neil's explanation
+    * mill board
+    * stuff board
+    * test
+
+* Prototype RTClock
+    * [AVR RTC note](http://www.atmel.com/images/atmel-1259-real-time-clock-rtc-using-the-asynchronous-timer_ap-note_avr134.pdf)
+    * [DS1307 board with battery backup](http://www.amazon.in/DS1307-module-Arduino-MSP430-raspberry/dp/B0180GI57A?tag=googinhydr18418-21&tag=googinkenshoo-21&ascsubtag=c1eae2c9-db9c-4481-baf2-f4eee1992dea)
+
+* Test capacitive touch button (~3hr)
+    * watch Neil's explanation in video 
+    * mill board (1hr)
+    * stuff board (1hr)
+    * test, also with craft plywood covering the copper plate (0.5hr)
+     
+* Test serial network between 3 boards (3hr) 
+    * program node 1 
+    * program node 2
+    * program controller
+    * test
+
+* Test brightness of LEDs with acrylic sheet
+    * cut 7-segment digit shape in plywood and acrylic
+    * check press-fit tolerance
+    * check brightness
+
+* Design clock case
+    * test cut for flexures and side to panel press-fit joint
+    * front face with digits, button 
+    * back panel
+    * side with flexures
+
+* Create boards
+    * Controller
+    
+    * Ambient sensor
+        * Use existing board?
+        
+    * Motion sensor
+    
+    * RT Clock
+        
+    * 4 x LED digits
+        
+    * Digits separator
+
+    * Buttons
+    
+    
+## Schedule
+
+
+## Questions
+
+* XBand doppler sensor for long-range motion detection?
+
+## Shopping List
+
+* IR transceiver - model / spec???
+* XBand doppler - model / spec???
+* Brighter LEDs - model / spec???
+* RTC DS1307 board - model / spec???
+* Battery + holder  
+    * button cell + holder
+    * 9V + holder
+* Jumper cables: m-f, m-m, f-f
+* miniUSB-USB cable
+* LED 7-segment displays
+* push-button with long switch
+
+
+## Evaluation Criteria
 
