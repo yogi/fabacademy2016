@@ -16,7 +16,7 @@ The first is the Motion Detector. I need a way to detect a hand-wave about 1 foo
 However I like working outside-in, i.e. starting with the end product and working backwards to the details. Therefore, I'm starting off
     creating the design in Rhino.
     
-## Clock Case Design 
+## Clock Digit Design 
 
 First step was to design the digits and try out a test cut to get the tolerances correct for the acrylic segments to fit 
     into the craft plywood outlines. 
@@ -48,20 +48,24 @@ Looks like I might have to add 2 LEDs instead of 1 for each segment.
 Today I went to the local electronics market to buy a bunch of things I needed for the project. It turned out to be very 
     productive as I was able to get pretty much everything I needed:
     
+<img src="images/w20-shopping.jpg"/>
+
 * RTC DS3231 module 
 * HCSR04 Ultrasonic sensor module
 * IR Transceiver
-* Jumper cables
-* Arduino Uno for prototyping
 * Bright LEDs
+* Arduino Uno for prototyping
+* Jumper cables
+* Push buttons with longer shaft
 
 For motion detection I plan to try the ultrasonic sensor first since I want detection over at least 1+ ft, which the IR sensor isn't 
    capable of.
    
 ### Ultrasonic sensor test
 
-The sensor requires a 10µs pulse on it's Trigger pin, which causes it to send out 8 40khz sound pulses and waits for the echo back. 
- The distance to the object can be calculated by dividing the time taken by the speed of sound. 
+As per the [datasheet](http://www.micropik.com/PDF/HCSR04.pdf) and [user-guide](https://www.mpja.com/download/hc-sr04_ultrasonic_module_user_guidejohn.pdf) 
+    the sensor requires a 10µs pulse on it's Trigger pin, which causes it to send out 8 40khz sound pulses and waits for the echo back. 
+    The distance to the object can be calculated by dividing the time taken by the speed of sound. 
  
 I used an Arduino sketch I found [here](http://playground.arduino.cc/Code/NewPing).
 
@@ -97,5 +101,143 @@ Here is a video showing the test:
 
 ### Real Time Clock Test 
 
-Next step is to test the RTC DS3231 module.
+Next step is to test the RTC module. Here is the [DS3231 datasheet](https://datasheets.maximintegrated.com/en/ds/DS3231.pdf).
+
+I used this [guide](http://tronixstuff.com/2014/12/01/tutorial-using-ds1307-and-ds3231-real-time-clock-modules-with-arduino/) and sketch
+    to test the module. 
+    
+I hooked up the I2C SDA (data) and SCL (clock) to pins A4 and A5 respectively. 
+
+Here's the sketch from the article:
+ 
+<pre>
+#include "Wire.h"
+#define DS3231_I2C_ADDRESS 0x68
+// Convert normal decimal numbers to binary coded decimal
+byte decToBcd(byte val)
+{
+  return( (val/10*16) + (val%10) );
+}
+// Convert binary coded decimal to normal decimal numbers
+byte bcdToDec(byte val)
+{
+  return( (val/16*10) + (val%16) );
+}
+
+void setDS3231time(byte second, byte minute, byte hour, byte dayOfWeek, byte
+dayOfMonth, byte month, byte year)
+{
+  // sets time and date data to DS3231
+  Wire.beginTransmission(DS3231_I2C_ADDRESS);
+  Wire.write(0); // set next input to start at the seconds register
+  Wire.write(decToBcd(second)); // set seconds
+  Wire.write(decToBcd(minute)); // set minutes
+  Wire.write(decToBcd(hour)); // set hours
+  Wire.write(decToBcd(dayOfWeek)); // set day of week (1=Sunday, 7=Saturday)
+  Wire.write(decToBcd(dayOfMonth)); // set date (1 to 31)
+  Wire.write(decToBcd(month)); // set month
+  Wire.write(decToBcd(year)); // set year (0 to 99)
+  Wire.endTransmission();
+}
+
+void setup()
+{
+  Wire.begin();
+  Serial.begin(9600);
+  // set the initial time here:
+  // DS3231 seconds, minutes, hours, day, date, month, year
+  setDS3231time(0,14,20,6,13,5,16);
+}
+
+void readDS3231time(byte *second,
+byte *minute,
+byte *hour,
+byte *dayOfWeek,
+byte *dayOfMonth,
+byte *month,
+byte *year)
+{
+  Wire.beginTransmission(DS3231_I2C_ADDRESS);
+  Wire.write(0); // set DS3231 register pointer to 00h
+  Wire.endTransmission();
+  Wire.requestFrom(DS3231_I2C_ADDRESS, 7);
+  // request seven bytes of data from DS3231 starting from register 00h
+  *second = bcdToDec(Wire.read() & 0x7f);
+  *minute = bcdToDec(Wire.read());
+  *hour = bcdToDec(Wire.read() & 0x3f);
+  *dayOfWeek = bcdToDec(Wire.read());
+  *dayOfMonth = bcdToDec(Wire.read());
+  *month = bcdToDec(Wire.read());
+  *year = bcdToDec(Wire.read());
+}
+
+void displayTime()
+{
+  byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+  // retrieve data from DS3231
+  readDS3231time(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month,
+  &year);
+  // send it to the serial monitor
+  Serial.print(hour, DEC);
+  // convert the byte variable to a decimal number when displayed
+  Serial.print(":");
+  if (minute<10)
+  {
+    Serial.print("0");
+  }
+  Serial.print(minute, DEC);
+  Serial.print(":");
+  if (second<10)
+  {
+    Serial.print("0");
+  }
+  Serial.print(second, DEC);
+  Serial.print(" ");
+  Serial.print(dayOfMonth, DEC);
+  Serial.print("/");
+  Serial.print(month, DEC);
+  Serial.print("/");
+  Serial.print(year, DEC);
+  Serial.print(" Day of week: ");
+  switch(dayOfWeek){
+  case 1:
+    Serial.println("Sunday");
+    break;
+  case 2:
+    Serial.println("Monday");
+    break;
+  case 3:
+    Serial.println("Tuesday");
+    break;
+  case 4:
+    Serial.println("Wednesday");
+    break;
+  case 5:
+    Serial.println("Thursday");
+    break;
+  case 6:
+    Serial.println("Friday");
+    break;
+  case 7:
+    Serial.println("Saturday");
+    break;
+  }
+}
+void loop()
+{
+  displayTime(); // display the real-time clock data on the Serial Monitor,
+  delay(1000); // every second
+}
+</pre>
+
+Most of the code is for formatting the time for display. The actual interaction is quite simple, and converts data between 
+    [Binary Coded Decimal](https://en.wikipedia.org/wiki/Binary-coded_decimal) and Decimal. The RTC uses BCD for each part
+     of the time (H:M:S, etc.).
+      
+Here is a video showing the test the time is printed out every second. 
+
+<video controls>
+  <source src="images/w20-rtc-test.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
