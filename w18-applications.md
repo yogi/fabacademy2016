@@ -179,18 +179,28 @@ The clock is made up of:
 
 ## Shopping List
 
-* IR transceiver - model / spec???
-* XBand doppler - model / spec???
-* Brighter LEDs - model / spec???
+* HCSR04 Ultrasonic module
 * RTC DS1307 board - model / spec???
+* LED 7-segment displays
+* push-button with long switch
+* FTDI headers
+* Jumper cables: m-f, m-m, f-f
+* miniUSB-USB cable
+
+* Arduino Uno
+* IR transceiver - model / spec???
+
 * Battery + holder  
     * button cell + holder
     * 9V + holder
-* Jumper cables: m-f, m-m, f-f
-* miniUSB-USB cable
-* LED 7-segment displays
-* push-button with long switch
+
+* XBand doppler - model / spec???
+* Brighter LEDs - model / spec???
 
 
 ## Evaluation Criteria
 
+
+## Notes
+
+* [Paper: Hand gesture recognition using Ultrasonic sensor](http://esatjournals.net/ijret/2014v03/i06/IJRET20140306107.pdf)
