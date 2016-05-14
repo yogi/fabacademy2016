@@ -241,3 +241,31 @@ Here is a video showing the test the time is printed out every second.
   Your browser does not support the video tag.
 </video>
 
+
+--- 
+
+# Sat, May 14th 
+
+Today I designed the cover for the clock in Rhino and did test cuts to get the press-fit tolerances and flexures correct. 
+  
+Here is the design for the testing press-fit tolerance. I kept one side constant and increased the size (using Offset command) of the other 
+    pieces by 0.1 - 0.2 mm (The laser cutter has a kerf of 0.2 mm). 
+   
+<img src="images/w20-rhino-test-cuts.jpg"/>
+
+These are the test cuts. 0.175 had a good fit, I'll be going with 0.18. 
+    
+<img src="images/w20-test-cuts.jpg"/>
+
+I have to remember to add chamfers to make it easier to slide the pieces in.
+
+The flexures took longer than expected and I had to try a number of variations. Here is the design:
+
+<img src="images/w20-rhino-test-flexures.jpg"/>
+
+The one which worked best had 1 mm horizontal spacing and 2 mm gap between each vertical cut, which is the bottom right onw below:
+ 
+<img src="images/w20-test-flexures.jpg"/>
+
+
+ 
