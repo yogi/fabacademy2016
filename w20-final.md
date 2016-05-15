@@ -16,7 +16,7 @@ The first is the Motion Detector. I need a way to detect a hand-wave about 1 foo
 However I like working outside-in, i.e. starting with the end product and working backwards to the details. Therefore, I'm starting off
     creating the design in Rhino.
     
-## Clock Digit Design 
+## Digit Test Cuts 
 
 First step was to design the digits and try out a test cut to get the tolerances correct for the acrylic segments to fit 
     into the craft plywood outlines. 
@@ -65,9 +65,9 @@ For motion detection I plan to try the ultrasonic sensor first since I want dete
 
 As per the [datasheet](http://www.micropik.com/PDF/HCSR04.pdf) and [user-guide](https://www.mpja.com/download/hc-sr04_ultrasonic_module_user_guidejohn.pdf) 
     the sensor requires a 10µs pulse on it's Trigger pin, which causes it to send out 8 40khz sound pulses and waits for the echo back. 
-    The distance to the object can be calculated by dividing the time taken by the speed of sound. 
+    The distance to the object can be calculated by multiplying the time taken by the speed of sound. 
  
-I used an Arduino sketch I found [here](http://playground.arduino.cc/Code/NewPing).
+I used an Arduino sketch from [here](http://playground.arduino.cc/Code/NewPing).
 
 <pre>
 #include &lt;NewPing.h&gt;
@@ -268,4 +268,37 @@ The one which worked best had 1 mm horizontal spacing and 2 mm gap between each 
 <img src="images/w20-test-flexures.jpg"/>
 
 
+ --- 
  
+# Sun, May 15th
+  
+Today my goal is to fabricate a digit board with the new bright LEDs I've bought.
+ 
+I checked the voltage and current range for the LED using a DC power supply. 
+
+At a steady current of 10mA, the LED is off at 1.4V and brightest at 2.2V. 
+
+I was considering having 2 LEDs for each segment, but that significantly increases the effort to solder so many LEDs and
+    resistors (if 2 LEDs for each segment are arranged in parallel with their own resistor). 
+    
+What I really want is a more diffused light coming from the LED. I found a neat [hack on Instructables](http://www.instructables.com/id/how-to-defuse-an-LED/?ALLSTEPS) 
+    to do this by sandpapering the LED. 
+    
+Here is the sandpapered one next to a normal one:
+
+<img src="images/w20-sandpapered-led.jpg"/>
+
+Here is the output of the 2 when connected to a power source with 2.1V and 10mA:
+
+<img src="images/w20-diffused-led-digit.jpg"/> 
+    
+The middle horizontal segment is the diffused one. The difference is not pronouned in the photo but the sandpapered one is 
+    definitely diffusing the light.  
+
+This is an excellent hack... it saves me a lot of time and effort!    
+ 
+---
+ 
+Next step is to fabricate the digit board with the new LEDs.
+
+I plan to drill vias for the LED leads and solder them to the underside of the board. I don't 
