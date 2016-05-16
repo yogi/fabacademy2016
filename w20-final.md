@@ -302,3 +302,43 @@ This is an excellent hack... it saves me a lot of time and effort!
 Next step is to fabricate the digit board with the new LEDs.
 
 I plan to drill vias for the LED leads and solder them to the underside of the board. I don't 
+
+I used the 7-segment board from the Output Devices week. However, I noticed that I had arranged the resistors and LEDs in the wrong
+    order. The resistors should come before the LED, because otherwise the LED gets the full voltage rather than the divided voltage.  
+    
+<img src="images/w14-7segment-schematic.jpg" width="800"/>
+
+I changed the schematic to reflect this:
+
+<img src="images/w20-7segment-schematic.jpg" width="800"/>
+
+And created a new board layout. Routing traces took a few hours. I added vias for the LEDs and created the traces and outlines:
+ 
+<img src="files/w20/7-segment-traces.png" height="200"/> &nbsp; <img src="files/w20/7-segment-outline.png" height="200"/>
+
+Here is the milled board:
+
+<img src="images/w20-7segment-milled.jpg"/>
+
+And here it is stuffed:
+
+<img src="images/w20-7segment-stuffed-front.jpg" height="400"/> &nbsp; <img src="images/w20-7segment-stuffed-back.jpg" height="400"/>
+
+The through hole LED contacts aren't very strong and 1 of them snapped off. 
+
+---
+
+## Mon, 16th May
+
+I headed back to Bangalore last night. Have to watch over my kids for the next 10 days since my wife is travelling.
+
+I programmed the board with the 7segment and only 3 of them lit up... need to debug this.
+
+I'm not liking the through-hole LED setup because it is not strong and can come loose quite easily. My idea with packing the 
+    board LEDs close together was that I could bend their leads into place to form a wider 7-segment digit. I don't think thats
+    going to work out too well.
+    
+I might use the surface mount LEDs as before.
+
+The next step is to prototype the code for all the boards hooked up to a central Arduino and talking I2C amongst themselves.
+
