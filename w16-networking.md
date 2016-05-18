@@ -10,7 +10,11 @@ permalink: w16-networking.html
 
 >  design and build a wired &/or wireless network connecting at least two processors
 
-For my final project I plan to have multiple modules networked together with a central controller coordinating all the actions. 
+Due to lack of time I have been working on my [final project](w20-final.html), which will include a I2C network of 
+    modules controlled by a master. 
 
-I want to try out the serial network form Neil's examples. I'm going to try one with only 2 nodes first. 
+I will be updating this page with the networking related sections once I'm able to make progress on the final project. 
+
+
+
 
