@@ -340,5 +340,8 @@ I'm not liking the through-hole LED setup because it is not strong and can come 
     
 I might use the surface mount LEDs as before.
 
-The next step is to prototype the code for all the boards hooked up to a central Arduino and talking I2C amongst themselves.
+The next step is to prototype the code for all the boards hooked up to a central Arduino and talking I2C amongst themselves. I will
+    fabricate the remaining boards once I'm back in Trivandrum.
+    
+
 
