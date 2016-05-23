@@ -252,11 +252,14 @@ layout: default
 <div class="row">
 	<div class="col-md-7">
 		<a href="w16-networking.html"><h1>Networking & Communications</h1></a>
+		<h2 class="text-muted">I<sup>2</sup>C Network</h2>
 		<p>
+		This week I created a I<sup>2</sup>C network connecting 2 microcontrollers - 1 master and 1 slave.   
 		</p>
 	</div>
 	<div class="col-md-5">
       <a href="w16-networking.html">
+        <img src="images/w16-i2c-slave-response.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>
