@@ -95,3 +95,72 @@ This worked fine, the slave blinked the LED every 1 sec.
 
 Next step is to get the slave to send back some data to the master. 
 
+Here is the master code I tried:
+
+<pre>
+#include &lt;Wire.h&gt;
+
+void setup() {
+  Wire.begin(); // join i2c bus (address optional for master)
+  Serial.begin(9600); // start serial for output
+}
+
+void loop() {
+  Serial.println("requesting");
+  Wire.requestFrom(4, 1); // request 1 byte from slave device address 4
+
+  while (Wire.available()) // slave may send less than requested
+  {
+    int i = Wire.read(); // receive a byte as character
+    Serial.println(i); // print the character
+  }
+
+  delay(50);
+}
+</pre>
+
+Here is the slave code:
+
+<pre>
+// Code for the ATtiny85
+#define I2C_SLAVE_ADDRESS 0x4 // Address of the slave
+
+#include &lt;TinyWireS.h&gt;
+
+int i=0;
+
+void setup()
+{
+    TinyWireS.begin(I2C_SLAVE_ADDRESS); // join i2c network
+    //TinyWireS.onReceive(receiveEvent); // not using this
+    TinyWireS.onRequest(requestEvent);
+    
+    // Turn on LED when program starts
+    pinMode(1, OUTPUT);
+    digitalWrite(1, HIGH);
+}
+
+void loop()
+{
+    // This needs to be here
+    TinyWireS_stop_check();
+}
+
+// Gets called when the ATtiny receives an i2c request
+void requestEvent()
+{
+    TinyWireS.send(i);
+    i++;
+}
+</pre>
+
+I uploaded the slave code with the internal clock set to 8mhz. This worked perfectly well! The master was outputting incrementing
+    numbers from the slave. 
+    
+<img src="images/w16-i2c-slave-response.jpg"/>
+
+I tried reproducing the scenario where the slave board was heating up, but couldn't - it seemed to work fine with all the changes I tried 
+    1) changing internal clock to 1mhz 2) using VCC & GND from the Arduino 
+    
+Anyhow its great to have a working I2C slave implementation.
+ 
