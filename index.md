@@ -36,7 +36,7 @@ layout: default
 		<a href="w1-principles.html"><h1>Principles & Practices</h1></a>
 		<h2 class="text-muted">Final Project Sketch</h2>
 		<p>
-			This week I sketched out a possible final project, called Hi! Time - a gesture recognizing clock. 
+			This week I sketched out a possible final project, called Hi! Time - a gesture sensing clock. 
 		</p>
 	</div>
 	<div class="col-md-5 col-md-pull-7">
@@ -237,6 +237,7 @@ layout: default
 	<div class="col-md-7 col-md-push-5">
 		<a href="w15-composites.html"><h1>Composites</h1></a>
 		<p>
+		    To be done.
 		</p>
 	</div>
 	<div class="col-md-5 col-md-pull-7">

@@ -4,11 +4,9 @@ title: About Me
 permalink: about.html
 ---
 
-My name is Yogi Kulkarni. 
-
-I am 41 years old, I have 2 little girls
+My name is Yogi Kulkarni. I am 41 years old, I have 2 little girls
  and an amazing wife who is graciously supporting me in my Fab Academy adventure (which requires me
- to be away from home through the week).
+ to be away from home for weeks at a time).
 
 I am a software engineer and have been building software for [a long time][LinkedIn Profile]. Most
 recently I helped build the supply-chain system and the internal cloud platform for 
