@@ -344,4 +344,59 @@ The next step is to prototype the code for all the boards hooked up to a central
     fabricate the remaining boards once I'm back in Trivandrum.
     
 
+---
 
+## Tue, 31th May
+
+I'm back in Trivandrum. I have 4 days to complete my project and head back to Bangalore. Lots to do!
+ 
+* Need to create a new board with bright LEDs mounted on the surface
+    
+    * Have to figure out the IDC header position on the 7-segment board so that it doesn't interfere with the LED position, which needs to be close to the clock surface   
+        * Will mount the IDC header on the under-side as a through-hole component. Need to ensure the pads on the surface are large enough
+        to create good contact with the pins.
+
+    * I'm using an incorrect resistor of 499 ohms. Given 5V source voltage, 2V LED forward voltage if I use a 100 ohm resistor the current 
+        through the LED would be 29mA, which is under the max of 30mA. Ideally it should be around 20mA but we only have a 100 ohm and 499 
+        ohm resistor in the lab. 
+    
+* Need to figure out the power source and the voltage & current through each of the boards
+
+    * 4 x 7-segment board
+        * Each board with 7 LEDs, but these are multiplexed, so only 1 LED is on at a time for 1 ms.
+        * Each LED requires 2.1 V and 20 mA
+        * 4 x 20 mA == 80 mA
+
+    * [Ambient light sensor](http://optekinc.com/datasheets/OP580DA.pdf)
+        * 5V, 10mA
+
+    * [DS3231 RTC module](http://www.elecrow.com/download/DS3231.pdf)
+        * Active: 3.3 V - 5 V, 200 µA - 300 µA
+
+    * HC SR04 - Ultrasonic module
+        * 5V, 15 mA
+       
+    Given these requirements, the 7-segment LEDs would consume the most current. A 9V battery providing 1000mAh would last 
+        for less than 12.5 hours (given 80 mA for 4 LEDs, see above)
+          
+    Therefore, an external power source would be needed. I will go with a 5V 2A DC adapter with a barrel jack or micro USB connector, since 
+        these are easily available.
+    
+* Design the controller board
+
+* Design and laser-cut the case
+
+For the LED board, I realized that I2C won't work because I have only 1 spare pin on the ATtiny45. While I could reuse the RESET pin, it involves
+    setting the RSTDISBL fuse and using a jumper when programming it. This seems needlessly complex. Instead I'll use a single-wire serial protocol - RS-232
+    to communicate with all the boards. These anyways only read data from the master so a single wire should be sufficient.
+    
+I also aligned the LEDs on the board to the correct location.
+ 
+I then routed the board, created many vias and have the PNGs ready for milling.
+
+<img src="images/w20-7segment-2-board.jpg"/>
+      
+  
+
+
+ 

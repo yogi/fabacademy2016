@@ -265,14 +265,57 @@ wave soldering</description>
 <text x="3.175" y="0.5334" size="1.27" layer="25" ratio="10">&gt;NAME</text>
 <text x="3.2004" y="-1.8034" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 </package>
-<package name="1X06SMD">
-<smd name="1" x="0" y="6.35" dx="2.54" dy="1.27" layer="1"/>
-<smd name="2" x="0" y="3.81" dx="2.54" dy="1.27" layer="1"/>
-<smd name="3" x="0" y="1.27" dx="2.54" dy="1.27" layer="1"/>
-<smd name="4" x="0" y="-1.27" dx="2.54" dy="1.27" layer="1"/>
-<smd name="5" x="0" y="-3.81" dx="2.54" dy="1.27" layer="1"/>
-<smd name="6" x="0" y="-6.35" dx="2.54" dy="1.27" layer="1"/>
-<text x="-1.905" y="-3.175" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<package name="2X03SMD">
+<smd name="1" x="-2.54" y="2.54" dx="2.54" dy="1.27" layer="1"/>
+<smd name="3" x="-2.54" y="0" dx="2.54" dy="1.27" layer="1"/>
+<smd name="5" x="-2.54" y="-2.54" dx="2.54" dy="1.27" layer="1"/>
+<smd name="2" x="2.92" y="2.54" dx="2.54" dy="1.27" layer="1"/>
+<smd name="4" x="2.92" y="0" dx="2.54" dy="1.27" layer="1"/>
+<smd name="6" x="2.92" y="-2.54" dx="2.54" dy="1.27" layer="1"/>
+<text x="-5.08" y="2.54" size="1.27" layer="27">1</text>
+<text x="-3.81" y="3.81" size="1.27" layer="25">&gt;NAME</text>
+<text x="-3.81" y="-5.08" size="1.27" layer="27">&gt;VALUE</text>
+</package>
+<package name="2X03">
+<description>&lt;b&gt;PIN HEADER&lt;/b&gt;</description>
+<wire x1="-3.81" y1="-1.905" x2="-3.175" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="-2.54" x2="-1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="-1.905" x2="-0.635" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="-2.54" x2="1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-3.81" y1="-1.905" x2="-3.81" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="-3.81" y1="1.905" x2="-3.175" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="2.54" x2="-1.905" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="-1.905" y1="2.54" x2="-1.27" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="1.905" x2="-0.635" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="2.54" x2="0.635" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="0.635" y1="2.54" x2="1.27" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="-1.27" y1="1.905" x2="-1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="1.905" x2="1.27" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="-0.635" y1="-2.54" x2="0.635" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="-2.54" x2="-1.905" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="-1.905" x2="1.905" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="3.175" y1="-2.54" x2="3.81" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="1.27" y1="1.905" x2="1.905" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="2.54" x2="3.175" y2="2.54" width="0.1524" layer="21"/>
+<wire x1="3.175" y1="2.54" x2="3.81" y2="1.905" width="0.1524" layer="21"/>
+<wire x1="3.81" y1="1.905" x2="3.81" y2="-1.905" width="0.1524" layer="21"/>
+<wire x1="1.905" y1="-2.54" x2="3.175" y2="-2.54" width="0.1524" layer="21"/>
+<wire x1="-3.175" y1="-2.921" x2="-1.905" y2="-2.921" width="0.127" layer="21"/>
+<pad name="1" x="-2.54" y="-1.27" drill="1.016" shape="square"/>
+<pad name="2" x="-2.54" y="1.27" drill="1.016" shape="octagon"/>
+<pad name="3" x="0" y="-1.27" drill="1.016" shape="octagon"/>
+<pad name="4" x="0" y="1.27" drill="1.016" shape="octagon"/>
+<pad name="5" x="2.54" y="-1.27" drill="1.016" shape="octagon"/>
+<pad name="6" x="2.54" y="1.27" drill="1.016" shape="octagon"/>
+<text x="-3.81" y="3.175" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-3.81" y="-4.445" size="1.27" layer="27">&gt;VALUE</text>
+<text x="-5.08" y="-2.54" size="1.27" layer="21">1</text>
+<rectangle x1="-2.794" y1="-1.524" x2="-2.286" y2="-1.016" layer="51"/>
+<rectangle x1="-2.794" y1="1.016" x2="-2.286" y2="1.524" layer="51"/>
+<rectangle x1="-0.254" y1="1.016" x2="0.254" y2="1.524" layer="51"/>
+<rectangle x1="-0.254" y1="-1.524" x2="0.254" y2="-1.016" layer="51"/>
+<rectangle x1="2.286" y1="1.016" x2="2.794" y2="1.524" layer="51"/>
+<rectangle x1="2.286" y1="-1.524" x2="2.794" y2="-1.016" layer="51"/>
 </package>
 </packages>
 <symbols>
@@ -350,19 +393,25 @@ wave soldering</description>
 <vertex x="-2.413" y="-0.381"/>
 </polygon>
 </symbol>
-<symbol name="FTDI">
-<pin name="GND" x="0" y="12.7" length="middle"/>
-<pin name="CTS" x="0" y="10.16" length="middle"/>
-<pin name="VCC" x="0" y="7.62" length="middle"/>
-<pin name="TXD" x="0" y="5.08" length="middle"/>
-<pin name="RXD" x="0" y="2.54" length="middle"/>
-<wire x1="12.7" y1="17.018" x2="2.54" y2="17.018" width="0.254" layer="94"/>
-<wire x1="2.54" y1="17.018" x2="2.54" y2="-4.064" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-4.064" x2="12.7" y2="-4.064" width="0.254" layer="94"/>
-<wire x1="12.7" y1="-4.064" x2="12.7" y2="17.018" width="0.254" layer="94"/>
-<pin name="RTS" x="0" y="0" length="middle"/>
-<text x="3.81" y="14.478" size="1.778" layer="95">(Black)</text>
-<text x="3.302" y="-3.048" size="1.778" layer="95">(Green)</text>
+<symbol name="AVRISP">
+<wire x1="-6.35" y1="-5.08" x2="8.89" y2="-5.08" width="0.4064" layer="94"/>
+<wire x1="8.89" y1="-5.08" x2="8.89" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="8.89" y1="5.08" x2="-6.35" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="-6.35" y1="5.08" x2="-6.35" y2="-5.08" width="0.4064" layer="94"/>
+<text x="-6.35" y="5.715" size="1.778" layer="95">&gt;NAME</text>
+<text x="-6.35" y="-7.62" size="1.778" layer="96">&gt;VALUE</text>
+<text x="-5.08" y="3.175" size="1.27" layer="95">MISO</text>
+<text x="-5.08" y="0.635" size="1.27" layer="95">SCK</text>
+<text x="-5.08" y="-1.905" size="1.27" layer="95">RST</text>
+<text x="7.62" y="3.175" size="1.27" layer="95" rot="MR0">VCC</text>
+<text x="7.62" y="0.635" size="1.27" layer="95" rot="MR0">MOSI</text>
+<text x="7.62" y="-1.905" size="1.27" layer="95" rot="MR0">GND</text>
+<pin name="MISO" x="-2.54" y="2.54" visible="off" length="short" direction="pas" function="dot"/>
+<pin name="VCC" x="5.08" y="2.54" visible="off" length="short" direction="pas" function="dot" rot="R180"/>
+<pin name="SCK" x="-2.54" y="0" visible="off" length="short" direction="pas" function="dot"/>
+<pin name="MOSI" x="5.08" y="0" visible="off" length="short" direction="pas" function="dot" rot="R180"/>
+<pin name="RST" x="-2.54" y="-2.54" visible="off" length="short" direction="pas" function="dot"/>
+<pin name="GND" x="5.08" y="-2.54" visible="off" length="short" direction="pas" function="dot" rot="R180"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -460,19 +509,32 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </device>
 </devices>
 </deviceset>
-<deviceset name="FTDI-SMD-HEADER">
+<deviceset name="AVRISP">
 <gates>
-<gate name="G$1" symbol="FTDI" x="-7.62" y="-5.08"/>
+<gate name="G$1" symbol="AVRISP" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="1X06SMD">
+<device name="SMD" package="2X03SMD">
 <connects>
-<connect gate="G$1" pin="CTS" pad="2"/>
-<connect gate="G$1" pin="GND" pad="1"/>
-<connect gate="G$1" pin="RTS" pad="6"/>
-<connect gate="G$1" pin="RXD" pad="5"/>
-<connect gate="G$1" pin="TXD" pad="4"/>
-<connect gate="G$1" pin="VCC" pad="3"/>
+<connect gate="G$1" pin="GND" pad="6"/>
+<connect gate="G$1" pin="MISO" pad="1"/>
+<connect gate="G$1" pin="MOSI" pad="4"/>
+<connect gate="G$1" pin="RST" pad="5"/>
+<connect gate="G$1" pin="SCK" pad="3"/>
+<connect gate="G$1" pin="VCC" pad="2"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="2X03">
+<connects>
+<connect gate="G$1" pin="GND" pad="6"/>
+<connect gate="G$1" pin="MISO" pad="1"/>
+<connect gate="G$1" pin="MOSI" pad="4"/>
+<connect gate="G$1" pin="RST" pad="5"/>
+<connect gate="G$1" pin="SCK" pad="3"/>
+<connect gate="G$1" pin="VCC" pad="2"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -508,9 +570,7 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <part name="LF" library="fab" deviceset="LED" device="FAB1206"/>
 <part name="RG" library="fab" deviceset="RES-US" device="1206FAB"/>
 <part name="LG" library="fab" deviceset="LED" device="FAB1206"/>
-<part name="U$3" library="fab" deviceset="FTDI-SMD-HEADER" device=""/>
-<part name="R1" library="fab" deviceset="RES-US" device="1206FAB"/>
-<part name="R2" library="fab" deviceset="RES-US" device="1206FAB"/>
+<part name="U$1" library="fab" deviceset="AVRISP" device="SMD"/>
 </parts>
 <sheets>
 <sheet>
@@ -532,9 +592,7 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <instance part="LF" gate="G$1" x="91.44" y="121.92"/>
 <instance part="RG" gate="G$1" x="114.3" y="137.16" rot="R270"/>
 <instance part="LG" gate="G$1" x="114.3" y="121.92"/>
-<instance part="U$3" gate="G$1" x="71.12" y="58.42" rot="R270"/>
-<instance part="R1" gate="G$1" x="7.62" y="83.82"/>
-<instance part="R2" gate="G$1" x="-7.62" y="127"/>
+<instance part="U$1" gate="G$1" x="43.18" y="50.8"/>
 </instances>
 <busses>
 </busses>
@@ -546,9 +604,9 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <label x="22.86" y="81.28" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="VCC"/>
-<wire x1="78.74" y1="58.42" x2="78.74" y2="66.04" width="0.1524" layer="91"/>
-<label x="78.74" y="66.04" size="1.778" layer="95" rot="R270"/>
+<pinref part="U$1" gate="G$1" pin="VCC"/>
+<wire x1="48.26" y1="53.34" x2="58.42" y2="53.34" width="0.1524" layer="91"/>
+<label x="53.34" y="53.34" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -558,9 +616,9 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <label x="134.62" y="88.9" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="GND"/>
-<wire x1="83.82" y1="58.42" x2="83.82" y2="66.04" width="0.1524" layer="91"/>
-<label x="83.82" y="66.04" size="1.778" layer="95" rot="R270"/>
+<pinref part="U$1" gate="G$1" pin="GND"/>
+<wire x1="48.26" y1="48.26" x2="58.42" y2="48.26" width="0.1524" layer="91"/>
+<label x="53.34" y="48.26" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="RST" class="0">
@@ -570,9 +628,9 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <label x="134.62" y="81.28" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="CTS"/>
-<wire x1="81.28" y1="58.42" x2="81.28" y2="66.04" width="0.1524" layer="91"/>
-<label x="81.28" y="66.04" size="1.778" layer="95" rot="R270"/>
+<pinref part="U$1" gate="G$1" pin="RST"/>
+<wire x1="40.64" y1="48.26" x2="30.48" y2="48.26" width="0.1524" layer="91"/>
+<label x="30.48" y="48.26" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MOSI" class="0">
@@ -580,11 +638,6 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <pinref part="U$17" gate="G$1" pin="MOSI/DI/SDA/AIN0/OC0A/-OC1A/AREF/PCINT0/PB0"/>
 <wire x1="33.02" y1="88.9" x2="17.78" y2="88.9" width="0.1524" layer="91"/>
 <label x="22.86" y="88.9" size="1.778" layer="95" rot="R180"/>
-</segment>
-<segment>
-<pinref part="U$3" gate="G$1" pin="RTS"/>
-<wire x1="71.12" y1="58.42" x2="71.12" y2="66.04" width="0.1524" layer="91"/>
-<label x="71.12" y="66.04" size="1.778" layer="95" rot="R270"/>
 </segment>
 <segment>
 <wire x1="71.12" y1="147.32" x2="81.28" y2="147.32" width="0.1524" layer="91"/>
@@ -608,6 +661,11 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <wire x1="91.44" y1="142.24" x2="91.44" y2="147.32" width="0.1524" layer="91"/>
 <junction x="91.44" y="147.32"/>
 </segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="MOSI"/>
+<wire x1="48.26" y1="50.8" x2="58.42" y2="50.8" width="0.1524" layer="91"/>
+<label x="53.34" y="50.8" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="MISO" class="0">
 <segment>
@@ -616,17 +674,16 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <label x="22.86" y="86.36" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="RXD"/>
-<wire x1="73.66" y1="58.42" x2="73.66" y2="66.04" width="0.1524" layer="91"/>
-<label x="73.66" y="66.04" size="1.778" layer="95" rot="R270"/>
+<pinref part="U$1" gate="G$1" pin="MISO"/>
+<wire x1="40.64" y1="53.34" x2="30.48" y2="53.34" width="0.1524" layer="91"/>
+<label x="30.48" y="53.34" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCK" class="0">
 <segment>
 <pinref part="U$17" gate="G$1" pin="SCK/USCK/SCL/ADC1/T0/INT0/PCINT2/PB2"/>
-<wire x1="33.02" y1="83.82" x2="12.7" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="83.82" x2="17.78" y2="83.82" width="0.1524" layer="91"/>
 <label x="22.86" y="83.82" size="1.778" layer="95" rot="R180"/>
-<pinref part="R1" gate="G$1" pin="2"/>
 </segment>
 <segment>
 <wire x1="10.16" y1="99.06" x2="58.42" y2="99.06" width="0.1524" layer="91"/>
@@ -651,14 +708,9 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <junction x="91.44" y="99.06"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="TXD"/>
-<wire x1="76.2" y1="58.42" x2="76.2" y2="66.04" width="0.1524" layer="91"/>
-<label x="76.2" y="66.04" size="1.778" layer="95" rot="R270"/>
-</segment>
-<segment>
-<pinref part="R1" gate="G$1" pin="1"/>
-<wire x1="2.54" y1="83.82" x2="-7.62" y2="83.82" width="0.1524" layer="91"/>
-<label x="-7.62" y="83.82" size="1.778" layer="95"/>
+<pinref part="U$1" gate="G$1" pin="SCK"/>
+<wire x1="40.64" y1="50.8" x2="30.48" y2="50.8" width="0.1524" layer="91"/>
+<label x="30.48" y="50.8" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PB4" class="0">
@@ -707,16 +759,6 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <junction x="81.28" y="109.22"/>
 <pinref part="RG" gate="G$1" pin="1"/>
 <wire x1="114.3" y1="147.32" x2="114.3" y2="142.24" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="-12.7" y1="127" x2="-20.32" y2="127" width="0.1524" layer="91"/>
-<label x="-20.32" y="127" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R2" gate="G$1" pin="2"/>
-<wire x1="-2.54" y1="127" x2="5.08" y2="127" width="0.1524" layer="91"/>
-<label x="0" y="127" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$1" class="0">
