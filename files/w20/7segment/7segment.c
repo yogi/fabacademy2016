@@ -114,8 +114,7 @@ void display(int digit, int duration_ms) {
 int main(void) {
     int i = 0;
     while(1) {
-//        display(i, DIGIT_DISPLAY_MS);
-        display(8, DIGIT_DISPLAY_MS);
+        display(i, DIGIT_DISPLAY_MS);
         _delay_ms(1000);
         if (++i >= 10)
             i = 0;

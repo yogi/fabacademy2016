@@ -386,17 +386,47 @@ I'm back in Trivandrum. I have 4 days to complete my project and head back to Ba
 
 * Design and laser-cut the case
 
+### 7-Segment Board Redesign
+ 
 For the LED board, I realized that I2C won't work because I have only 1 spare pin on the ATtiny45. While I could reuse the RESET pin, it involves
     setting the RSTDISBL fuse and using a jumper when programming it. This seems needlessly complex. Instead I'll use a single-wire serial protocol - RS-232
     to communicate with all the boards. These anyways only read data from the master so a single wire should be sufficient.
     
-I also aligned the LEDs on the board to the correct location.
- 
-I then routed the board, created many vias and have the PNGs ready for milling.
+I also aligned the LEDs on the board to the correct location using a set of wire guidelines.
 
-<img src="images/w20-7segment-2-board.jpg"/>
-      
-  
+I replaced the FTDI headers with an ISP header so that I can have a continuous strip of jumper cables with ISP connectors hanging off them
+    which can connect the 4 7-Segment digits. 
+ 
+I then routed the board, created many vias and have the PNGs ready for milling. This time I've added wider pads for the vias to provide a stronger contact with the
+    LED leads.
+
+<img src="images/w20-7segment-2-board.jpg" height="500"/> <img src="files/w20/7segment-2/7segment-2-traces.png" height="500"/> <img src="files/w20/7segment-2/7segment-2-outline.png" height="500"/>
+
+## Wed, 1st Jun
+
+The traces are being milled right now.
+
+Here is the board right after milling. Notice the bottom right corner has a trace that got cut when I was trying to pry out the board.
+
+<img src="images/w20-7segment-2-milled-board.jpg" width="300"/>
+
+Stuffing the board took a few hours getting all the vias done.
+
+<img src="images/w20-7segment-2-stuffed-board-front.jpg" width="300"/> <img src="images/w20-7segment-2-stuffed-board-back.jpg" width="300"/>
+
+The wires look quite untidy and I'm concerned about shorts, will add some glue to hold the wires in place and provide some insulation. 
+
+It did get programmed on the first shot. Here it is displaying each digit:
+
+<video controls>
+  <source src="images/w20-7segment-2-programmed.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+It seems to work correctly only with 3.3V power. With 5V, multiple LEDs light up for each segment. I thought I'd got the voltage 
+ calculations correct this time. 
+ 
+Next step is to program it to accept inputs over single-wire serial interface.
 
 
  
