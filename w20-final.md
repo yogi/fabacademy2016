@@ -428,5 +428,34 @@ It seems to work correctly only with 3.3V power. With 5V, multiple LEDs light up
  
 Next step is to program it to accept inputs over single-wire serial interface.
 
+### Serial Communication for 7-Segment Board
 
+To test this I connected an Arduino Uno (which would act as the master) and the 7-segment board. I connected the TX pin on the Arduino to 
+    the MISO (PB1) pin on the 7-segment.
+    
+I used Neil's sample code to check for data on the pin, read a character off it, and the display the digit. 
+
+Here is the Arduino code, it mimics a clock sending a digit every sec:
+
+<pre>
+void setup() {
+  // initialize both serial ports:
+  Serial.begin(9600);
+}
+
+static int i = 0;
+static int t = 0;
+static int sleep = 10;
+
+void loop() {
+  Serial.write(i);
+  delay(sleep);
+  t = t + sleep;
+  if (t >= 1000) {
+    t = 0;
+    i = ++i % 9;
+  }
+}
+</pre>
+    
  

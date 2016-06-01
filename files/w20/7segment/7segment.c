@@ -25,7 +25,7 @@
 #define clear(pin) (PORTB &= (~ (1 << pin))) // clear port pin
 
 const int FLASH_DELAY_MS = 1;
-const int DIGIT_DISPLAY_MS = 2000;
+const int DIGIT_DISPLAY_MS = 100;
 
 char DIGIT_SEGMENTS[10][7] = {
      {'A', 'B', 'C', 'D', 'E', 'F'},            // 0
@@ -52,6 +52,93 @@ int DIGIT_NUM_SEGMENTS[] = {
     7, // 8
     5  // 9
 };
+
+
+
+#define pin_test(pins,pin) (pins & pin) // test for port pin
+#define bit_test(byte,bit) (byte & (1 << bit)) // test for bit set
+#define bit_delay_time 100 // bit delay for 9600 with overhead
+#define bit_delay() _delay_us(bit_delay_time) // RS232 bit delay
+#define half_bit_delay() _delay_us(bit_delay_time/2) // RS232 half bit delay
+#define led_delay() _delay_ms(100) // LED flash delay
+
+#define START_BIT_CHECK_TIMEOUT 2 // 5 ms
+
+#define serial_pins PINB
+#define serial_pin_in (1 << PB1)
+
+void get_char(volatile unsigned char *pins, unsigned char pin, char *rxbyte) {
+   //
+   // read character into rxbyte on pins pin
+   //    assumes line driver (inverts bits)
+   //
+   *rxbyte = 0;
+   
+   int ctr = 0;
+   while (pin_test(*pins,pin)) {
+      //
+      // wait for start bit
+      //
+      _delay_ms(1);
+      ctr++;
+      if (ctr >= START_BIT_CHECK_TIMEOUT) {
+        return;
+      }
+   }
+   
+   //
+   // delay to middle of first data bit
+   //
+   half_bit_delay();
+   bit_delay();
+   //
+   // unrolled loop to read data bits
+   //
+   if pin_test(*pins,pin)
+      *rxbyte |= (1 << 0);
+   else
+      *rxbyte |= (0 << 0);
+   bit_delay();
+   if pin_test(*pins,pin)
+      *rxbyte |= (1 << 1);
+   else
+      *rxbyte |= (0 << 1);
+   bit_delay();
+   if pin_test(*pins,pin)
+      *rxbyte |= (1 << 2);
+   else
+      *rxbyte |= (0 << 2);
+   bit_delay();
+   if pin_test(*pins,pin)
+      *rxbyte |= (1 << 3);
+   else
+      *rxbyte |= (0 << 3);
+   bit_delay();
+   if pin_test(*pins,pin)
+      *rxbyte |= (1 << 4);
+   else
+      *rxbyte |= (0 << 4);
+   bit_delay();
+   if pin_test(*pins,pin)
+      *rxbyte |= (1 << 5);
+   else
+      *rxbyte |= (0 << 5);
+   bit_delay();
+   if pin_test(*pins,pin)
+      *rxbyte |= (1 << 6);
+   else
+      *rxbyte |= (0 << 6);
+   bit_delay();
+   if pin_test(*pins,pin)
+      *rxbyte |= (1 << 7);
+   else
+      *rxbyte |= (0 << 7);
+   //
+   // wait for stop bit
+   //
+   bit_delay();
+   half_bit_delay();
+   }
 
 int anode_pin_for(char led) {
     if (led == 'A' || led == 'B' || led == 'C') 
@@ -112,6 +199,18 @@ void display(int digit, int duration_ms) {
 }
 
 int main(void) {
+    static char chr = 0;
+    
+    while(1) {
+        get_char(&serial_pins, serial_pin_in, &chr);
+        display(chr, DIGIT_DISPLAY_MS);
+    }
+    
+    return 0;
+}
+
+/*
+int main(void) {
     int i = 0;
     while(1) {
         display(i, DIGIT_DISPLAY_MS);
@@ -122,6 +221,7 @@ int main(void) {
     
     return 0;
 }
+*/
 
 /*
 
