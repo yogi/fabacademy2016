@@ -503,3 +503,11 @@ What if I don't use buttons on the clock face for setting the time? These look c
 Instead what if time is set by connecting to a host over USB and sending it a serial command to set the time. The next version could 
     support a bluetooth interface. I like this approach better. 
 
+
+### 7-Segment Single-Wire Serial Comms
+ 
+NOTE TO SELF: When setting the clock prescaler, remember to update the makefile so that the F_CPU argument takes effect.
+ 
+This caused me some problem and debugging effort today!
+
+
