@@ -402,6 +402,8 @@ I then routed the board, created many vias and have the PNGs ready for milling. 
 
 <img src="images/w20-7segment-2-board.jpg" height="500"/> <img src="files/w20/7segment-2/7segment-2-traces.png" height="500"/> <img src="files/w20/7segment-2/7segment-2-outline.png" height="500"/>
 
+---
+
 ## Wed, 1st Jun
 
 The traces are being milled right now.
@@ -427,6 +429,7 @@ It seems to work correctly only with 3.3V power. With 5V, multiple LEDs light up
  calculations correct this time. 
  
 Next step is to program it to accept inputs over single-wire serial interface.
+
 
 ### Serial Communication for 7-Segment Board
 
@@ -458,4 +461,45 @@ void loop() {
 }
 </pre>
     
+I've been playing around with the 7segment code to get it to display digits sent over serial. The basic interaction worked fine. 
+    Now I'm trying to get it to work using interrupts, because without them there is a visible flicker as the code waits for a start bit signal 
+    on the serial line. This happens even if the wait is as small as 1 ms.
+    
+---
+
+## Thu, 2nd Jun
+
+Whats left to do before I leave on Sat:
+
+* Get serial comm using interrupts working 
+    * read up - 1, try small experiments: 2 hr
+    
+* Laser cut the case: 6 hr
+    * case design with easily openable back cover
+        * Rhino design:
+            * add components and boards with exact dimensions to design
+            * back cover with magnets
+            * plywood placement guides for LEDs
+            * shelves for board placement
+            * position components: digit boards, hole for phototransistor, ultrasonic sensor, RTC
+        * test cuts: 1 hr
+    * final cut: 0.5 hr
+    
+* Controller board design: 6 hr
+    * schematics: 2 hr
+    * layout: 2 hr
+    * milling & stuffing: 2 hr
+
+* Mill and stuff 3 digits boards: 6 hr
+    * 6 hrs: 3 x 2 hrs each
+    
+* Produce separator board (or connect it to the controller directly): 3 hr
  
+* Program the controller: 3+ hr
+
+What if I don't use buttons on the clock face for setting the time? These look clunky and I don't like the lack of tactile feedback 
+    in capacitive buttons.
+     
+Instead what if time is set by connecting to a host over USB and sending it a serial command to set the time. The next version could 
+    support a bluetooth interface. I like this approach better. 
+
