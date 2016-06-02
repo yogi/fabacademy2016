@@ -508,6 +508,54 @@ Instead what if time is set by connecting to a host over USB and sending it a se
  
 NOTE TO SELF: When setting the clock prescaler, remember to update the makefile so that the F_CPU argument takes effect.
  
-This caused me some problem and debugging effort today!
+Wasted some precious time debugging this today!
+
+Found an excellent article on [implementing UART in software on the ATtiny85](http://thegaragelab.com/a-software-uart-for-the-attiny85/).
+
+Just discovered a big gotcha, that you have to use PCINT0_vect even if you are setting up an ISR for PCINT1. I checked the avr 
+    header file iotnx5.h and confirmed that only PCINT0_vect is defined. There is no PCINT1_vect! Shouldn't the compiler have complained about this!?
+
+[avr-libc page](http://www.nongnu.org/avr-libc/user-manual/group__avr__interrupts.html) says this:
+
+> The ISR() macro cannot really spell-check the argument passed to them. Thus, by misspelling one of the names below in a 
+> call to ISR(), a function will be created that, while possibly being usable as an interrupt function, is not actually 
+> wired into the interrupt vector table. The compiler will generate a warning if it detects a suspiciously looking name of 
+> a ISR() function (i.e. one that after macro replacement does not start with "__vector_").
+  
+So, your on your own if you misspell the vector. I tried with ISR(FOO) but got no compiler warning.
+
+The following code works (snippet only, full code is in the original files linked below):
+
+<pre>
+
+volatile int i = 1;
+ 
+ISR(PCINT0_vect) {     // Doesn't work if this is PCINT1_vect. 
+   display(i++, 3000);
+   i %= 9;
+}
+
+int main(void) {
+    //
+    // set clock divider to /1
+    //
+    CLKPR = (1 << CLKPCE);
+    CLKPR = (0 << CLKPS3) | (0 << CLKPS2) | (0 << CLKPS1) | (0 << CLKPS0);
+    
+    DDRB &= (~ (1 << PB1));         // set serial-in pin to input
+    PORTB |= (1 << PB1);            // ... and enable pull-up by driving it high
+    
+    GIMSK |= (1 << PCIE);           // enable pin change interrupt 
+    PCMSK |= (1 << PCINT1);         // ... only for serial-in pin
+    
+    sei();                          // enable interrupts globally
+    
+    while(1) {
+       ;
+    }
+    
+    return 0;
+}
 
 
+</pre>
