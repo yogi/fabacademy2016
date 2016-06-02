@@ -557,5 +557,49 @@ int main(void) {
     return 0;
 }
 
-
 </pre>
+
+
+I set up the correct ISR and copied over the get_char logic into it, but it just wouldn't work. The fix was to check whether the 
+    pin was indeed 0 indicating a start bit otherwise return. Here is the interesting code snippet:
+
+     
+<pre>
+
+ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even though I'm enabling PCINT1
+    volatile unsigned char *pins = &serial_pins;
+    unsigned char pin = SERIAL_IN_PIN;      
+    char tmp = 0;
+    char *rxbyte = &tmp;
+    
+    //
+    // read character into rxbyte on pins pin
+    //    assumes line driver (inverts bits)
+    //
+    *rxbyte = 0;
+
+    // ---- FOLLOWING 2 LINES WERE THE FIX ----
+    //
+    // assume we have just seen the start bit (pin going low)
+    // check that it is indeed 0, otherwise return
+    if pin_test(*pins, pin)
+        return;
+        
+    //
+    // delay to middle of first data bit
+    //
+    half_bit_delay();
+    bit_delay();
+    //
+    // unrolled loop to read data bits
+    //
+    if pin_test(*pins,pin)
+      *rxbyte |= (1 << 0);
+    else
+      *rxbyte |= (0 << 0);
+    bit_delay();
+    
+// ... remaining code omitted
+</pre>
+     
+     

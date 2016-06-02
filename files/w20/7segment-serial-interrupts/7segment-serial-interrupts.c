@@ -55,13 +55,9 @@ int DIGIT_NUM_SEGMENTS[] = {
 };
 
 #define pin_test(pins,pin) (pins & pin) // test for port pin
-#define bit_test(byte,bit) (byte & (1 << bit)) // test for bit set
 #define bit_delay_time 100 // bit delay for 9600 with overhead
 #define bit_delay() _delay_us(bit_delay_time) // RS232 bit delay
 #define half_bit_delay() _delay_us(bit_delay_time/2) // RS232 half bit delay
-#define led_delay() _delay_ms(100) // LED flash delay
-
-#define START_BIT_CHECK_TIMEOUT 2 // 5 ms
 
 #define serial_pins PINB
 #define SERIAL_IN_PIN (1 << PB1)
@@ -127,38 +123,7 @@ void display(int digit, int duration_ms) {
     }
 }
 
-volatile int i = 1;
- 
-ISR(PCINT0_vect) {
-   display(i++, 3000);
-   i %= 9;
-}
-
-int main(void) {
-    //
-    // set clock divider to /1
-    //
-    CLKPR = (1 << CLKPCE);
-    CLKPR = (0 << CLKPS3) | (0 << CLKPS2) | (0 << CLKPS1) | (0 << CLKPS0);
-    
-    DDRB &= (~ (1 << PB1));         // set serial-in pin to input
-    PORTB |= (1 << PB1);            // ... and enable pull-up by driving it high
-    
-    GIMSK |= (1 << PCIE);           // enable pin change interrupt 
-    PCMSK |= (1 << PCINT1);         // ... only for serial-in pin
-    
-    sei();                          // enable interrupts globally
-    
-    while(1) {
-       ;
-    }
-    
-    return 0;
-}
-
-/*
-ISR(PCINT1_vect) {
-//    get_char(&serial_pins, serial_pin_in, &digit);
+ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even though I'm enabling PCINT1
     volatile unsigned char *pins = &serial_pins;
     unsigned char pin = SERIAL_IN_PIN;      
     char tmp = 0;
@@ -171,7 +136,10 @@ ISR(PCINT1_vect) {
     *rxbyte = 0;
 
     // assume we have just seen the start bit (pin going low)
-    
+    // check that it is indeed 0, otherwise return
+    if pin_test(*pins, pin)
+        return;
+        
     //
     // delay to middle of first data bit
     //
@@ -225,28 +193,32 @@ ISR(PCINT1_vect) {
     bit_delay();
     half_bit_delay();
     
-   digit = *rxbyte;
-}
-*/
-
-
-/*
-int main(void) {
-   //
-   // set clock divider to /1
-   //
-   CLKPR = (1 << CLKPCE);
-   CLKPR = (0 << CLKPS3) | (0 << CLKPS2) | (0 << CLKPS1) | (0 << CLKPS0);
-   
-//    set(SERIAL_IN_PIN);       // mark as input and enable pull-up resistor
+    digit = *rxbyte;
     
-    initPinChangeInterrupt();
+    if (digit >= 48 && digit <= 57) {   // translate ASCII to digit
+        digit -= 48;
+    }
+}
 
+
+int main(void) {
+    //
+    // set clock divider to /1
+    //
+    CLKPR = (1 << CLKPCE);
+    CLKPR = (0 << CLKPS3) | (0 << CLKPS2) | (0 << CLKPS1) | (0 << CLKPS0);
+    
+    DDRB &= (~ (1 << PB1));         // set serial-in pin to input
+    PORTB |= (1 << PB1);            // ... and enable pull-up by driving it high
+    
+    GIMSK |= (1 << PCIE);           // enable pin change interrupt 
+    PCMSK |= (1 << PCINT1);         // ... only for serial-in pin
+    
+    sei();                          // enable interrupts globally
+    
     while(1) {
-        display(digit, DIGIT_DISPLAY_MS);
+       display(digit, 1000);
     }
     
     return 0;
 }
-*/
-
