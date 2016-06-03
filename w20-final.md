@@ -504,7 +504,7 @@ Instead what if time is set by connecting to a host over USB and sending it a se
     support a bluetooth interface. I like this approach better. 
 
 
-### 7-Segment Single-Wire Serial Comms
+### Serial Comms Problems... and a Solution!
  
 NOTE TO SELF: When setting the clock prescaler, remember to update the makefile so that the F_CPU argument takes effect.
  
