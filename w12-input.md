@@ -50,7 +50,14 @@ This might be to not require swapping of TX / RX jumper cables.
 Some questions to revisit:
 
 * How is the capacitor value calculated to be 1µf?
+
 * Why is R2 so high at 49.9K ohms? 
+    * This is explained well [here](http://learn.parallax.com/tutorials/robot/shield-bot/robotics-board-education-shield-arduino/chapter-6-light-sensitive-11). 
+        The phototransistor lets more current pass when more light falls on it. Having a large resistor in series allows small current changes to be detected as large voltage changes.
+       
+* Why does the phototransistor not have a base lead?
+    * Explained [here](http://www.globalspec.com/learnmore/optics_optical_components/optoelectronics/phototransistors), the base is left unconnected because 
+        light is used to enable current flow through the phototransistor.
 
 Here is the schematic:
 

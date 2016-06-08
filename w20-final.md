@@ -602,4 +602,69 @@ ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even th
 // ... remaining code omitted
 </pre>
      
-     
+
+## Clock Case Production
+
+Spent the evening designing the clock case in Rhino. I simplified the design and based it off Sibu's box:
+
+<img src="images/w20-sibu-box.jpb"/>
+
+... notes to be completed
+
+
+
+
+---
+
+Fri, 3rd Jun
+
+I started off the day assembling the cut pieces from last night. Most of the pieces snapped in correctly except for the 
+    loop that supports the back cover. The dimensions for it were wrong.
+    
+... notes to be completed
+
+
+## Board Production
+
+The final stretch is producing the remaining boards: controller and 3 digits.
+ 
+* Make the digit boards
+    * Test using the Arduino and all digits connected in parallel 
+    * Maybe test all other components together
+* Design the controller
+* Make it (have enough time to spare to iterate once) 
+
+
+### Controller Board Production
+ 
+ 
+
+--- 
+
+Sat, 4th Jun
+
+
+Plan:
+
+* Test 3 digit boards hooked up in parallel to 3.3 V
+* Fix new boards jumper wiring, program and test
+* Design schematic and layout for controller, mill it, stuff it - 4 hrs
+    * phototransistor
+    * 5V VR supply, VCC to other boards
+    * 3V VR supply to digit boards
+    * Comm lines to all boards
+    * ISP header
+    * USB
+* Program it with all components hooked up - 2 hrs
+* Produce board for USB receptacle - 1 hr
+* Engrave Hi! Time logo on back cover
+ 
+
+
+
+
+
+...
+
+
+I've missed hooking up VCC and GND pins on the ATtiny44!
