@@ -607,11 +607,17 @@ ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even th
 
 Spent the evening designing the clock case in Rhino. I simplified the design and based it off Sibu's box:
 
-<img src="images/w20-sibu-box.jpb"/>
+<img src="images/w20-sibu-box.jpg"/>
 
-... notes to be completed
+Here is the final design I came up with:
 
+<img src="images/w20-clock-rhino.jpg"/>
 
+And here are pictures of the parts being cut and assembled at different stages:
+
+<img src="images/w20-clock-front.jpg"/>
+
+<img src="images/w20-clock-parts.jpg"/>
 
 
 ---
@@ -621,7 +627,20 @@ Fri, 3rd Jun
 I started off the day assembling the cut pieces from last night. Most of the pieces snapped in correctly except for the 
     loop that supports the back cover. The dimensions for it were wrong.
     
-... notes to be completed
+I redesigned it and and also designed placeholders for the digit so that the LEDs would be aligned properly. Here they are being placed on the inside of the
+    front cover:
+    
+<img src="images/w20-digit-guides.jpg"/>
+
+The 2 pairs of notches on the side faces are for shelves that would support all the electronic boards.
+
+I also made a cut for the mini-usb receptacle.
+
+The digit segments are cut out of red-coloured 3 mm acrylic. 
+
+Here is the fully assembled clock cover:
+
+<img src="images/w20-clock-assembled.jpg"/>
 
 
 ## Board Production
@@ -635,16 +654,11 @@ The final stretch is producing the remaining boards: controller and 3 digits.
 * Make it (have enough time to spare to iterate once) 
 
 
-### Controller Board Production
- 
- 
-
 --- 
 
-Sat, 4th Jun
+## Sat, 4th Jun
 
-
-Plan:
+Today I have to finish all my remaining tasks so that I can fly back to Bangalore tonight at 8pm. Here's whats left to do:
 
 * Test 3 digit boards hooked up in parallel to 3.3 V
 * Fix new boards jumper wiring, program and test
@@ -660,11 +674,47 @@ Plan:
 * Engrave Hi! Time logo on back cover
  
 
+### Jumper wiring on boards
+
+Soldering the jumper wires was taking me too much time. I requested Ajith to help with this so that I could start soldering the remaining
+    boards in parallel. Initially I had connected the jumpers on the back of the board, using a lead which was soldered on the front. 
+    Ajith recommended soldering the wires directly on the front. 
+    
+Thanks Ajith for helping with this, I wouldn't have been able to complete my tasks by the evening otherwise.
 
 
+### Test digit boards 
+
+I hooked up the digit boards using a 6-wire "bus" with IDC headers. 2 of the boards worked fine. The other 2 were not displaying the 
+E and F segment. I need to debug this.
+
+<img src="images/w20-digit-boards-test.jpg"/>
 
 
-...
+### Controller Board Production
+ 
+I then designed the schematic and layout:
+
+<img src="images/w20-controller-schematic.jpg"/>
+
+<img src="images/w20-controller-layout.jpg"/>
+
+Here is the board:
+
+<img src="images/w20-controller-board.jpg"/>
+
+The board wouldn't get programmed. 
+
+Looking carefully I realized there were no connections to the VCC and GND pins. I had missed adding a net to them in the schematic 
+    on the ATtiny44! I'll add some jumper wires to fix this.
 
 
-I've missed hooking up VCC and GND pins on the ATtiny44!
+## Thu, 9th Jun
+
+I'm back in Bangalore. I've ordered a soldering kit and multimeter yesterday and it should be arriving today. 
+
+<img src="images/w20-soldering-kit.jpg"/>
+
+I'll work on my pending assignments for the past weeks until this arrives.
+
+
