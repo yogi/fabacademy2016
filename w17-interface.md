@@ -45,7 +45,14 @@ So, I'm going to create a simple game that involves a character continuously mov
  
 I used the code from the input-device week to check that the sensor is working fine. The python app showed the values correctly.
  
+Next I have to create a ChromeApp in Javascript. 
 
+I followed the instructions on the [Chrome App Developer page](https://developer.chrome.com/apps/first_app) and staretd customizing 
+    the [hello-world sample](https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/hello-world) app. 
  
+Next I need to accept input from the serial interface. Here's a good [tutorial](http://renaun.com/blog/2013/05/using-the-chrome-serial-api-with-arduino/) 
+    on using Chrome's serial api, and the [api documentation](https://developer.chrome.com/apps/serial) itself.
+
+
 ### Translate the sensor readings to an up or down command
 
