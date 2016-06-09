@@ -1,94 +1,61 @@
-var connectionId = -1;
-var readBuffer = "";
+var queue = new CBuffer(10);
 
-function setPosition(position) {
-    var buffer = new ArrayBuffer(1);
-    var uint8View = new Uint8Array(buffer);
-    uint8View[0] = position;
-    chrome.serial.write(connectionId, buffer, function() {});
-};
+var eps = 0.9       // filter time constant
+var filter = 0.0    // filtered value
+var nloop = 100.0   // number of loops accumulated
+var amp = 25.0      // difference amplitude
 
-function onRead(readInfo) {
-    var uint8View = new Uint8Array(readInfo.data);
-    var value = String.fromCharCode(uint8View[0]);
+function logMsg(msg) {
+    messages.value = msg + "\n" + messages.value; 
+}
 
-    if (value == "a") // Light on and off
-    {
-        console.log("CMD[a]: " + readBuffer);
-        var opat = isNaN(parseInt(readBuffer)) ? 0 : parseInt(readBuffer);
-
-        document.getElementById('image').style.opacity = (opat * 0.7) + 0.3;
-        readBuffer = "";
-    } else if (value == "b") // Return blink length value
-    {
-        readBuffer = "";
-    } else if (value == "c") // Blink Count
-    {
-        console.log("CMD[c]: " + readBuffer);
-        document.getElementById('blinkCount').innerText = readBuffer;
-        readBuffer = "";
-    } else {
-
-        readBuffer += value;
+function onReceive(info) {
+    var view = new Uint8Array(info.data);
+    //console.log("Received: " + info.data.byteLength + " bytes");
+    for (i = 0; i < info.data.byteLength; i++) {
+        queue.push(view[i]);
     }
-    // Keep on reading.
-    chrome.serial.read(connectionId, 1, onRead);
+    
+    if (queue.size < 8) return; 
+    if (queue.shift() != 1) return;
+    if (queue.shift() != 2) return;
+    if (queue.shift() != 3) return;
+    if (queue.shift() != 4) return;
+    
+    onLow = queue.shift();
+    onHigh = queue.shift();
+    onValue = (256 * onHigh + onLow) / nloop;
+    
+    offLow = queue.shift();
+    offHigh = queue.shift();
+    offValue = (256 * offHigh + offLow) / nloop;
+    
+    filter = (1 - eps) * filter + eps * amp * (onValue - offValue);
+
+    console.log(filter + " | " + onValue + " | " + offValue);
 };
-
-function onOpen(openInfo) {
-    connectionId = openInfo.connectionId;
-    console.log("connectionId: " + connectionId);
-    if (connectionId == -1) {
-        setStatus('Could not open');
-        return;
-    }
-    setStatus('Connected');
-
-    setPosition(0);
-    chrome.serial.read(connectionId, 1, onRead);
-};
-
-function setStatus(status) {
-    document.getElementById('status').innerText = status;
-}
-
-function buildPortPicker(ports) {
-    ports.forEach(function(port) {
-        console.log(port.path);
-    });
-    var eligiblePorts = ports.filter(function(port) {
-        return !port.path.match(/[Bb]luetooth/) && port.path.match(/\/dev\/tty/);
-    });
-
-    var portPicker = document.getElementById('port-picker');
-    eligiblePorts.forEach(function(port) {
-        var portOption = document.createElement('option');
-        portOption.value = portOption.innerText = port.path;
-        portPicker.appendChild(portOption);
-    });
-
-    portPicker.onchange = function() {
-        if (connectionId != -1) {
-            chrome.serial.close(connectionId, openSelectedPort);
-            return;
-        }
-        openSelectedPort();
-    };
-}
-
-function openSelectedPort() {
-    var portPicker = document.getElementById('port-picker');
-    var selectedPort = portPicker.options[portPicker.selectedIndex].value;
-    chrome.serial.connect(selectedPort, onOpen);
-}
 
 onload = function() {
-    document.getElementById('position-input').onchange = function() {
-        setPosition(parseInt(this.value, 10));
-    };
-
     chrome.serial.getDevices(function(ports) {
-        buildPortPicker(ports)
-        openSelectedPort();
+        var eligiblePorts = ports.filter(function(port) {
+            return !port.path.match(/[Bb]luetooth/) && port.path.match(/\/dev\/tty/);
+        });
+        
+        if (eligiblePorts.length < 1) {
+            logMsg("No ports found");
+            return;
+        } else if (eligiblePorts.length > 1) {
+            logMsg("More than 1 port found, connecting to the first one: " + eligiblePorts[0].path);
+        } else {
+            logMsg("Connecting to " + eligiblePorts[0].path);
+        }
+        
+        port = eligiblePorts[0];
+        
+        chrome.serial.connect(port.path, function(connInfo) {
+            logMsg("Connected to " + port.path);
+
+            chrome.serial.onReceive.addListener(onReceive);
+        });
     });
 };
