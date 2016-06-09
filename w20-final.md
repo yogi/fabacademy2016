@@ -603,7 +603,7 @@ ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even th
 </pre>
      
 
-## Clock Case Production
+### Clock Case Production
 
 Spent the evening designing the clock case in Rhino. I simplified the design and based it off Sibu's box:
 
@@ -622,7 +622,7 @@ And here are pictures of the parts being cut and assembled at different stages:
 
 ---
 
-Fri, 3rd Jun
+## Fri, 3rd Jun
 
 I started off the day assembling the cut pieces from last night. Most of the pieces snapped in correctly except for the 
     loop that supports the back cover. The dimensions for it were wrong.
