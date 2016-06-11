@@ -271,11 +271,15 @@ layout: default
 <div class="row">
 	<div class="col-md-7 col-md-push-5">
 		<a href="w17-interface.html"><h1>Interface & Application Programming</h1></a>
+		<h2 class="text-muted">Light Sensor Game Input</h2>
 		<p>
+		I translated the ambient light sensor's readings into up & down movements to control an airplane in a 3D Javascript game
+		    running in the browser. 
 		</p>
 	</div>
 	<div class="col-md-5 col-md-pull-7">
       <a href="w17-interface.html">
+        <img src="images/w17-aviator.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>
