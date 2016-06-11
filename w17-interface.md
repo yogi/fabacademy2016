@@ -120,3 +120,73 @@ onload = function() {
 
 ### Translate the sensor readings to an up or down command
 
+This step would be better done after I have a basic 3D world created.
+
+## Iteration 2
+
+### Simple 3D World
+
+Next I created a Chrome App using the code from the Aviator demo.
+ 
+I then modified the onReceive function to translate the sensor values into changes to the Y position of the plane. 
+
+Here is the updated code:
+
+<pre>
+function onReceive(info) {
+    var view = new Uint8Array(info.data);
+    for (i = 0; i < info.data.byteLength; i++) {
+        queue.push(view[i]);
+    }
+    
+    if (queue.size < 8) return; 
+    if (queue.shift() != 1) return;
+    if (queue.shift() != 2) return;
+    if (queue.shift() != 3) return;
+    if (queue.shift() != 4) return;
+    
+    // read the values sent by the sensor board
+    onLow = queue.shift();
+    onHigh = queue.shift();
+    onValue = (256 * onHigh + onLow) / nloop;
+    
+    offLow = queue.shift();
+    offHigh = queue.shift();
+    offValue = (256 * offHigh + offLow) / nloop;
+    
+    filter = (1 - eps) * filter + eps * amp * (onValue - offValue);
+
+    // Calculate thresholds for up and down movement based on the diff between the hi and lo value.
+    
+    // Respond to changing ambient light by calculating the up & down threshold based on the range of values seen recently.  
+    if (filter < minFilter || millisPassedSince(minFilterTime, 10)) {
+        minFilter = filter;
+        minFilterTime = now();
+    }
+    
+    if (filter > maxFilter || millisPassedSince(maxFilterTime, 10)) {
+        maxFilter = filter;
+        maxFilterTime = now();
+    }
+    
+    range = maxFilter - minFilter;
+    downThreshold = minFilter + (range * 5/16);
+    upThreshold = maxFilter - (range * 9/16);
+     
+    // Appy the threshold and set the plane's Y position 
+    if (filter <= downThreshold && mousePos.y > -1) {
+        mousePos.y -= 0.1;
+    } else if (filter > upThreshold && mousePos.y < 1) {
+        mousePos.y += 0.1;
+    }
+    console.log("filter: " + filter + " downThreshold: " + downThreshold + " upThreshold: " + upThreshold + "; mousePos: x " + mousePos.x + ", y " + mousePos.y);
+};
+</pre>
+
+Here's a video showing the result:
+
+<video controls>
+  <source src="images/w17-aviator.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+

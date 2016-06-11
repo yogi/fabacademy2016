@@ -9,6 +9,20 @@ function logMsg(msg) {
     messages.value = msg + "\n" + messages.value; 
 }
 
+function now() {
+    return new Date().getTime();
+}
+
+var minFilter = 100000;
+var maxFilter = -100000;
+
+var minFilterTime = now();
+var maxFilterTime = now();
+
+function millisPassedSince(since, ms) {
+    return since + ms > now();
+}
+
 function onReceive(info) {
     var view = new Uint8Array(info.data);
     for (i = 0; i < info.data.byteLength; i++) {
@@ -21,6 +35,7 @@ function onReceive(info) {
     if (queue.shift() != 3) return;
     if (queue.shift() != 4) return;
     
+    // calculate the values sent by the sensor board
     onLow = queue.shift();
     onHigh = queue.shift();
     onValue = (256 * onHigh + onLow) / nloop;
@@ -29,9 +44,32 @@ function onReceive(info) {
     offHigh = queue.shift();
     offValue = (256 * offHigh + offLow) / nloop;
     
-    filter = (1 - eps) * filter + eps * amp * (onValue - offValue);
+    filter = Math.round((1 - eps) * filter + eps * amp * (onValue - offValue));
 
-    console.log(filter + " | " + onValue + " | " + offValue);
+    // Calculate thresholds for up and down movement based on the diff between the hi and lo value.
+    
+    // Respond to changing ambient light by calculating the up & down threshold based on the range of values seen recently.  
+    if (filter < minFilter || millisPassedSince(minFilterTime, 10)) {
+        minFilter = filter;
+        minFilterTime = now();
+    }
+    
+    if (filter > maxFilter || millisPassedSince(maxFilterTime, 10)) {
+        maxFilter = filter;
+        maxFilterTime = now();
+    }
+    
+    range = maxFilter - minFilter;
+    downThreshold = Math.round(minFilter + (range * 5/16));
+    upThreshold = Math.round(maxFilter - (range * 9/16));
+     
+    // Appy the threshold and set the plane's Y position 
+    if (filter <= downThreshold && mousePos.y > -1) {
+        mousePos.y -= 0.1;
+    } else if (filter > upThreshold && mousePos.y < 1) {
+        mousePos.y += 0.1;
+    }
+    console.log("filter: " + filter + " downThreshold: " + downThreshold + " upThreshold: " + upThreshold + " mousePos: x " + mousePos.x + ", y " + mousePos.y);
 };
 
 function setupSerialComms() {
