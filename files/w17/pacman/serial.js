@@ -11,7 +11,6 @@ function logMsg(msg) {
 
 function onReceive(info) {
     var view = new Uint8Array(info.data);
-    //console.log("Received: " + info.data.byteLength + " bytes");
     for (i = 0; i < info.data.byteLength; i++) {
         queue.push(view[i]);
     }
@@ -35,7 +34,7 @@ function onReceive(info) {
     console.log(filter + " | " + onValue + " | " + offValue);
 };
 
-onload = function() {
+function setupSerialComms() {
     chrome.serial.getDevices(function(ports) {
         var eligiblePorts = ports.filter(function(port) {
             return !port.path.match(/[Bb]luetooth/) && port.path.match(/\/dev\/tty/);
@@ -58,4 +57,4 @@ onload = function() {
             chrome.serial.onReceive.addListener(onReceive);
         });
     });
-};
+}
