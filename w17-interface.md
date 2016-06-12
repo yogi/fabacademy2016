@@ -34,10 +34,6 @@ So, I'm going to create a simple game that involves a character continuously mov
     * Translate the sensor readings to an up or down command.
 * Iteration 2
     * Create a simple 3D world and a character moving continuously from left to right. Use the sensor inputs to move the character up and down.
-* Iteration 3
-    * Add obstacles to avoid and treasures to collect and keep track of the score.
-* Iteration 4 (optional)
-    * Enrich the world visually. 
 
 ## Iteration 1
 
@@ -189,4 +185,6 @@ Here's a video showing the result:
   <source src="images/w17-aviator.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+## Original Files:
 
