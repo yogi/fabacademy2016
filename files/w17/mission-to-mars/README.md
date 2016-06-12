@@ -1,4 +1,4 @@
-# Pacman Chrome App
+# Mission to Mars Chrome App
 
 ## Install Chrome App
 

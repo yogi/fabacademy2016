@@ -20,7 +20,7 @@ var minFilterTime = now();
 var maxFilterTime = now();
 
 function millisPassedSince(since, ms) {
-    return since + ms > now();
+    return (since + ms) <= now();
 }
 
 function onReceive(info) {
@@ -49,12 +49,14 @@ function onReceive(info) {
     // Calculate thresholds for up and down movement based on the diff between the hi and lo value.
     
     // Respond to changing ambient light by calculating the up & down threshold based on the range of values seen recently.  
-    if (filter < minFilter || millisPassedSince(minFilterTime, 10)) {
+    if (filter < minFilter || millisPassedSince(minFilterTime, 100)) {
+        console.log("changing minFilter");
         minFilter = filter;
         minFilterTime = now();
     }
     
-    if (filter > maxFilter || millisPassedSince(maxFilterTime, 10)) {
+    if (filter > maxFilter || millisPassedSince(maxFilterTime, 100)) {
+        console.log("changing maxFilter");
         maxFilter = filter;
         maxFilterTime = now();
     }
