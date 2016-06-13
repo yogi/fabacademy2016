@@ -11,7 +11,7 @@ var Colors = {
 // THREEJS RELATED VARIABLES
 
 var scene,
-    camera, fieldOfView, aspectRatio, nearPlane, farPlane,
+    camera, fieldOfView, aspectRatio, nearRocket, farRocket,
     renderer, container;
 
 //SCREEN & MOUSE VARIABLES
@@ -29,13 +29,13 @@ function createScene() {
   scene = new THREE.Scene();
   aspectRatio = WIDTH / HEIGHT;
   fieldOfView = 60;
-  nearPlane = 1;
-  farPlane = 10000;
+  nearRocket = 1;
+  farRocket = 10000;
   camera = new THREE.PerspectiveCamera(
     fieldOfView,
     aspectRatio,
-    nearPlane,
-    farPlane
+    nearRocket,
+    farRocket
     );
   scene.fog = new THREE.Fog(0xf7d9aa, 10, 9500);
   camera.position.x = 0;
@@ -86,16 +86,16 @@ function createLights() {
   scene.add(shadowLight);
 }
 
-var AirPlane = function() {
+var Rocket = function() {
     this.mesh = new THREE.Object3D();
-    this.mesh.name = "airPlane";
+    this.mesh.name = "airRocket";
 
-    planeColor = Colors.white;
+    rocketColor = Colors.white;
 
     // Create the body
     var geomBody = new THREE.BoxGeometry(160, 50, 50, 1, 1, 1);
     var matBody = new THREE.MeshPhongMaterial({
-        color: planeColor,
+        color: rocketColor,
         shading: THREE.FlatShading
     });
     var body = new THREE.Mesh(geomBody, matBody);
@@ -106,7 +106,7 @@ var AirPlane = function() {
     // Create nose
     var geomNose = new THREE.ConeGeometry(35.55, 100, 4);
     var matNose = new THREE.MeshPhongMaterial({
-        color: planeColor,
+        color: rocketColor,
         shading: THREE.FlatShading
     });
     var nose = new THREE.Mesh(geomNose, matNose);
@@ -121,7 +121,7 @@ var AirPlane = function() {
 
     var geomFin1 = new THREE.BoxGeometry(60, 100, 15, 1, 1, 1);
     var matFin1 = new THREE.MeshPhongMaterial({
-        color: planeColor,
+        color: rocketColor,
         shading: THREE.FlatShading
     });
     var fin1 = new THREE.Mesh(geomFin1, matFin1);
@@ -133,7 +133,7 @@ var AirPlane = function() {
 
     var geomFin2 = new THREE.BoxGeometry(60, 100, 15, 1, 1, 1);
     var matFin2 = new THREE.MeshPhongMaterial({
-        color: planeColor,
+        color: rocketColor,
         shading: THREE.FlatShading
     });
     var fin2 = new THREE.Mesh(geomFin2, matFin2);
@@ -203,13 +203,13 @@ Cloud = function(){
 
 // 3D Models
 var sea;
-var airplane;
+var rocket;
 
-function createPlane(){
-  airplane = new AirPlane();
-  airplane.mesh.scale.set(.25,.25,.25);
-  airplane.mesh.position.y = 100;
-  scene.add(airplane.mesh);
+function createRocket(){
+  rocket = new Rocket();
+  rocket.mesh.scale.set(.25,.25,.25);
+  rocket.mesh.position.y = 100;
+  scene.add(rocket.mesh);
 }
 
 function createSea(){
@@ -225,19 +225,19 @@ function createSky(){
 }
 
 function loop(){
-  updatePlane();
+  updateRocket();
   sea.mesh.rotation.z += .005;
   sky.mesh.rotation.z += .01;
   renderer.render(scene, camera);
   requestAnimationFrame(loop);
 }
 
-function updatePlane(){
+function updateRocket(){
   var targetY = normalize(mousePos.y,-.75,.75,25, 175);
   var targetX = normalize(mousePos.x,-.75,.75,-100, 100);
-  airplane.mesh.position.y = targetY;
-  airplane.mesh.position.x = targetX;
-  airplane.mesh.rotation.x += 0.002;
+  rocket.mesh.position.y = targetY;
+  rocket.mesh.position.x = targetX;
+  rocket.mesh.rotation.x += 0.002;
 }
 
 function normalize(v,vmin,vmax,tmin, tmax){
@@ -253,7 +253,7 @@ function setupWorld(event){
   document.addEventListener('mousemove', handleMouseMove, false);
   createScene();
   createLights();
-  createPlane();
+  createRocket();
   createSea();
   createSky();
   loop();

@@ -122,9 +122,72 @@ This step would be better done after I have a basic 3D world created.
 
 ### Simple 3D World
 
-Next I created a Chrome App using the code from the Aviator demo.
+Next I created a Chrome App using the code from the Aviator demo. 
+
+I changed the sea surface to red and created a rocket using a combination of simple shapes, here's the relevant code using Three.js:
+
+<pre>
+var Rocket = function() {
+    this.mesh = new THREE.Object3D();
+    this.mesh.name = "airPlane";
+
+    rocketColor = Colors.white;
+
+    // Create the body
+    var geomBody = new THREE.BoxGeometry(160, 50, 50, 1, 1, 1);
+    var matBody = new THREE.MeshPhongMaterial({
+        color: rocketColor,
+        shading: THREE.FlatShading
+    });
+    var body = new THREE.Mesh(geomBody, matBody);
+    body.castShadow = true;
+    body.receiveShadow = true;
+    this.mesh.add(body);
+
+    // Create nose
+    var geomNose = new THREE.ConeGeometry(35.55, 100, 4);
+    var matNose = new THREE.MeshPhongMaterial({
+        color: rocketColor,
+        shading: THREE.FlatShading
+    });
+    var nose = new THREE.Mesh(geomNose, matNose);
+    nose.position.x = 129;
+    nose.castShadow = true;
+    nose.receiveShadow = true;
+    nose.rotation.x = Math.PI / 4;
+    nose.rotation.z = Math.PI * 3 / 2;
+    this.mesh.add(nose);
+
+    // Create Fins
+
+    var geomFin1 = new THREE.BoxGeometry(60, 100, 15, 1, 1, 1);
+    var matFin1 = new THREE.MeshPhongMaterial({
+        color: rocketColor,
+        shading: THREE.FlatShading
+    });
+    var fin1 = new THREE.Mesh(geomFin1, matFin1);
+    fin1.position.set(-80, 0, 0);
+    fin1.rotation.x = Math.PI / 4;
+    fin1.castShadow = true;
+    fin1.receiveShadow = true;
+    this.mesh.add(fin1);
+
+    var geomFin2 = new THREE.BoxGeometry(60, 100, 15, 1, 1, 1);
+    var matFin2 = new THREE.MeshPhongMaterial({
+        color: rocketColor,
+        shading: THREE.FlatShading
+    });
+    var fin2 = new THREE.Mesh(geomFin2, matFin2);
+    fin2.position.set(-80, 0, 0);
+    fin2.rotation.x = Math.PI * 3 / 4;
+    fin2.castShadow = true;
+    fin2.receiveShadow = true;
+    this.mesh.add(fin2);
+};
+</pre>
+
  
-I then modified the onReceive function to translate the sensor values into changes to the Y position of the plane. 
+I then modified the onReceive function to translate the sensor values into changes to the Y position of the rocket. 
 
 Here is the updated code:
 
@@ -169,7 +232,7 @@ function onReceive(info) {
     downThreshold = minFilter + (range * 5/16);
     upThreshold = maxFilter - (range * 9/16);
      
-    // Appy the threshold and set the plane's Y position 
+    // Appy the threshold and set the rocket's Y position 
     if (filter <= downThreshold && mousePos.y > -1) {
         mousePos.y -= 0.1;
     } else if (filter > upThreshold && mousePos.y < 1) {
@@ -185,68 +248,6 @@ Here's a video showing the result:
   <source src="images/w17-aviator.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-
-The rocket was modelled as a combination of simple shapes, here's the relevant code using Three.js:
-
-<pre>
-var AirPlane = function() {
-    this.mesh = new THREE.Object3D();
-    this.mesh.name = "airPlane";
-
-    planeColor = Colors.white;
-
-    // Create the body
-    var geomBody = new THREE.BoxGeometry(160, 50, 50, 1, 1, 1);
-    var matBody = new THREE.MeshPhongMaterial({
-        color: planeColor,
-        shading: THREE.FlatShading
-    });
-    var body = new THREE.Mesh(geomBody, matBody);
-    body.castShadow = true;
-    body.receiveShadow = true;
-    this.mesh.add(body);
-
-    // Create nose
-    var geomNose = new THREE.ConeGeometry(35.55, 100, 4);
-    var matNose = new THREE.MeshPhongMaterial({
-        color: planeColor,
-        shading: THREE.FlatShading
-    });
-    var nose = new THREE.Mesh(geomNose, matNose);
-    nose.position.x = 129;
-    nose.castShadow = true;
-    nose.receiveShadow = true;
-    nose.rotation.x = Math.PI / 4;
-    nose.rotation.z = Math.PI * 3 / 2;
-    this.mesh.add(nose);
-
-    // Create Fins
-
-    var geomFin1 = new THREE.BoxGeometry(60, 100, 15, 1, 1, 1);
-    var matFin1 = new THREE.MeshPhongMaterial({
-        color: planeColor,
-        shading: THREE.FlatShading
-    });
-    var fin1 = new THREE.Mesh(geomFin1, matFin1);
-    fin1.position.set(-80, 0, 0);
-    fin1.rotation.x = Math.PI / 4;
-    fin1.castShadow = true;
-    fin1.receiveShadow = true;
-    this.mesh.add(fin1);
-
-    var geomFin2 = new THREE.BoxGeometry(60, 100, 15, 1, 1, 1);
-    var matFin2 = new THREE.MeshPhongMaterial({
-        color: planeColor,
-        shading: THREE.FlatShading
-    });
-    var fin2 = new THREE.Mesh(geomFin2, matFin2);
-    fin2.position.set(-80, 0, 0);
-    fin2.rotation.x = Math.PI * 3 / 4;
-    fin2.castShadow = true;
-    fin2.receiveShadow = true;
-    this.mesh.add(fin2);
-};
-</pre>
 
 ## Original Files:
 
