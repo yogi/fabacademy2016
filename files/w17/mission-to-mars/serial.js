@@ -49,13 +49,15 @@ function onReceive(info) {
     // Calculate thresholds for up and down movement based on the diff between the hi and lo value.
     
     // Respond to changing ambient light by calculating the up & down threshold based on the range of values seen recently.  
-    if (filter < minFilter || millisPassedSince(minFilterTime, 100)) {
+//    if (filter < minFilter || millisPassedSince(minFilterTime, 1000)) {
+    if (filter < minFilter) {
         console.log("changing minFilter");
         minFilter = filter;
         minFilterTime = now();
     }
     
-    if (filter > maxFilter || millisPassedSince(maxFilterTime, 100)) {
+//    if (filter > maxFilter || millisPassedSince(maxFilterTime, 1000)) {
+    if (filter > maxFilter) {
         console.log("changing maxFilter");
         maxFilter = filter;
         maxFilterTime = now();
@@ -71,7 +73,7 @@ function onReceive(info) {
     } else if (filter > upThreshold && mousePos.y < 1) {
         mousePos.y += 0.1;
     }
-    console.log("filter: " + filter + " downThreshold: " + downThreshold + " upThreshold: " + upThreshold + " mousePos: x " + mousePos.x + ", y " + mousePos.y);
+    console.log("range: " + range + " filter: " + filter + " downThreshold: " + downThreshold + " upThreshold: " + upThreshold + " mousePos: x " + mousePos.x + ", y " + mousePos.y);
 };
 
 function setupSerialComms() {

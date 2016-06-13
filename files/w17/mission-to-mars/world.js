@@ -86,51 +86,62 @@ function createLights() {
   scene.add(shadowLight);
 }
 
-
-var AirPlane = function(){
-	this.mesh = new THREE.Object3D();
-  this.mesh.name = "airPlane";
+var AirPlane = function() {
+    this.mesh = new THREE.Object3D();
+    this.mesh.name = "airPlane";
 
     planeColor = Colors.white;
-    
-  // Create the cabin
-	var geomCockpit = new THREE.BoxGeometry(160,50,50,1,1,1);
-  var matCockpit = new THREE.MeshPhongMaterial({color:planeColor, shading:THREE.FlatShading});
-  var cockpit = new THREE.Mesh(geomCockpit, matCockpit);
-	cockpit.castShadow = true;
-  cockpit.receiveShadow = true;
-  this.mesh.add(cockpit);
 
-  // Create Engine
-  var geomEngine = new THREE.ConeGeometry(35.55,100,4);
-  var matEngine = new THREE.MeshPhongMaterial({color:planeColor, shading:THREE.FlatShading});
-  var engine = new THREE.Mesh(geomEngine, matEngine);
-  engine.position.x = 129;
-  engine.castShadow = true;
-  engine.receiveShadow = true;
-  engine.rotation.x = Math.PI / 4;
-  engine.rotation.z = Math.PI * 3 / 2;
-	this.mesh.add(engine);
+    // Create the body
+    var geomBody = new THREE.BoxGeometry(160, 50, 50, 1, 1, 1);
+    var matBody = new THREE.MeshPhongMaterial({
+        color: planeColor,
+        shading: THREE.FlatShading
+    });
+    var body = new THREE.Mesh(geomBody, matBody);
+    body.castShadow = true;
+    body.receiveShadow = true;
+    this.mesh.add(body);
 
-  // Create Tailplane
+    // Create nose
+    var geomNose = new THREE.ConeGeometry(35.55, 100, 4);
+    var matNose = new THREE.MeshPhongMaterial({
+        color: planeColor,
+        shading: THREE.FlatShading
+    });
+    var nose = new THREE.Mesh(geomNose, matNose);
+    nose.position.x = 129;
+    nose.castShadow = true;
+    nose.receiveShadow = true;
+    nose.rotation.x = Math.PI / 4;
+    nose.rotation.z = Math.PI * 3 / 2;
+    this.mesh.add(nose);
 
-  var geomTailPlane = new THREE.BoxGeometry(60,100,15,1,1,1);
-  var matTailPlane = new THREE.MeshPhongMaterial({color:planeColor, shading:THREE.FlatShading});
-  var tailPlane = new THREE.Mesh(geomTailPlane, matTailPlane);
-  tailPlane.position.set(-80,0,0);
-  tailPlane.rotation.x = Math.PI / 4;
-  tailPlane.castShadow = true;
-  tailPlane.receiveShadow = true;
-	this.mesh.add(tailPlane);
+    // Create Fins
 
-  var geomTailPlane = new THREE.BoxGeometry(60,100,15,1,1,1);
-  var matTailPlane = new THREE.MeshPhongMaterial({color:planeColor, shading:THREE.FlatShading});
-  var tailPlane = new THREE.Mesh(geomTailPlane, matTailPlane);
-  tailPlane.position.set(-80,0,0);
-  tailPlane.rotation.x = Math.PI * 3 / 4;
-  tailPlane.castShadow = true;
-  tailPlane.receiveShadow = true;
-	this.mesh.add(tailPlane);
+    var geomFin1 = new THREE.BoxGeometry(60, 100, 15, 1, 1, 1);
+    var matFin1 = new THREE.MeshPhongMaterial({
+        color: planeColor,
+        shading: THREE.FlatShading
+    });
+    var fin1 = new THREE.Mesh(geomFin1, matFin1);
+    fin1.position.set(-80, 0, 0);
+    fin1.rotation.x = Math.PI / 4;
+    fin1.castShadow = true;
+    fin1.receiveShadow = true;
+    this.mesh.add(fin1);
+
+    var geomFin2 = new THREE.BoxGeometry(60, 100, 15, 1, 1, 1);
+    var matFin2 = new THREE.MeshPhongMaterial({
+        color: planeColor,
+        shading: THREE.FlatShading
+    });
+    var fin2 = new THREE.Mesh(geomFin2, matFin2);
+    fin2.position.set(-80, 0, 0);
+    fin2.rotation.x = Math.PI * 3 / 4;
+    fin2.castShadow = true;
+    fin2.receiveShadow = true;
+    this.mesh.add(fin2);
 };
 
 Sky = function(){
