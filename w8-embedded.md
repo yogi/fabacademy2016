@@ -105,6 +105,7 @@ Francisco mentioned that this was because I hadn't enabled the pull-up resistor 
     
 Here is the button sketch with my minor changes:
 <pre>
+<code class="language-clike">
 
 const int buttonPin = 3;
 const int ledPin =  7;
@@ -133,6 +134,7 @@ void loop() {
     digitalWrite(ledPin, LOW);
   }
 }
+</code>
 </pre>
 
 #### Original Files
@@ -158,6 +160,7 @@ I used the Makefile generated from avr-project, which is a Crosspack AVR tool av
 Next I tried the following code to blink the LED in C.
  
 <pre>
+<code class="language-clike">
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -177,6 +180,7 @@ int main(void) {
 
     return 0;
 }
+</code>
 </pre>
  
 The output was: 
@@ -467,6 +471,8 @@ Notes:
     * Bits in PCMSK0 and PCMSK1 need to be set to indicate which specific pin the program is interested in.
 
 <pre>
+<code class="language-clike">
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
@@ -510,6 +516,7 @@ int main(void) {
     }
     return 0;
 }
+</code>
 </pre>
 
 
@@ -530,6 +537,7 @@ int main(void) {
 This program implements the blink logic as a timer event rather than a delay loop. Here is the commented code: 
 
 <pre>
+<code class="language-clike">
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
@@ -561,6 +569,7 @@ void main(void) {
     while(1);                           // loop forever
 }
 
+</code>
 </pre>
 
 #### Original Files
@@ -587,6 +596,7 @@ The goal of this mini-project is to implement a software UART interface that all
 Here is a first attempt:
 
 <pre>
+<code class="language-clike">
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
@@ -671,8 +681,7 @@ int main(void) {
     
     return 0;
 }
-
-
+</code>
 </pre>
 
 I used screen and pyserial to connect from my laptop via an FTDI board to the hello board, but it was not able to output 

@@ -35,6 +35,7 @@ As a next step I'm trying some simpler code to send data from the master to slav
 This is the master:
 
 <pre>
+<code class="language-clike">
 //Code for the Arduino Uno
 #include &lt;Wire.h&gt;
  
@@ -52,11 +53,13 @@ void loop() {
 
   delay(1000);
 }
-</pre>
+</code></pre>
 
 This is the slave:
 
 <pre>
+<code class="language-clike">
+
 #define output(directions, pin) (directions |= (1 << pin)) // set port direction for output
 #define input(directions, pin) (directions &= (~(1 << pin))) // set port direction for input
 #define set(port, pin) (port |= (1 << pin)) // set port pin
@@ -89,6 +92,7 @@ void loop()
   }
 }
 
+</code>
 </pre>
 
 This worked fine, the slave blinked the LED every 1 sec.
@@ -98,6 +102,7 @@ Next step is to get the slave to send back some data to the master.
 Here is the master code I tried:
 
 <pre>
+<code class="language-clike">
 #include &lt;Wire.h&gt;
 
 void setup() {
@@ -117,11 +122,12 @@ void loop() {
 
   delay(50);
 }
-</pre>
+</code></pre>
 
 Here is the slave code:
 
 <pre>
+<code class="language-clike">
 // Code for the ATtiny85
 #define I2C_SLAVE_ADDRESS 0x4 // Address of the slave
 
@@ -152,7 +158,7 @@ void requestEvent()
     TinyWireS.send(i);
     i++;
 }
-</pre>
+</code></pre>
 
 I uploaded the slave code with the internal clock set to 8mhz. This worked perfectly well! The master was outputting incrementing
     numbers from the slave. 

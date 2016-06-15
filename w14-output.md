@@ -147,6 +147,7 @@ Here is the code:
 * Each LED segment for a digit is switched on and off every 1ms
 
 <pre>
+<code class="language-clike">
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -272,4 +273,5 @@ int main(void) {
     return 0;
 }
 
+</code>
 </pre>

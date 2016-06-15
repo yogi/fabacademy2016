@@ -52,6 +52,7 @@ Next I need to accept input from the serial interface. Here's a good [tutorial](
 Here's a simple JS program that outputs the numbers received over serial to console:
  
 <pre>
+<code class="language-javascript">
 var queue = new CBuffer(10);
 
 var eps = 0.9       // filter time constant
@@ -112,6 +113,7 @@ onload = function() {
         });
     });
 };
+</code>
 </pre>
 
 ### Translate the sensor readings to an up or down command
@@ -127,6 +129,7 @@ Next I created a Chrome App using the code from the Aviator demo.
 I changed the sea surface to red and created a rocket using a combination of simple shapes, here's the relevant code using Three.js:
 
 <pre>
+<code class="language-javascript">
 var Rocket = function() {
     this.mesh = new THREE.Object3D();
     this.mesh.name = "airPlane";
@@ -184,6 +187,7 @@ var Rocket = function() {
     fin2.receiveShadow = true;
     this.mesh.add(fin2);
 };
+</code>
 </pre>
 
  
@@ -192,6 +196,7 @@ I then modified the onReceive function to translate the sensor values into chang
 Here is the updated code:
 
 <pre>
+<code class="language-javascript">
 function onReceive(info) {
     var view = new Uint8Array(info.data);
     for (i = 0; i < info.data.byteLength; i++) {
@@ -240,6 +245,7 @@ function onReceive(info) {
     }
     console.log("filter: " + filter + " downThreshold: " + downThreshold + " upThreshold: " + upThreshold + "; mousePos: x " + mousePos.x + ", y " + mousePos.y);
 };
+</code>
 </pre>
 
 Here's a video showing the result:

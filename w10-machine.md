@@ -116,6 +116,7 @@ The full source is included here:
 Here is a code-snippet showing the main g-code interpreter function:
 
 <pre>
+<code class="language-clike">
 /**
  * Read the input buffer and find any recognized commands.  One G or M command per line.
  */
@@ -159,6 +160,7 @@ void processCommand() {
   default:  break;
   }
 }
+</code>
 
 </pre>
 
@@ -166,6 +168,8 @@ void processCommand() {
 Here is the RAMPS module:
 
 <pre>
+<code class="language-clike">
+
 //------------------------------------------------------------------------------
 // CONSTANTS
 //------------------------------------------------------------------------------
@@ -221,7 +225,7 @@ void setup_controller() {
   pinMode(M2_DIR,OUTPUT);
 }
 
-</pre>
+</code></pre>
 
 ### G-code Interpreter Test
 
@@ -249,6 +253,7 @@ In the video, the motor is moving very slowly because of the debugging output th
 The next step was to write a simple way to input g-code commands. We used pyserial for this.
 
 <pre>
+<code class="language-clike">
 import serial
 import fileinput
 
@@ -270,7 +275,7 @@ for cmd in fileinput.input():
     consumeLines()
 
 ser.close()
-</pre>
+</code></pre>
 
 Now we can invoke it like this:
 

@@ -70,6 +70,7 @@ As per the [datasheet](http://www.micropik.com/PDF/HCSR04.pdf) and [user-guide](
 I used an Arduino sketch from [here](http://playground.arduino.cc/Code/NewPing).
 
 <pre>
+<code class="language-clike">
 #include &lt;NewPing.h&gt;
  
 #define TRIGGER_PIN  12
@@ -89,7 +90,7 @@ void loop() {
   Serial.print(uS / US_ROUNDTRIP_CM);
   Serial.println("cm");
 }
-</pre>
+</code></pre>
    
 Here is a video showing the test: 
 
@@ -111,6 +112,8 @@ I hooked up the I2C SDA (data) and SCL (clock) to pins A4 and A5 respectively.
 Here's the sketch from the article:
  
 <pre>
+<code class="language-clike">
+
 #include "Wire.h"
 #define DS3231_I2C_ADDRESS 0x68
 // Convert normal decimal numbers to binary coded decimal
@@ -228,6 +231,7 @@ void loop()
   displayTime(); // display the real-time clock data on the Serial Monitor,
   delay(1000); // every second
 }
+</code>
 </pre>
 
 Most of the code is for formatting the time for display. The actual interaction is quite simple, and converts data between 
@@ -441,6 +445,7 @@ I used Neil's sample code to check for data on the pin, read a character off it,
 Here is the Arduino code, it mimics a clock sending a digit every sec:
 
 <pre>
+<code class="language-clike">
 void setup() {
   // initialize both serial ports:
   Serial.begin(9600);
@@ -459,7 +464,7 @@ void loop() {
     i = ++i % 9;
   }
 }
-</pre>
+</code></pre>
     
 I've been playing around with the 7segment code to get it to display digits sent over serial. The basic interaction worked fine. 
     Now I'm trying to get it to work using interrupts, because without them there is a visible flicker as the code waits for a start bit signal 
@@ -527,6 +532,7 @@ So, your on your own if you misspell the vector. I tried with ISR(FOO) but got n
 The following code works (snippet only, full code is in the original files linked below):
 
 <pre>
+<code class="language-clike">
 
 volatile int i = 1;
  
@@ -556,7 +562,7 @@ int main(void) {
     
     return 0;
 }
-
+</code>
 </pre>
 
 
@@ -565,6 +571,7 @@ I set up the correct ISR and copied over the get_char logic into it, but it just
 
      
 <pre>
+<code class="language-clike">
 
 ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even though I'm enabling PCINT1
     volatile unsigned char *pins = &serial_pins;
@@ -600,6 +607,7 @@ ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even th
     bit_delay();
     
 // ... remaining code omitted
+</code>
 </pre>
      
 
