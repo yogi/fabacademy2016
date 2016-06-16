@@ -936,13 +936,6 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <label x="55.88" y="73.66" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="SCK" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="SCK"/>
-<wire x1="53.34" y1="17.78" x2="40.64" y2="17.78" width="0.1524" layer="91"/>
-<label x="40.64" y="17.78" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="MISO" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="MISO"/>
@@ -1018,6 +1011,13 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <pinref part="RTC" gate="G$1" pin="GND"/>
 <wire x1="142.24" y1="43.18" x2="132.08" y2="43.18" width="0.1524" layer="91"/>
 <label x="132.08" y="43.18" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="SCK"/>
+<wire x1="53.34" y1="17.78" x2="45.72" y2="17.78" width="0.1524" layer="91"/>
+<label x="40.64" y="17.78" size="1.778" layer="95"/>
+<wire x1="43.18" y1="17.78" x2="40.64" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="43.18" y1="17.78" x2="45.72" y2="17.78" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="PT" class="0">

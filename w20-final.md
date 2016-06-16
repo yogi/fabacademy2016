@@ -726,3 +726,46 @@ I'm back in Bangalore. I've ordered a soldering kit and multimeter yesterday and
 I'll work on my pending assignments for the past weeks until this arrives.
 
 
+## Mon, 13th Jun
+
+I used my new kit to solder the VCC and GND pins which I'd missed connecting.
+
+## Thu, 16th Jun
+
+Today I'll be debugging the digit boards that aren't working fine.
+
+The first one labelled "C" has the following problems:
+
+* segment E doesn't light up
+    I checked the LED with a 3V cell, and it doesn't seem to be working. I'll need to replace it.
+* segment A and G go off intermittently.
+     Pressing LED D seems to light up A & G. This seems to be due to a loose solder contact on LED D, which is shared between LED A, D, G.
+     I'll need to resolder that joint.
+
+
+For the 2nd board, labelled "A":
+
+* A, E, F segments aren't working
+
+* A has a loose contact, needs to be resoldered
+
+* E & F are working when tested with a cell. Also when F is powered by a cell, E lights up too.
+    * This was due to a cut trace - the same one which connects E & F anodes. 
+    
+Controller board, which wasn't getting programmed:
+
+* SCK from the IDC header wasn't connected to the SCK pin on the ATtiny45. I think when renaming that net from SCK to SCL, the connection was dropped.
+    * Need to put a jumper.
+
+Here's my new temporary terrace workspace :-)
+  
+<img src="images/w20-terrace.jpg"/>
+
+Once the issues were fixed, the boards worked fine.
+
+---
+
+Next step is to program the controller and have it coordinate the activities of the rest of the boards.
+
+
+

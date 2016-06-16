@@ -541,9 +541,6 @@ Min. trace width = 0.03mm</description>
 <wire x1="24.1" y1="17.8" x2="25.9735" y2="17.8" width="0.6096" layer="1"/>
 <wire x1="25.9735" y1="17.8" x2="25.9735" y2="17.89" width="0.6096" layer="1"/>
 </signal>
-<signal name="SCK">
-<contactref element="U$1" pad="3"/>
-</signal>
 <signal name="MISO">
 <contactref element="U$1" pad="1"/>
 <contactref element="IC1" pad="8"/>
@@ -601,6 +598,8 @@ Min. trace width = 0.03mm</description>
 <wire x1="17.4" y1="20.5" x2="20.7665" y2="20.5" width="0.6096" layer="1"/>
 <wire x1="20.7665" y1="20.5" x2="20.7665" y2="20.43" width="0.6096" layer="1"/>
 <via x="26.4" y="27.1" extent="1-16" drill="0.6" shape="square"/>
+<contactref element="U$1" pad="3"/>
+<wire x1="20.785" y1="7.29" x2="20.7665" y2="20.43" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="PT">
 <contactref element="IC1" pad="6"/>
