@@ -767,5 +767,6 @@ Once the issues were fixed, the boards worked fine.
 
 Next step is to program the controller and have it coordinate the activities of the rest of the boards.
 
-
-
+I'm going to write this as an Arduino Sketch so that I can use the Wire.h libraries for I2C communication.
+ 
+First, lets get the digits displaying a time. 
