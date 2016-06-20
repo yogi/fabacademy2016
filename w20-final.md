@@ -803,4 +803,3 @@ The solution was to only have the VCC, GND and MISO pins connected on the digit 
 
 - Program controller to get data from the RTC.
  
- 

@@ -5,20 +5,17 @@ const int rx=10;
 const int tx=13;
 
 SoftwareSerial mySerial(rx,tx);
-int i=0;
-char buf[12];
 
 void setup() { 
   pinMode(rx,INPUT);
-  pinMode(tx,INPUT);
+  pinMode(tx,OUTPUT);
   mySerial.begin(9600);
 } 
 
 static int sleep = 1000;
+static char n = 0;
 
 void loop() {
-  pinMode(tx,OUTPUT);
-
   // framing
   mySerial.write(6);
   mySerial.write(5);
@@ -26,11 +23,13 @@ void loop() {
   mySerial.write(3);
 
   // time
-  mySerial.write(1);
-  mySerial.write(2);
-  mySerial.write(3);
-  mySerial.write(4);
+  mySerial.write(n);
+  mySerial.write(n);
+  mySerial.write(n);
+  mySerial.write(n);
 
-  pinMode(tx,INPUT);
+  n++;
+  if (n > 9) n = 0;
+
   delay(sleep);
 } 
