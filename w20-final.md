@@ -796,6 +796,11 @@ Digits work fine independently, but extra segments light up when multiple boards
 
 ## Mon, 20th Jun
 
+Finally figured out the problem with wrong segments lighting up. It was because all the digits were connected by a single set of wires, like a bus, 
+    and 6-pin IDC connectors. This resulted in the signals from one of the digit boards affecting others. 
+    
+The solution was to only have the VCC, GND and MISO pins connected on the digit bus. 
+
 - Program controller to get data from the RTC.
  
  

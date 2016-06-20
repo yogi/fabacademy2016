@@ -14,6 +14,7 @@
 #include <util/delay.h>
 
 #define output(directions,pin) (directions |= pin) // set port direction for output
+#define input(directions,pin) (directions &= (~pin)) // set port direction for input
 #define set(port,pin) (port |= pin) // set port pin
 #define clear(port,pin) (port &= (~pin)) // clear port pin
 #define pin_test(pins,pin) (pins & pin) // test for port pin
@@ -91,14 +92,9 @@ void put_char(volatile unsigned char *port, unsigned char pin, char txchar) {
    bit_delay();
    }
 
-char n = 0;
+char n = 2;
 
 int main(void) {
-   //
-   // main
-   //
-   static unsigned char count;
-   static uint16_t on,off;
    //
    // set clock divider to /1
    //
@@ -107,7 +103,6 @@ int main(void) {
    //
    // initialize output pins
    //
-   set(serial_port, serial_pin_out);
    output(serial_direction, serial_pin_out);
 
    //
@@ -128,13 +123,13 @@ int main(void) {
       char_delay();
 
       // send time
-      put_char(&serial_port, serial_pin_out, n);
+      put_char(&serial_port, serial_pin_out, 1);
       char_delay();
 
-      put_char(&serial_port, serial_pin_out, n);
+      put_char(&serial_port, serial_pin_out, 2);
       char_delay();
 
-      put_char(&serial_port, serial_pin_out, n);
+      put_char(&serial_port, serial_pin_out, 3);
       char_delay();
 
       put_char(&serial_port, serial_pin_out, n);
@@ -142,13 +137,6 @@ int main(void) {
       
       if (++n >= 10) n = 0;
       
-//      int i = 0;
-//      
-//      for (i = 0; i < 10; i++) {
-//          put_char(&serial_port, serial_pin_out, 48 + i);
-//          char_delay();
-//      }
-      
-      _delay_ms(2000);
+      _delay_ms(1000);
    }
 }

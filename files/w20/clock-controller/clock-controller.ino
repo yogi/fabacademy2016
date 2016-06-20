@@ -10,24 +10,27 @@ char buf[12];
 
 void setup() { 
   pinMode(rx,INPUT);
-  pinMode(tx,OUTPUT);
-//  DDRA |= (1 << PA0);
+  pinMode(tx,INPUT);
   mySerial.begin(9600);
 } 
 
-static char ASCII_ZERO = 48;
-static char min_unit = 4;
-static int sleep = 100;
+static int sleep = 1000;
 
 void loop() {
-//  mySerial.write(ASCII_ZERO + 1);
-//  mySerial.write(ASCII_ZERO + 2);
-//  mySerial.write(ASCII_ZERO + 3);
-//  mySerial.write(ASCII_ZERO + min_unit);
-//  min_unit++;
-//  if (min_unit > 9) {
-//    min_unit = 0;
-//  }
-  mySerial.write(49);
+  pinMode(tx,OUTPUT);
+
+  // framing
+  mySerial.write(6);
+  mySerial.write(5);
+  mySerial.write(4);
+  mySerial.write(3);
+
+  // time
+  mySerial.write(1);
+  mySerial.write(2);
+  mySerial.write(3);
+  mySerial.write(4);
+
+  pinMode(tx,INPUT);
   delay(sleep);
-}
+} 

@@ -30,7 +30,7 @@
 const int FLASH_DELAY_MS = 1;
 const int DIGIT_DISPLAY_MS = 1000;
 
-char DIGIT_SEGMENTS[10][7] = {
+char DIGIT_SEGMENTS[11][7] = {
      {'A', 'B', 'C', 'D', 'E', 'F'},            // 0
      {'B', 'C'},                                // 1
      {'A', 'B', 'D', 'E', 'G'},                 // 2
@@ -40,7 +40,8 @@ char DIGIT_SEGMENTS[10][7] = {
      {'A', 'C', 'D', 'E', 'F', 'G'},            // 6
      {'A', 'B', 'C'},                           // 7
      {'A', 'B', 'C', 'D', 'E', 'F', 'G',},      // 8
-     {'A', 'B', 'C', 'F', 'G',}                 // 9
+     {'A', 'B', 'C', 'F', 'G',},                // 9
+     {'A', 'D', 'G',}                           // 10 - this is the pattern shown when an invalid digit is received 
 };
 
 int DIGIT_NUM_SEGMENTS[] = {
@@ -53,7 +54,8 @@ int DIGIT_NUM_SEGMENTS[] = {
     6, // 6
     3, // 7
     7, // 8
-    5  // 9
+    5, // 9
+    3  // 10
 };
 
 #define pin_test(pins,pin) (pins & pin) // test for port pin
@@ -64,7 +66,7 @@ int DIGIT_NUM_SEGMENTS[] = {
 #define serial_pins PINB
 #define SERIAL_IN_PIN (1 << PB1)
 
-volatile char digit = 4;
+volatile char digit = 10;  // default value (displayed as 3 horizontal lines)
 
 
 int anode_pin_for(char led) {
@@ -117,6 +119,9 @@ void flash_segments(char segments[], int len) {
 
 void display(int digit, int duration_ms) {
     int i;
+    if (digit < 0 || digit > 9) {  
+        digit = 10;                 // default pattern to show if an invalid digit is received (initial value is also set to 10)
+    }
     char *segments = DIGIT_SEGMENTS[digit];
     int num_segments = DIGIT_NUM_SEGMENTS[digit];
     int cycles = duration_ms / (FLASH_DELAY_MS * num_segments);
@@ -125,7 +130,7 @@ void display(int digit, int duration_ms) {
     }
 }
 
-#define DIGIT_POSITION 1 // position of this digit in displaying the time (this needs to be changed for each digit, and needs to be between 0 - 3 inclusive) 
+#define DIGIT_POSITION 3 // position of this digit in displaying the time (this needs to be changed for each digit, and needs to be between 0 - 3 inclusive) 
 
 char time[4] = { 0, 0, 0, 0 };
 

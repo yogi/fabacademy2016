@@ -817,9 +817,9 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <instance part="R2" gate="G$1" x="22.86" y="20.32"/>
 <instance part="C1" gate="G$1" x="2.54" y="20.32"/>
 <instance part="DIGITS" gate="G$1" x="114.3" y="17.78"/>
-<instance part="RTC" gate="G$1" x="142.24" y="30.48"/>
-<instance part="ULTRA" gate="G$1" x="144.78" y="60.96"/>
-<instance part="USB" gate="G$1" x="83.82" y="7.62"/>
+<instance part="RTC" gate="G$1" x="157.48" y="40.64" rot="R90"/>
+<instance part="ULTRA" gate="G$1" x="147.32" y="73.66" rot="R90"/>
+<instance part="USB" gate="G$1" x="83.82" y="7.62" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -853,13 +853,13 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </segment>
 <segment>
 <pinref part="ULTRA" gate="G$1" pin="GND"/>
-<wire x1="144.78" y1="73.66" x2="134.62" y2="73.66" width="0.1524" layer="91"/>
-<label x="134.62" y="73.66" size="1.778" layer="95"/>
+<wire x1="134.62" y1="73.66" x2="134.62" y2="63.5" width="0.1524" layer="91"/>
+<label x="134.62" y="63.5" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="RTC" gate="G$1" pin="VCC"/>
-<wire x1="142.24" y1="38.1" x2="132.08" y2="38.1" width="0.1524" layer="91"/>
-<label x="132.08" y="38.1" size="1.778" layer="95"/>
+<wire x1="149.86" y1="40.64" x2="149.86" y2="30.48" width="0.1524" layer="91"/>
+<label x="149.86" y="30.48" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="1" pin="VCC"/>
@@ -900,18 +900,18 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </segment>
 <segment>
 <pinref part="ULTRA" gate="G$1" pin="TXD"/>
-<wire x1="144.78" y1="66.04" x2="134.62" y2="66.04" width="0.1524" layer="91"/>
-<label x="134.62" y="66.04" size="1.778" layer="95"/>
+<wire x1="142.24" y1="73.66" x2="142.24" y2="63.5" width="0.1524" layer="91"/>
+<label x="142.24" y="63.5" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="RTC" gate="G$1" pin="TXD"/>
-<wire x1="142.24" y1="35.56" x2="132.08" y2="35.56" width="0.1524" layer="91"/>
-<label x="132.08" y="35.56" size="1.778" layer="95"/>
+<wire x1="152.4" y1="40.64" x2="152.4" y2="30.48" width="0.1524" layer="91"/>
+<label x="152.4" y="30.48" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="USB" gate="G$1" pin="CTS"/>
-<wire x1="83.82" y1="17.78" x2="73.66" y2="17.78" width="0.1524" layer="91"/>
-<label x="73.66" y="17.78" size="1.778" layer="95"/>
+<wire x1="83.82" y1="-2.54" x2="93.98" y2="-2.54" width="0.1524" layer="91"/>
+<label x="93.98" y="-2.54" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="1" pin="GND"/>
@@ -956,8 +956,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </segment>
 <segment>
 <pinref part="USB" gate="G$1" pin="GND"/>
-<wire x1="83.82" y1="20.32" x2="73.66" y2="20.32" width="0.1524" layer="91"/>
-<label x="73.66" y="20.32" size="1.778" layer="95"/>
+<wire x1="83.82" y1="-5.08" x2="93.98" y2="-5.08" width="0.1524" layer="91"/>
+<label x="93.98" y="-5.08" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="VCC33" class="0">
@@ -997,8 +997,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </segment>
 <segment>
 <pinref part="RTC" gate="G$1" pin="CTS"/>
-<wire x1="142.24" y1="40.64" x2="132.08" y2="40.64" width="0.1524" layer="91"/>
-<label x="132.08" y="40.64" size="1.778" layer="95"/>
+<wire x1="147.32" y1="40.64" x2="147.32" y2="30.48" width="0.1524" layer="91"/>
+<label x="147.32" y="30.48" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="SCL" class="0">
@@ -1009,8 +1009,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 </segment>
 <segment>
 <pinref part="RTC" gate="G$1" pin="GND"/>
-<wire x1="142.24" y1="43.18" x2="132.08" y2="43.18" width="0.1524" layer="91"/>
-<label x="132.08" y="43.18" size="1.778" layer="95"/>
+<wire x1="144.78" y1="40.64" x2="144.78" y2="30.48" width="0.1524" layer="91"/>
+<label x="144.78" y="30.48" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="G$1" pin="SCK"/>
@@ -1042,8 +1042,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <net name="TRIG" class="0">
 <segment>
 <pinref part="ULTRA" gate="G$1" pin="CTS"/>
-<wire x1="144.78" y1="71.12" x2="134.62" y2="71.12" width="0.1524" layer="91"/>
-<label x="134.62" y="71.12" size="1.778" layer="95"/>
+<wire x1="137.16" y1="73.66" x2="137.16" y2="63.5" width="0.1524" layer="91"/>
+<label x="137.16" y="63.5" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="1" pin="(PCINT1/AIN0/ADC1)PA1"/>
@@ -1054,8 +1054,8 @@ Variants with postfix FAB are widened to allow the routing of internal traces</d
 <net name="ECHO" class="0">
 <segment>
 <pinref part="ULTRA" gate="G$1" pin="VCC"/>
-<wire x1="144.78" y1="68.58" x2="134.62" y2="68.58" width="0.1524" layer="91"/>
-<label x="134.62" y="68.58" size="1.778" layer="95"/>
+<wire x1="139.7" y1="73.66" x2="139.7" y2="63.5" width="0.1524" layer="91"/>
+<label x="139.7" y="63.5" size="1.778" layer="95" rot="R90"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="1" pin="(PCINT2/AIN1/ADC2)PA2"/>
