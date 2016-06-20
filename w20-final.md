@@ -770,3 +770,32 @@ Next step is to program the controller and have it coordinate the activities of 
 I'm going to write this as an Arduino Sketch so that I can use the Wire.h libraries for I2C communication.
  
 First, lets get the digits displaying a time. 
+
+
+## Sat, 18th Jun
+
+Was down with a fever for the past 2 days.
+
+Whats left:
+- Debug why the controller board is getting hot - probably a short
+- Debug the digit boards, which display incorrectly when more than 1 digit board is hooked up to the serial bus
+- Program the controller to display a time on the digit boards
+- Program the controller to get time from the RTC
+- Program the controller to get data from the ultrasonic sensor
+- Program the controller to get data from the light sensor
+- Unsolder the phototransistor, solder on leads, mount it on the top panel of the clock, solder the leads to the controller board
+- Cut the USB board, solder the connector, solder jumpers to the controller board
+- Make a video
+- Make the presentation page
+
+Problems with controller board - had 5V voltage regulator getting very hot, removed it.
+
+Serial comms issues, pin had to be resoldered.
+
+Digits work fine independently, but extra segments light up when multiple boards connected to the bus.
+
+## Mon, 20th Jun
+
+- Program controller to get data from the RTC.
+ 
+ 

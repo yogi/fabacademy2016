@@ -1,6 +1,8 @@
 #include <avr/io.h>
 #include <util/delay.h>
+#include <stdbool.h>
 #include "avr/interrupt.h"
+#include "queue.h"
 
 #define SCK_PIN PB2
 #define MOSI_PIN PB0
@@ -62,7 +64,7 @@ int DIGIT_NUM_SEGMENTS[] = {
 #define serial_pins PINB
 #define SERIAL_IN_PIN (1 << PB1)
 
-volatile char digit = 1;
+volatile char digit = 4;
 
 
 int anode_pin_for(char led) {
@@ -121,6 +123,28 @@ void display(int digit, int duration_ms) {
     for (i = 0; i < cycles; i++) {
         flash_segments(segments, num_segments);
     }
+}
+
+#define DIGIT_POSITION 1 // position of this digit in displaying the time (this needs to be changed for each digit, and needs to be between 0 - 3 inclusive) 
+
+char time[4] = { 0, 0, 0, 0 };
+
+void update(char c) {
+    queue_enqueue(c);
+    
+    if (!queue_isFull()) return;
+ 
+    if (queue_dequeue() != 6) return;
+    if (queue_dequeue() != 5) return;
+    if (queue_dequeue() != 4) return;
+    if (queue_dequeue() != 3) return;
+
+    time[0] = queue_dequeue();
+    time[1] = queue_dequeue();
+    time[2] = queue_dequeue();
+    time[3] = queue_dequeue();
+
+    digit = time[DIGIT_POSITION];
 }
 
 ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even though I'm enabling PCINT1
@@ -198,6 +222,8 @@ ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even th
     if (digit >= 48 && digit <= 57) {   // translate ASCII to digit
         digit -= 48;
     }
+    
+    update(digit);
 }
 
 
