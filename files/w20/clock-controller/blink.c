@@ -307,7 +307,7 @@ int main(void) {
         // get time
         //
         if (res > 160) {  // dark enough to turn off display
-            hour_tens = hour_units = minute_tens = minute_units = 1;
+            hour_tens = hour_units = minute_tens = minute_units = TURN_OFF_DISPLAY;
             print_num('D');
         } else {
             get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);

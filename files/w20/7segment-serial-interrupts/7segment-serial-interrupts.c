@@ -30,6 +30,8 @@
 const int FLASH_DELAY_MS = 1;
 const int DIGIT_DISPLAY_MS = 1000;
 
+#define TURN_OFF_DISPLAY 11  // has to match the value in clock-controller
+
 char DIGIT_SEGMENTS[11][7] = {
      {'A', 'B', 'C', 'D', 'E', 'F'},            // 0
      {'B', 'C'},                                // 1
@@ -117,20 +119,23 @@ void flash_segments(char segments[], int len) {
     }
 }
 
-void display(int digit, int duration_ms) {
+void display(int d, int duration_ms) {
     int i;
-    if (digit < 0 || digit > 9) {  
-        digit = 10;                 // default pattern to show if an invalid digit is received (initial value is also set to 10)
+    if (d == TURN_OFF_DISPLAY) {
+        return; 
     }
-    char *segments = DIGIT_SEGMENTS[digit];
-    int num_segments = DIGIT_NUM_SEGMENTS[digit];
+    if (d < 0 || d > 9) {  
+        d = 10;                 // default pattern to show if an invalid digit is received (initial value is also set to 10)
+    }
+    char *segments = DIGIT_SEGMENTS[d];
+    int num_segments = DIGIT_NUM_SEGMENTS[d];
     int cycles = duration_ms / (FLASH_DELAY_MS * num_segments);
     for (i = 0; i < cycles; i++) {
         flash_segments(segments, num_segments);
     }
 }
 
-#define DIGIT_POSITION 3 // position of this digit in displaying the time (this needs to be changed for each digit, and needs to be between 0 - 3 inclusive) 
+#define DIGIT_POSITION 0 // position of this digit in displaying the time (this needs to be changed for each digit, and needs to be between 0 - 3 inclusive) 
 
 char time[4] = { 0, 0, 0, 0 };
 
@@ -222,13 +227,11 @@ ISR(PCINT0_vect) {          // has to be PCINT0_vect and not PCINT1_vect even th
     bit_delay();
     half_bit_delay();
     
-    digit = *rxbyte;
-    
-    if (digit >= 48 && digit <= 57) {   // translate ASCII to digit
-        digit -= 48;
+    if (*rxbyte >= 48 && *rxbyte <= 57) {   // translate ASCII to digit
+        *rxbyte -= 48;
     }
     
-    update(digit);
+    update(*rxbyte);
 }
 
 
