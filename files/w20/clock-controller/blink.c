@@ -29,6 +29,10 @@
 #define digit_bus_direction DDRA
 #define digit_bus_pin_out (1 << PA0)
 
+#define serial_port PORTA
+#define serial_direction DDRA
+#define serial_pin_out (1 << PA1)
+
 
 void put_char(volatile unsigned char *port, unsigned char pin, char txchar) {
     //
@@ -123,6 +127,29 @@ void set_time(char second, char minute, char hour, char dayOfWeek, char dayOfMon
     USI_I2C_Master_Start_Transmission(data, data_len);
 }
 
+void print_newline() {
+    put_char(&serial_port, serial_pin_out, '\n');
+    char_delay();
+}
+
+void print_num(char num) {
+    put_char(&serial_port, serial_pin_out, num);
+    char_delay();
+    put_char(&serial_port, serial_pin_out, " ");
+    char_delay();
+}
+
+void print_digits(char second, char minute, char hour, char dayOfWeek, char dayOfMonth, char month, char year) {
+    print_num(second);
+    print_num(minute);
+    print_num(hour);
+    print_num(dayOfWeek);
+    print_num(dayOfMonth);
+    print_num(month);
+    print_num(year);
+    print_newline();
+}
+
 void get_time(char *hour_tens, char *hour_units, char *minute_tens, char *minute_units) {
     {   // using explicit scopes to ensure the correct arrays get used
      
@@ -153,14 +180,14 @@ void get_time(char *hour_tens, char *hour_units, char *minute_tens, char *minute
         month = bcdToDec(time[6]);
         year = bcdToDec(time[7]);
         
+        print_digits(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
+        
         *hour_tens = hour / 10;
         *hour_units = hour % 10;
         *minute_tens = minute / 10;
         *minute_units = minute % 10;
     }
 }
-
-char n = 2;
 
 int main(void) {
     //
@@ -172,9 +199,10 @@ int main(void) {
     // initialize output pins
     //
     output(digit_bus_direction, digit_bus_pin_out);
-    
-    set_time(15,    // sec
-             25,    // min
+    output(serial_direction, serial_pin_out);
+        
+    set_time(56,    // sec
+             48,    // min
              1,     // hour
              4,     // day of week
              22,    // day
@@ -190,6 +218,12 @@ int main(void) {
         // get time
         get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
         
+        print_num(48 + hour_tens);
+        print_num(48 + hour_units);
+        print_num(48 + minute_tens);
+        print_num(48 + minute_units);
+        print_newline();
+
         // send framing
         put_char(&digit_bus_port, digit_bus_pin_out, 6);
         char_delay();
@@ -215,8 +249,6 @@ int main(void) {
         
         put_char(&digit_bus_port, digit_bus_pin_out, minute_units);
         char_delay();
-        
-        if (++n >= 10) n = 0;
         
         _delay_ms(1000);
     }
