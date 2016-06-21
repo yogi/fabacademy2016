@@ -815,6 +815,8 @@ The solution was to only have the VCC, GND and MISO pins connected on the digit 
 1 - Cut the USB board, solder the connector, solder jumpers to the controller board
 1 - Make the presentation page
 1 - Make a video
+- Update notes to show Arduino is used only for testing
 - Demo with Francisco
 
 
+Phototransistor is connected to PA7 (ADC7).

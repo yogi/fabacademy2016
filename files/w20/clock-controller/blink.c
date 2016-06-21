@@ -33,6 +33,7 @@
 #define serial_direction DDRA
 #define serial_pin_out (1 << PA1)
 
+#define TURN_OFF_DISPLAY 11
 
 void put_char(volatile unsigned char *port, unsigned char pin, char txchar) {
     //
@@ -132,6 +133,50 @@ void print_newline() {
     char_delay();
 }
 
+void print_binary(char num) {
+    int i;
+    for (i = 7; i>= 0; i--) {
+        put_char(&serial_port, serial_pin_out, (num & (1 << i)) ? '1' : '0');
+        char_delay();
+    }
+    put_char(&serial_port, serial_pin_out, '|');
+    char_delay();
+}
+
+void print_binary16(uint8_t num) {
+    int i;
+    for (i = 15; i>= 0; i--) {
+        put_char(&serial_port, serial_pin_out, (num & (1 << i)) ? '1' : '0');
+        char_delay();
+    }
+    put_char(&serial_port, serial_pin_out, '|');
+    char_delay();
+}
+
+void print_dec(uint8_t num) {
+    put_char(&serial_port, serial_pin_out, 48 + (num / 10000));
+    char_delay();
+    num = num % 10000;
+
+    put_char(&serial_port, serial_pin_out, 48 + (num / 1000));
+    char_delay();
+    num = num % 1000;
+
+    put_char(&serial_port, serial_pin_out, 48 + (num / 100));
+    char_delay();
+    num = num % 100;
+
+    put_char(&serial_port, serial_pin_out, 48 + (num / 10));
+    char_delay();
+    num = num % 10;
+
+    put_char(&serial_port, serial_pin_out, 48 + num);
+    char_delay();
+
+    put_char(&serial_port, serial_pin_out, '|');
+    char_delay();
+}
+
 void print_num(char num) {
     put_char(&serial_port, serial_pin_out, num);
     char_delay();
@@ -180,7 +225,7 @@ void get_time(char *hour_tens, char *hour_units, char *minute_tens, char *minute
         month = bcdToDec(time[6]);
         year = bcdToDec(time[7]);
         
-        print_digits(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
+        //print_digits(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
         
         *hour_tens = hour / 10;
         *hour_units = hour % 10;
@@ -212,16 +257,62 @@ int main(void) {
     char hour_tens, hour_units, minute_tens, minute_units;
     
     //
+    // init A/D
+    //
+    ADMUX = /*(0 << REFS2) | */ (0 << REFS1) | (0 << REFS0) // Vcc ref
+      | (0 << ADLAR) // right adjust
+      | (0 << MUX5) | (0 << MUX4) | (0 << MUX3) | (1 << MUX2) | (1 << MUX1) | (1 << MUX0); // ADC7
+    ADCSRA = (1 << ADEN) // enable
+      | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // prescaler /128
+
+    //
     // main loop
     //
     while (1) {
-        // get time
-        get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
+        //
+        // read light sensor
+        //
+        // initiate conversion
+        //
+        print_num('S');
         
-        print_num(48 + hour_tens);
-        print_num(48 + hour_units);
-        print_num(48 + minute_tens);
-        print_num(48 + minute_units);
+        ADCSRA |= (1 << ADSC);
+        //
+        // wait for completion
+        //
+        while (ADCSRA & (1 << ADSC))
+            ;
+            
+        //
+        // save result
+        //
+        uint8_t lowADC = ADCL;
+        uint8_t highADC = ADCH;
+        
+        print_binary(highADC);
+        print_binary(lowADC);
+        
+        uint16_t res = (highADC << 8) | lowADC;
+        
+        print_num('L');
+        print_binary16(res);
+        print_dec(res);
+        
+        // S`L`10001111|10100001|11101110|y`D`
+            //  -113       -95       -18
+
+        //S`L`10110100|10100001|00010011|y`D`
+            //   -76       -95       19
+        //
+        // get time
+        //
+        if (res > 160) {  // dark enough to turn off display
+            hour_tens = hour_units = minute_tens = minute_units = 1;
+            print_num('D');
+        } else {
+            get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
+            print_num('B');
+        }
         print_newline();
 
         // send framing
