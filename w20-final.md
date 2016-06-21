@@ -803,3 +803,18 @@ The solution was to only have the VCC, GND and MISO pins connected on the digit 
 
 - Program controller to get data from the RTC.
  
+
+
+## Tue, 21st Jun
+
+0.5 - Program the controller to get data from the light sensor
+1 - Program the controller to get data from the ultrasonic sensor
+0 - Reflash the digits with 100ms display 
+1 - Mount the digits, solder leads and wires
+1 - Unsolder the phototransistor, solder on leads, mount it on the top panel of the clock, solder the leads to the controller board
+1 - Cut the USB board, solder the connector, solder jumpers to the controller board
+1 - Make the presentation page
+1 - Make a video
+- Demo with Francisco
+
+

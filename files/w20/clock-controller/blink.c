@@ -25,9 +25,9 @@
 #define half_bit_delay() _delay_us(bit_delay_time/2) // RS232 half bit delay
 #define char_delay() _delay_ms(10) // char delay
 
-#define serial_port PORTA
-#define serial_direction DDRA
-#define serial_pin_out (1 << PB0)
+#define digit_bus_port PORTA
+#define digit_bus_direction DDRA
+#define digit_bus_pin_out (1 << PA0)
 
 
 void put_char(volatile unsigned char *port, unsigned char pin, char txchar) {
@@ -171,7 +171,7 @@ int main(void) {
     //
     // initialize output pins
     //
-    output(serial_direction, serial_pin_out);
+    output(digit_bus_direction, digit_bus_pin_out);
     
     set_time(15,    // sec
              25,    // min
@@ -191,29 +191,29 @@ int main(void) {
         get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
         
         // send framing
-        put_char(&serial_port, serial_pin_out, 6);
+        put_char(&digit_bus_port, digit_bus_pin_out, 6);
         char_delay();
         
-        put_char(&serial_port, serial_pin_out, 5);
+        put_char(&digit_bus_port, digit_bus_pin_out, 5);
         char_delay();
         
-        put_char(&serial_port, serial_pin_out, 4);
+        put_char(&digit_bus_port, digit_bus_pin_out, 4);
         char_delay();
         
-        put_char(&serial_port, serial_pin_out, 3);
+        put_char(&digit_bus_port, digit_bus_pin_out, 3);
         char_delay();
         
         // send time
-        put_char(&serial_port, serial_pin_out, hour_tens);
+        put_char(&digit_bus_port, digit_bus_pin_out, hour_tens);
         char_delay();
         
-        put_char(&serial_port, serial_pin_out, hour_units);
+        put_char(&digit_bus_port, digit_bus_pin_out, hour_units);
         char_delay();
         
-        put_char(&serial_port, serial_pin_out, minute_tens);
+        put_char(&digit_bus_port, digit_bus_pin_out, minute_tens);
         char_delay();
         
-        put_char(&serial_port, serial_pin_out, minute_units);
+        put_char(&digit_bus_port, digit_bus_pin_out, minute_units);
         char_delay();
         
         if (++n >= 10) n = 0;
