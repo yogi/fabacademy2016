@@ -298,22 +298,22 @@ int main(void) {
         print_binary16(res);
         print_dec(res);
         
-        // S`L`10001111|10100001|11101110|y`D`
-            //  -113       -95       -18
-
-        //S`L`10110100|10100001|00010011|y`D`
-            //   -76       -95       19
         //
         // get time
         //
         if (res > 160) {  // dark enough to turn off display
-            hour_tens = hour_units = minute_tens = minute_units = TURN_OFF_DISPLAY;
+            hour_tens = hour_units = minute_tens = minute_units = 4;
             print_num('D');
         } else {
             get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
             print_num('B');
         }
         print_newline();
+        
+        hour_tens = 1;
+        hour_units = 0;
+        minute_tens = 4;
+        minute_units = 5;
 
         // send framing
         put_char(&digit_bus_port, digit_bus_pin_out, 6);

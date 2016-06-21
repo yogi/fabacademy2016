@@ -820,3 +820,4 @@ The solution was to only have the VCC, GND and MISO pins connected on the digit 
 
 
 Phototransistor is connected to PA7 (ADC7).
+
