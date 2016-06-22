@@ -821,3 +821,31 @@ The solution was to only have the VCC, GND and MISO pins connected on the digit 
 
 Phototransistor is connected to PA7 (ADC7).
 
+Somehow got all the pieces soldered, mounted last night at 3 am.
+
+Presentation done.
+
+## Wed, 22nd Jun
+
+- Get phototransistor working
+    switch leads & resolder
+    test
+    
+- Get ultrasonic working
+    write code
+
+- Program controller to turn on when off and movement detected.
+
+1 - Make a video
+    - clock on in daylight
+    - gets progressively darker, until clock goes off
+    - hand wave turns it on for 5 sec
+    
+1 - Test video conference setup 
+
+2 - Update presentation - add networked, custom LED details
+ 
+- write script for 2 min presentation, practice
+    demo with Francisco
+ 
+ 

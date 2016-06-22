@@ -34,6 +34,7 @@
 #define serial_pin_out (1 << PA1)
 
 #define TURN_OFF_DISPLAY 11
+#define DARK_THRESHOLD 160
 
 void put_char(volatile unsigned char *port, unsigned char pin, char txchar) {
     //
@@ -292,29 +293,34 @@ int main(void) {
         print_binary(highADC);
         print_binary(lowADC);
         
-        uint16_t res = (highADC << 8) | lowADC;
+//        uint16_t res = (highADC << 8) | lowADC;
+        uint16_t res = lowADC;
         
-        print_num('L');
-        print_binary16(res);
-        print_dec(res);
+//        print_num('L');
+//        print_binary16(res);
+//        print_dec(res);
         
         //
         // get time
         //
-        if (res > 160) {  // dark enough to turn off display
-            hour_tens = hour_units = minute_tens = minute_units = 4;
+        if (res > DARK_THRESHOLD) {  // dark enough to turn off display
+            hour_tens = hour_units = minute_tens = minute_units = TURN_OFF_DISPLAY;
             print_num('D');
         } else {
-            get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
-            print_num('B');
+//            get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
+//            print_num('B');
+//            hour_tens = 1;
+//            hour_units = 0;
+//            minute_tens = 4;
+//            minute_units = 5;
+
+            hour_tens = 0;
+            hour_units = res / 100; res = res % 100; 
+            minute_tens = res / 10; res = res % 10;
+            minute_units = res;
         }
         print_newline();
         
-        hour_tens = 1;
-        hour_units = 0;
-        minute_tens = 4;
-        minute_units = 5;
-
         // send framing
         put_char(&digit_bus_port, digit_bus_pin_out, 6);
         char_delay();
