@@ -35,6 +35,7 @@
 
 #define TURN_OFF_DISPLAY 11
 #define DARK_THRESHOLD 160
+#define LOOP_DELAY 1000
 
 void put_char(volatile unsigned char *port, unsigned char pin, char txchar) {
     //
@@ -181,7 +182,7 @@ void print_dec(uint8_t num) {
 void print_num(char num) {
     put_char(&serial_port, serial_pin_out, num);
     char_delay();
-    put_char(&serial_port, serial_pin_out, " ");
+    put_char(&serial_port, serial_pin_out, ' ');
     char_delay();
 }
 
@@ -226,7 +227,7 @@ void get_time(char *hour_tens, char *hour_units, char *minute_tens, char *minute
         month = bcdToDec(time[6]);
         year = bcdToDec(time[7]);
         
-        //print_digits(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
+        print_digits(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
         
         *hour_tens = hour / 10;
         *hour_units = hour % 10;
@@ -235,18 +236,117 @@ void get_time(char *hour_tens, char *hour_units, char *minute_tens, char *minute
     }
 }
 
-int main(void) {
+void send_time(char hour_tens, char hour_units, char minute_tens, char minute_units) {
+    // send framing
+    put_char(&digit_bus_port, digit_bus_pin_out, 6);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, 5);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, 4);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, 3);
+    char_delay();
+    
+    // send time
+    put_char(&digit_bus_port, digit_bus_pin_out, hour_tens);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, hour_units);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, minute_tens);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, minute_units);
+    char_delay();
+}
+
+void display_time() {
+    char hour_tens, hour_units, minute_tens, minute_units;
+    get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
+    send_time(hour_tens, hour_units, minute_tens, minute_units);
+}
+
+void turn_off_display() {
+    send_time(TURN_OFF_DISPLAY, TURN_OFF_DISPLAY, TURN_OFF_DISPLAY, TURN_OFF_DISPLAY);
+}
+
+void display_num(uint8_t res) {
+    char hour_tens, hour_units, minute_tens, minute_units;
+    hour_tens = 0;
+    hour_units = res / 100; res = res % 100; 
+    minute_tens = res / 10; res = res % 10;
+    minute_units = res;
+    
+    send_time(hour_tens, hour_units, minute_tens, minute_units);
+}
+
+void display_time_for_short_duration() {
+    display_time();
+    _delay_ms(5000);
+}
+
+void loop_delay() {
+    _delay_ms(LOOP_DELAY);
+}
+
+uint8_t ambient_light_level() {
+    //
+    // read light sensor
+    //
+    // initiate conversion
+    //
+    print_num('S');
+    
+    ADCSRA |= (1 << ADSC);
+    //
+    // wait for completion
+    //
+    while (ADCSRA & (1 << ADSC))
+        ;
+        
+    //
+    // save result
+    //
+    uint8_t res = ADCL;
+    print_binary(res);
+    
+    return res;
+} 
+
+short handwave_detected() {
+    return 0;
+}
+
+void setup() {
     //
     // set clock divider to /1
     //
     CLKPR = (1 << CLKPCE);
     CLKPR = (0 << CLKPS3) | (0 << CLKPS2) | (0 << CLKPS1) | (0 << CLKPS0);
+    
     //
     // initialize output pins
     //
     output(digit_bus_direction, digit_bus_pin_out);
     output(serial_direction, serial_pin_out);
         
+    //
+    // init A/D
+    //
+    ADMUX = (0 << REFS1) | (0 << REFS0) // Vcc ref
+      | (0 << ADLAR) // right adjust
+      | (0 << MUX5) | (0 << MUX4) | (0 << MUX3) | (1 << MUX2) | (1 << MUX1) | (1 << MUX0); // ADC7
+    ADCSRA = (1 << ADEN) // enable
+      | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // prescaler /128
+}
+
+int main(void) {
+    setup();
+    
     set_time(56,    // sec
              48,    // min
              1,     // hour
@@ -255,98 +355,23 @@ int main(void) {
              4,     // month
              16);   // year 
     
-    char hour_tens, hour_units, minute_tens, minute_units;
+    uint8_t light_level;
     
-    //
-    // init A/D
-    //
-    ADMUX = /*(0 << REFS2) | */ (0 << REFS1) | (0 << REFS0) // Vcc ref
-      | (0 << ADLAR) // right adjust
-      | (0 << MUX5) | (0 << MUX4) | (0 << MUX3) | (1 << MUX2) | (1 << MUX1) | (1 << MUX0); // ADC7
-    ADCSRA = (1 << ADEN) // enable
-      | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // prescaler /128
-
-    //
-    // main loop
-    //
-    while (1) {
-        //
-        // read light sensor
-        //
-        // initiate conversion
-        //
-        print_num('S');
+    while(1) {
+        light_level = ambient_light_level();
+        display_num(light_level);
         
-        ADCSRA |= (1 << ADSC);
-        //
-        // wait for completion
-        //
-        while (ADCSRA & (1 << ADSC))
-            ;
-            
-        //
-        // save result
-        //
-        uint8_t lowADC = ADCL;
-        uint8_t highADC = ADCH;
+        if (light_level > DARK_THRESHOLD) {
+            if (handwave_detected()) {
+                display_time_for_short_duration();
+            } else {
+                turn_off_display();
+            }
+        } 
+//        else {
+//            display_time();
+//        }
         
-        print_binary(highADC);
-        print_binary(lowADC);
-        
-//        uint16_t res = (highADC << 8) | lowADC;
-        uint16_t res = lowADC;
-        
-//        print_num('L');
-//        print_binary16(res);
-//        print_dec(res);
-        
-        //
-        // get time
-        //
-        if (res > DARK_THRESHOLD) {  // dark enough to turn off display
-            hour_tens = hour_units = minute_tens = minute_units = TURN_OFF_DISPLAY;
-            print_num('D');
-        } else {
-//            get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
-//            print_num('B');
-//            hour_tens = 1;
-//            hour_units = 0;
-//            minute_tens = 4;
-//            minute_units = 5;
-
-            hour_tens = 0;
-            hour_units = res / 100; res = res % 100; 
-            minute_tens = res / 10; res = res % 10;
-            minute_units = res;
-        }
-        print_newline();
-        
-        // send framing
-        put_char(&digit_bus_port, digit_bus_pin_out, 6);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, 5);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, 4);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, 3);
-        char_delay();
-        
-        // send time
-        put_char(&digit_bus_port, digit_bus_pin_out, hour_tens);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, hour_units);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, minute_tens);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, minute_units);
-        char_delay();
-        
-        _delay_ms(1000);
+        loop_delay();
     }
 }

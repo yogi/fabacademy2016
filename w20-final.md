@@ -849,3 +849,7 @@ Presentation done.
     demo with Francisco
  
  
+### Ultrasonic
+
+Trigger is PA1, Echo PA2.
+
