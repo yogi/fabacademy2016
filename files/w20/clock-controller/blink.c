@@ -29,13 +29,21 @@
 #define digit_bus_direction DDRA
 #define digit_bus_pin_out (1 << PA0)
 
-#define serial_port PORTA
-#define serial_direction DDRA
-#define serial_pin_out (1 << PA1)
+#define serial_port PORTB
+#define serial_direction DDRB
+#define serial_pin_out (1 << PB2)
+
+#define trigger_port PORTA
+#define trigger_direction DDRA
+#define trigger_pin_out (1 << PA1)
+
+#define echo_port PORTA
+#define echo_direction DDRA
+#define echo_pin_in (1 << PA2)
+#define echo_pins PINA
 
 #define TURN_OFF_DISPLAY 11
 #define DARK_THRESHOLD 160
-#define LOOP_DELAY 1000
 
 void put_char(volatile unsigned char *port, unsigned char pin, char txchar) {
     //
@@ -182,7 +190,7 @@ void print_dec(uint8_t num) {
 void print_num(char num) {
     put_char(&serial_port, serial_pin_out, num);
     char_delay();
-    put_char(&serial_port, serial_pin_out, ' ');
+    put_char(&serial_port, serial_pin_out, " ");
     char_delay();
 }
 
@@ -227,7 +235,7 @@ void get_time(char *hour_tens, char *hour_units, char *minute_tens, char *minute
         month = bcdToDec(time[6]);
         year = bcdToDec(time[7]);
         
-        print_digits(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
+        //print_digits(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
         
         *hour_tens = hour / 10;
         *hour_units = hour % 10;
@@ -236,117 +244,63 @@ void get_time(char *hour_tens, char *hour_units, char *minute_tens, char *minute
     }
 }
 
-void send_time(char hour_tens, char hour_units, char minute_tens, char minute_units) {
-    // send framing
-    put_char(&digit_bus_port, digit_bus_pin_out, 6);
-    char_delay();
+long handwave_detected() {
+    //
+    // trigger the ultrasonic sensor
+    //
     
-    put_char(&digit_bus_port, digit_bus_pin_out, 5);
-    char_delay();
+    // start with LOW to ensure a clean signal for 4 µs
+    clear(trigger_port, trigger_pin_out);
+    _delay_us(4);
     
-    put_char(&digit_bus_port, digit_bus_pin_out, 4);
-    char_delay();
+    // set HIGH for 10µs 
+    set(trigger_port, trigger_pin_out);
+    _delay_us(10);
     
-    put_char(&digit_bus_port, digit_bus_pin_out, 3);
-    char_delay();
+    // back LOW to end trigger
+    clear(trigger_port, trigger_pin_out);
+
+    //
+    // listen for echo
+    //
     
-    // send time
-    put_char(&digit_bus_port, digit_bus_pin_out, hour_tens);
-    char_delay();
+    // wait till echo signal is taken high
+    while (!pin_test(echo_pins, echo_pin_in)) {
+        ; // noop
+    }
     
-    put_char(&digit_bus_port, digit_bus_pin_out, hour_units);
-    char_delay();
+    // start timer 
+    TCNT1 = 0;
     
-    put_char(&digit_bus_port, digit_bus_pin_out, minute_tens);
-    char_delay();
+    // loop till signal is taken LOW
+    while (pin_test(echo_pins, echo_pin_in)) {
+        ; // noop
+    }
     
-    put_char(&digit_bus_port, digit_bus_pin_out, minute_units);
-    char_delay();
+    long duration_us = TCNT1 * 8;
+    
+    // The speed of sound is 340 m/s or 29 microseconds per centimeter.
+    // The ping travels out and back, so to find the distance of the
+    // object we take half of the distance travelled.
+    long cm = duration_us / 29 / 2; 
+    
+    return cm;
 }
 
-void display_time() {
-    char hour_tens, hour_units, minute_tens, minute_units;
-    get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
-    send_time(hour_tens, hour_units, minute_tens, minute_units);
-}
-
-void turn_off_display() {
-    send_time(TURN_OFF_DISPLAY, TURN_OFF_DISPLAY, TURN_OFF_DISPLAY, TURN_OFF_DISPLAY);
-}
-
-void display_num(uint8_t res) {
-    char hour_tens, hour_units, minute_tens, minute_units;
-    hour_tens = 0;
-    hour_units = res / 100; res = res % 100; 
-    minute_tens = res / 10; res = res % 10;
-    minute_units = res;
-    
-    send_time(hour_tens, hour_units, minute_tens, minute_units);
-}
-
-void display_time_for_short_duration() {
-    display_time();
-    _delay_ms(5000);
-}
-
-void loop_delay() {
-    _delay_ms(LOOP_DELAY);
-}
-
-uint8_t ambient_light_level() {
-    //
-    // read light sensor
-    //
-    // initiate conversion
-    //
-    print_num('S');
-    
-    ADCSRA |= (1 << ADSC);
-    //
-    // wait for completion
-    //
-    while (ADCSRA & (1 << ADSC))
-        ;
-        
-    //
-    // save result
-    //
-    uint8_t res = ADCL;
-    print_binary(res);
-    
-    return res;
-} 
-
-short handwave_detected() {
-    return 0;
-}
-
-void setup() {
+int main(void) {
     //
     // set clock divider to /1
     //
     CLKPR = (1 << CLKPCE);
     CLKPR = (0 << CLKPS3) | (0 << CLKPS2) | (0 << CLKPS1) | (0 << CLKPS0);
-    
     //
     // initialize output pins
     //
     output(digit_bus_direction, digit_bus_pin_out);
     output(serial_direction, serial_pin_out);
+    output(trigger_direction, trigger_pin_out);
+    input(echo_direction, echo_pin_in);
         
-    //
-    // init A/D
-    //
-    ADMUX = (0 << REFS1) | (0 << REFS0) // Vcc ref
-      | (0 << ADLAR) // right adjust
-      | (0 << MUX5) | (0 << MUX4) | (0 << MUX3) | (1 << MUX2) | (1 << MUX1) | (1 << MUX0); // ADC7
-    ADCSRA = (1 << ADEN) // enable
-      | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // prescaler /128
-}
-
-int main(void) {
-    setup();
-    
     set_time(56,    // sec
              48,    // min
              1,     // hour
@@ -355,23 +309,112 @@ int main(void) {
              4,     // month
              16);   // year 
     
-    uint8_t light_level;
+    char hour_tens, hour_units, minute_tens, minute_units;
     
-    while(1) {
-        light_level = ambient_light_level();
-        display_num(light_level);
+    //
+    // init A/D
+    //
+    ADMUX = /*(0 << REFS2) | */ (0 << REFS1) | (0 << REFS0) // Vcc ref
+      | (0 << ADLAR) // right adjust
+      | (0 << MUX5) | (0 << MUX4) | (0 << MUX3) | (1 << MUX2) | (1 << MUX1) | (1 << MUX0); // ADC7
+    ADCSRA = (1 << ADEN) // enable
+      | (1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0); // prescaler /128
+
+    // init timer for ultrasonic pings
+    TCCR1B |= (1 << CS11) | (1 << CS10);        /* Use 1/64 prescaler. Timer clock speed: 8 MHz / 64, each tick is 8 microseconds ~= 125 per ms  */  
+    
+    //
+    // main loop
+    //
+    while (1) {
+        //
+        // read light sensor
+        //
+        // initiate conversion
+        //
+        print_num('S');
         
-        if (light_level > DARK_THRESHOLD) {
-            if (handwave_detected()) {
-                display_time_for_short_duration();
+        ADCSRA |= (1 << ADSC);
+        //
+        // wait for completion
+        //
+        while (ADCSRA & (1 << ADSC))
+            ;
+            
+        //
+        // save result
+        //
+        uint8_t lowADC = ADCL;
+        uint8_t highADC = ADCH;
+        
+        print_binary(highADC);
+        print_binary(lowADC);
+        
+//        uint16_t res = (highADC << 8) | lowADC;
+        uint16_t res = lowADC;
+        
+//        print_num('L');
+//        print_binary16(res);
+//        print_dec(res);
+        
+        //
+        // get time
+        //
+        long distance;
+        
+        if (res > DARK_THRESHOLD) {  // dark enough to turn off display
+            distance = handwave_detected();
+            
+            if (distance < 30) {
+                hour_tens = 0;
+                hour_units = distance / 100; distance = distance % 100; 
+                minute_tens = distance / 10; distance = distance % 10;
+                minute_units = distance;
             } else {
-                turn_off_display();
+                hour_tens = hour_units = minute_tens = minute_units = TURN_OFF_DISPLAY;
+                print_num('D');
             }
-        } 
-//        else {
-//            display_time();
-//        }
+        } else {
+//            get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
+//            print_num('B');
+            hour_tens = 1;
+            hour_units = 0;
+            minute_tens = 4;
+            minute_units = 5;
+
+//            hour_tens = 0;
+//            hour_units = res / 100; res = res % 100; 
+//            minute_tens = res / 10; res = res % 10;
+//            minute_units = res;
+        }
+        print_newline();
         
-        loop_delay();
+        // send framing
+        put_char(&digit_bus_port, digit_bus_pin_out, 6);
+        char_delay();
+        
+        put_char(&digit_bus_port, digit_bus_pin_out, 5);
+        char_delay();
+        
+        put_char(&digit_bus_port, digit_bus_pin_out, 4);
+        char_delay();
+        
+        put_char(&digit_bus_port, digit_bus_pin_out, 3);
+        char_delay();
+        
+        // send time
+        put_char(&digit_bus_port, digit_bus_pin_out, hour_tens);
+        char_delay();
+        
+        put_char(&digit_bus_port, digit_bus_pin_out, hour_units);
+        char_delay();
+        
+        put_char(&digit_bus_port, digit_bus_pin_out, minute_tens);
+        char_delay();
+        
+        put_char(&digit_bus_port, digit_bus_pin_out, minute_units);
+        char_delay();
+        
+        _delay_ms(1000);
     }
 }
