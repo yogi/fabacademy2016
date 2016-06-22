@@ -46,7 +46,7 @@
 #define echo_pins PINA
 
 #define TURN_OFF_DISPLAY 11
-#define DARK_THRESHOLD 160
+#define DARK_THRESHOLD 155
 
 void put_char(volatile unsigned char *port, unsigned char pin, char txchar) {
     //
