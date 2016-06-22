@@ -1,3 +1,6 @@
+// Yogi Kulkarni
+// 
+// Includes code from:
 //
 // Neil Gershenfeld
 // 10/25/12
@@ -237,14 +240,48 @@ void get_time(char *hour_tens, char *hour_units, char *minute_tens, char *minute
         
         //print_digits(second, minute, hour, dayOfWeek, dayOfMonth, month, year);
         
-        *hour_tens = hour / 10;
-        *hour_units = hour % 10;
-        *minute_tens = minute / 10;
-        *minute_units = minute % 10;
+//        *hour_tens = hour / 10;
+//        *hour_units = hour % 10;
+//        *minute_tens = minute / 10;
+//        *minute_units = minute % 10;
+
+        // hardcoding time for now, till I can debug the RTC
+        *hour_tens = 1;
+        *hour_units = 2;
+        *minute_tens = 5;
+        *minute_units = 4;
     }
 }
 
-long handwave_detected() {
+void send_time(char hour_tens, char hour_units, char minute_tens, char minute_units) {
+    // send framing
+    put_char(&digit_bus_port, digit_bus_pin_out, 6);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, 5);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, 4);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, 3);
+    char_delay();
+    
+    // send time
+    put_char(&digit_bus_port, digit_bus_pin_out, hour_tens);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, hour_units);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, minute_tens);
+    char_delay();
+    
+    put_char(&digit_bus_port, digit_bus_pin_out, minute_units);
+    char_delay();
+}
+
+long handwave_distance() {
     //
     // trigger the ultrasonic sensor
     //
@@ -338,8 +375,9 @@ int main(void) {
         //
         // wait for completion
         //
-        while (ADCSRA & (1 << ADSC))
+        while (ADCSRA & (1 << ADSC)) {
             ;
+        }
             
         //
         // save result
@@ -350,71 +388,24 @@ int main(void) {
         print_binary(highADC);
         print_binary(lowADC);
         
-//        uint16_t res = (highADC << 8) | lowADC;
         uint16_t res = lowADC;
         
-//        print_num('L');
-//        print_binary16(res);
-//        print_dec(res);
-        
-        //
-        // get time
-        //
-        long distance;
+        long distance_cm;
         
         if (res > DARK_THRESHOLD) {  // dark enough to turn off display
-            distance = handwave_detected();
+            distance_cm = handwave_distance();
             
-            if (distance < 30) {
-                hour_tens = 0;
-                hour_units = distance / 100; distance = distance % 100; 
-                minute_tens = distance / 10; distance = distance % 10;
-                minute_units = distance;
+            if (distance_cm < 30) {
+                get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
+                send_time(hour_tens, hour_units, minute_tens, minute_units);
             } else {
-                hour_tens = hour_units = minute_tens = minute_units = TURN_OFF_DISPLAY;
+                send_time(TURN_OFF_DISPLAY, TURN_OFF_DISPLAY, TURN_OFF_DISPLAY, TURN_OFF_DISPLAY);
                 print_num('D');
             }
         } else {
-//            get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
-//            print_num('B');
-            hour_tens = 1;
-            hour_units = 0;
-            minute_tens = 4;
-            minute_units = 5;
-
-//            hour_tens = 0;
-//            hour_units = res / 100; res = res % 100; 
-//            minute_tens = res / 10; res = res % 10;
-//            minute_units = res;
+            get_time(&hour_tens, &hour_units, &minute_tens, &minute_units);
+            send_time(hour_tens, hour_units, minute_tens, minute_units);
         }
-        print_newline();
-        
-        // send framing
-        put_char(&digit_bus_port, digit_bus_pin_out, 6);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, 5);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, 4);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, 3);
-        char_delay();
-        
-        // send time
-        put_char(&digit_bus_port, digit_bus_pin_out, hour_tens);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, hour_units);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, minute_tens);
-        char_delay();
-        
-        put_char(&digit_bus_port, digit_bus_pin_out, minute_units);
-        char_delay();
-        
         _delay_ms(1000);
     }
 }
