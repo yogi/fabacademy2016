@@ -6,6 +6,17 @@ permalink: w20-final.html
 
 --- 
 
+Here's the final product: 
+
+<video controls>
+  <source src="presentation.mp4" height="800" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+&nbsp;
+
+And here's the story of how it was built: 
+
 # Thu, May 12th 
 
 Given the plan for the final project, which is documented on the [Applications & Implications page](w18-applications.html), I'm starting
@@ -854,7 +865,14 @@ Presentation done.
 Trigger is PA1, Echo PA2.
 
 
+### Presentation
 
-MCU 7319
+It all finally came together a few hours before the presentation. 
 
-MCUC 4628
+<img src="presentation.png" width="100%"/>
+
+<video controls>
+  <source src="presentation.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+

@@ -26,6 +26,15 @@ layout: default
 <hr/>
 
 <div class="row">
+	<div class="col-md-12">
+		<h1>Final Project</h1>
+		<a href="w20-final.html"><img src="images/presentation.jpg" width="100%" class="pull-left"/></a> 	
+	</div>
+</div>
+
+<hr/>
+
+<div class="row">
 	<div class="col-md-12 bottom-buffer">
 		<h1>Weekly Assignments</h1>
 	</div>
@@ -233,6 +242,7 @@ layout: default
 
 <hr/>
 
+
 <div class="row">
 	<div class="col-md-7 col-md-push-5">
 		<a href="w15-composites.html"><h1>Composites</h1></a>
@@ -292,6 +302,7 @@ layout: default
 	<div class="col-md-7">
 		<a href="w18-applications.html"><h1>Applications & Implications</h1></a>
 		<p>
+		    This week was about planning the final project.  
 		</p>
 	</div>
 	<div class="col-md-5">
@@ -306,6 +317,7 @@ layout: default
 	<div class="col-md-7 col-md-push-5">
 		<a href="w19-invention.html"><h1>Invention, Intellectual Property and Income</h1></a>
 		<p>
+		    To be done.
 		</p>
 	</div>
 	<div class="col-md-5 col-md-pull-7">
@@ -327,6 +339,7 @@ layout: default
 	</div>
 	<div class="col-md-5">
       <a href="w20-final.html">
+        <img src="images/w20-index.jpg" class="img-responsive" />
       </a>
 	</div>
 </div>
