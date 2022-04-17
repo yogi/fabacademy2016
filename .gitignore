@@ -15,4 +15,5 @@ _site
 *.sch.lck
 *.pro
 *.job
-
+.jekyll-cache/
+out/
